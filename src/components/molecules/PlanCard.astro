@@ -1,0 +1,50 @@
+---
+import Icon from "@/components/atoms/Icon.astro";
+import Button from "@/components/atoms/Button.astro";
+import type { Plan } from "@/content/plans";
+
+const { plan } = Astro.props as { plan: Plan };
+const highlight = plan.highlighted ? "border-accent shadow-soft" : "border-slate/10";
+const hover =
+  "transition hover:-translate-y-1 hover:border-accent hover:shadow-soft";
+---
+<article
+  class={`plan-card flex h-full cursor-pointer flex-col rounded-3xl border bg-white p-6 ${highlight} ${hover}`}
+  data-plan={plan.name}
+>
+  <h3 class="text-xl font-semibold text-ink">{plan.name}</h3>
+  <p class="mt-1 text-sm text-slate">{plan.tagline}</p>
+  <p class="mt-4 text-2xl font-semibold text-ink">{plan.price}</p>
+  <div class="mt-4">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Incluye</p>
+    <ul class="mt-2 space-y-2 text-sm text-slate">
+      {plan.includes.map((item: string) => (
+        <li class="flex gap-2">
+          <Icon name="check" class="h-4 w-4 text-accent" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="mt-4">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">No incluye</p>
+    <ul class="mt-2 space-y-2 text-sm text-slate">
+      {plan.excludes.map((item: string) => (
+        <li class="flex gap-2">
+          <span class="text-accent">?</span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="mt-auto pt-6">
+    <Button
+      variant={plan.highlighted ? "primary" : "ghost"}
+      href="#contacto"
+      class="plan-button"
+      data-default={plan.highlighted ? "primary" : "ghost"}
+    >
+      {plan.cta}
+    </Button>
+  </div>
+</article>

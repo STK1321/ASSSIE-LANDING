@@ -1,0 +1,137 @@
+---
+import Button from "@/components/atoms/Button.astro";
+import Icon from "@/components/atoms/Icon.astro";
+import SectionHeading from "@/components/molecules/SectionHeading.astro";
+import { site } from "@/content/site";
+
+const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
+---
+<section id="contacto" class="py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
+      <div class="space-y-6 reveal">
+        <SectionHeading
+          eyebrow="Contacto"
+          title="Hablemos de tu objetivo"
+          subtitle="Contanos en que etapa estas y te enviamos una propuesta accionable con roadmap y tiempos."
+        />
+        <div class="rounded-3xl border border-slate/10 bg-white p-6 shadow-card">
+          <form id="lead-form" class="space-y-4" method="post" action="/api/lead" novalidate>
+            <div>
+              <label class="text-sm font-semibold text-ink" for="name">Nombre</label>
+              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="name" name="name" type="text" required />
+              <p class="mt-1 text-xs text-rose-600" data-error="name"></p>
+            </div>
+            <div>
+              <label class="text-sm font-semibold text-ink" for="email">Email</label>
+              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="email" name="email" type="email" required />
+              <p class="mt-1 text-xs text-rose-600" data-error="email"></p>
+            </div>
+            <div>
+              <label class="text-sm font-semibold text-ink" for="company">Empresa</label>
+              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="company" name="company" type="text" required />
+              <p class="mt-1 text-xs text-rose-600" data-error="company"></p>
+            </div>
+            <div>
+              <label class="text-sm font-semibold text-ink" for="goal">Objetivo principal</label>
+              <textarea class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="goal" name="goal" rows="3" required></textarea>
+              <p class="mt-1 text-xs text-rose-600" data-error="goal"></p>
+            </div>
+            <div>
+              <label class="text-sm font-semibold text-ink" for="budget">Presupuesto estimado</label>
+              <select class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="budget" name="budget" required>
+                <option value="">Selecciona un rango</option>
+                <option value="starter">USD 500 - 1.000</option>
+                <option value="growth">USD 1.000 - 3.000</option>
+                <option value="custom">USD 3.000+</option>
+              </select>
+              <p class="mt-1 text-xs text-rose-600" data-error="budget"></p>
+            </div>
+            <div>
+              <label class="text-sm font-semibold text-ink" for="channel">Canal preferido</label>
+              <select class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="channel" name="channel" required>
+                <option value="">Selecciona una opci?n</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="email">Email</option>
+                <option value="call">Llamada</option>
+              </select>
+              <p class="mt-1 text-xs text-rose-600" data-error="channel"></p>
+            </div>
+            <div class="flex flex-wrap gap-3 pt-2">
+              <Button as="button" type="submit" variant="primary">Enviar solicitud</Button>
+              <Button variant="ghost" href={whatsappLink} target="_blank" rel="noopener">
+                <Icon name="whatsapp" class="h-4 w-4" />
+                Escr?benos por WhatsApp
+              </Button>
+            </div>
+            <p class="text-xs text-slate">
+              Enviaremos la respuesta a tu email en un plazo de 24-48 horas h?biles.
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="space-y-4 reveal" style="--reveal-delay: 120ms;">
+        <div class="rounded-3xl border border-slate/10 bg-white p-6 shadow-card">
+          <h3 class="text-lg font-semibold text-ink">Contactos directos</h3>
+          <p class="mt-2 text-sm text-slate">Email: {site.email}</p>
+          <p class="mt-1 text-sm text-slate">WhatsApp: {site.whatsapp}</p>
+          <p class="mt-1 text-sm text-slate">Zona: {site.address}</p>
+        </div>
+        <div class="rounded-3xl border border-slate/10 bg-white p-6 shadow-card">
+          <h3 class="text-lg font-semibold text-ink">Lo que incluye la llamada</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slate">
+            <li class="flex gap-2">
+              <Icon name="check" class="h-4 w-4 text-accent" />
+              <span>Revisi?n de objetivos y cuello de botella.</span>
+            </li>
+            <li class="flex gap-2">
+              <Icon name="check" class="h-4 w-4 text-accent" />
+              <span>Propuesta inicial de automatizaci?n y datos.</span>
+            </li>
+            <li class="flex gap-2">
+              <Icon name="check" class="h-4 w-4 text-accent" />
+              <span>Estimaci?n de tiempos y roadmap.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    import { z } from "zod";
+
+    const form = document.getElementById("lead-form") as HTMLFormElement | null;
+
+    const schema = z.object({
+      name: z.string().min(2, "Ingresa tu nombre"),
+      email: z.string().email("Email inv?lido"),
+      company: z.string().min(2, "Ingresa tu empresa"),
+      goal: z.string().min(10, "Explica tu objetivo"),
+      budget: z.string().min(1, "Selecciona un rango"),
+      channel: z.string().min(1, "Selecciona un canal")
+    });
+
+    form?.addEventListener("submit", (event) => {
+      const data = Object.fromEntries(new FormData(form));
+      const result = schema.safeParse(data);
+      const errors: Record<string, string> = {};
+
+      document.querySelectorAll("[data-error]").forEach((node) => {
+        node.textContent = "";
+      });
+
+      if (!result.success) {
+        event.preventDefault();
+        for (const issue of result.error.issues) {
+          const field = String(issue.path[0] ?? "");
+          errors[field] = issue.message;
+        }
+        Object.entries(errors).forEach(([field, message]) => {
+          const target = document.querySelector(`[data-error='${field}']`);
+          if (target) target.textContent = message;
+        });
+      }
+    });
+  </script>
+</section>

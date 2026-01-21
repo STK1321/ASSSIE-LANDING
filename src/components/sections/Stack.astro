@@ -1,0 +1,23 @@
+---
+import SectionHeading from "@/components/molecules/SectionHeading.astro";
+import TechPill from "@/components/molecules/TechPill.astro";
+import { stack } from "@/content/stack";
+---
+<section id="enfoque" class="bg-surface py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="reveal">
+      <SectionHeading
+        eyebrow="Enfoque"
+        title="Lo que realmente importa para tu negocio"
+        subtitle="Nos enfocamos en resultados claros: procesos simples, mejor medici?n y soluciones que escalan con tu equipo."
+      />
+    </div>
+    <div class="mt-12 flex flex-wrap gap-4 leading-relaxed reveal-stagger">
+      {stack.map((item, index) => (
+        <div style={`--stagger: ${index};`}>
+          <TechPill label={item} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

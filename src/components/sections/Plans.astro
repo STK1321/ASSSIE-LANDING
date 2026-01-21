@@ -1,0 +1,117 @@
+---
+import SectionHeading from "@/components/molecules/SectionHeading.astro";
+import PlanCard from "@/components/molecules/PlanCard.astro";
+import { plans } from "@/content/plans";
+---
+<section id="planes" class="py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="reveal space-y-6 relative z-10">
+      <SectionHeading
+        eyebrow="Planes"
+        title="Modelos flexibles para cada etapa"
+        subtitle="Elige un plan base o trabajemos un alcance personalizado para tu operaci?n."
+      />
+      <div class="relative z-10">
+        <button
+          class="pointer-events-auto relative z-10 inline-flex items-center justify-center rounded-full border border-slate/20 bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          type="button"
+          data-open-plans
+        >
+          Ver planes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/40 backdrop-blur-md"
+    data-plans-modal
+    aria-hidden="true"
+  >
+    <div class="pointer-events-auto mx-6 w-full max-w-5xl rounded-3xl border border-white/60 bg-white/95 p-6 shadow-card backdrop-blur">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Planes</p>
+          <h3 class="mt-2 text-2xl font-semibold text-ink">Elige el plan ideal para tu etapa</h3>
+        </div>
+        <button
+          class="rounded-full border border-slate/20 px-4 py-2 text-sm font-semibold text-slate transition hover:border-accent hover:text-accent"
+          type="button"
+          data-close-plans
+        >
+          Cerrar
+        </button>
+      </div>
+      <div class="mt-8 grid gap-6 lg:grid-cols-3 reveal-stagger">
+        {plans.map((plan, index) => (
+          <div style={`--stagger: ${index};`}>
+            <PlanCard plan={plan} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const modal = document.querySelector("[data-plans-modal]");
+      const openButton = document.querySelector("[data-open-plans]");
+      const closeButton = document.querySelector("[data-close-plans]");
+      const body = document.body;
+
+      const cards = Array.from(document.querySelectorAll(".plan-card"));
+      const activeClasses = ["border-accent", "shadow-soft"];
+      const primaryClasses = ["bg-accent", "text-white", "hover:bg-accentDark", "shadow-soft"];
+      const ghostClasses = ["bg-white", "text-ink", "border", "border-slate/20", "hover:border-accent"];
+
+      const openModal = () => {
+        if (!modal) return;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        modal.setAttribute("aria-hidden", "false");
+        body.classList.add("overflow-hidden");
+      };
+
+      const closeModal = () => {
+        if (!modal) return;
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        modal.setAttribute("aria-hidden", "true");
+        body.classList.remove("overflow-hidden");
+      };
+
+      openButton?.addEventListener("click", openModal);
+      closeButton?.addEventListener("click", closeModal);
+      modal?.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+
+      if (!cards.length) return;
+
+      const resetButtons = () => {
+        cards.forEach((item) => {
+          const button = item.querySelector(".plan-button");
+          if (!button) return;
+          button.classList.remove(...primaryClasses);
+          button.classList.add(...ghostClasses);
+        });
+      };
+
+      const setActiveButton = (card) => {
+        const button = card.querySelector(".plan-button");
+        if (!button) return;
+        button.classList.remove(...ghostClasses);
+        button.classList.add(...primaryClasses);
+      };
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          cards.forEach((item) => item.classList.remove(...activeClasses));
+          card.classList.add(...activeClasses);
+          resetButtons();
+          setActiveButton(card);
+        });
+      });
+    });
+  </script>
+</section>

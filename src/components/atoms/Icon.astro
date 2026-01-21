@@ -1,0 +1,36 @@
+---
+const icons = {
+  data: "M4 6h16M4 12h16M4 18h16M8 4v16",
+  marketing: "M4 14l6-6 4 4 6-6v8H4z",
+  automation: "M6 8h12M6 12h8m-8 4h12",
+  dev: "M8 6l-4 6 4 6m8-12l4 6-4 6",
+  ai: "M12 5v14m-7-7h14",
+  check: "M5 13l4 4L19 7",
+  arrow: "M5 12h14M13 5l6 7-6 7",
+  spark: "M12 3l2.2 4.6L19 10l-4.8 2.4L12 17l-2.2-4.6L5 10l4.8-2.4L12 3z",
+  whatsapp: "M12 5a7 7 0 0 0-6 10.7L5 19l3.5-1a7 7 0 1 0 3.5-13z",
+  menu: "M4 6h16M4 12h16M4 18h16",
+  close: "M6 6l12 12M18 6l-12 12"
+} as const;
+
+type IconName = keyof typeof icons;
+
+const { name = "spark", class: className = "" } = Astro.props as {
+  name?: IconName;
+  class?: string;
+};
+
+const path = icons[name] ?? icons.spark;
+---
+<svg
+  viewBox="0 0 24 24"
+  class={`h-5 w-5 ${className}`}
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <path d={path} />
+</svg>

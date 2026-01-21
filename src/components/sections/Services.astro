@@ -1,0 +1,23 @@
+---
+import SectionHeading from "@/components/molecules/SectionHeading.astro";
+import ServiceCard from "@/components/molecules/ServiceCard.astro";
+import { services } from "@/content/services";
+---
+<section id="servicios" class="bg-surface py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="reveal">
+      <SectionHeading
+        eyebrow="Servicios"
+        title="Soluciones integrales para empresas en crecimiento"
+        subtitle="Combinamos automatizaci?n de procesos, marketing digital, machine learning y desarrollo a medida para impactar en ventas, operaci?n y experiencia."
+      />
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3 reveal-stagger">
+      {services.map((service, index) => (
+        <div style={`--stagger: ${index};`}>
+          <ServiceCard service={service} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

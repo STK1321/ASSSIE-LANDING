@@ -1,0 +1,41 @@
+---
+import Button from "@/components/atoms/Button.astro";
+import Icon from "@/components/atoms/Icon.astro";
+import { site } from "@/content/site";
+
+const nav = [
+  { label: "Servicios", href: "#servicios" },
+  { label: "Proceso", href: "#proceso" },
+  { label: "Casos", href: "#casos" },
+  { label: "Planes", href: "#planes" },
+  { label: "FAQ", href: "#faq" },
+  { label: "Contacto", href: "#contacto" }
+];
+---
+<header class="fixed inset-x-0 top-0 z-50 border-b border-slate/10 bg-white/80 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href="#top" class="flex items-center gap-2 font-display text-lg font-semibold text-ink" aria-label="ASSSIE inicio">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-accent text-white">A</span>
+      {site.name}
+    </a>
+    <nav class="hidden items-center gap-6 text-sm font-semibold text-slate md:flex" aria-label="Navegacion principal">
+      {nav.map((item) => (
+        <a class="hover:text-accent" href={item.href}>{item.label}</a>
+      ))}
+      <Button variant="primary" size="sm" href="#contacto">Hablemos</Button>
+    </nav>
+    <details class="relative md:hidden">
+      <summary class="list-none rounded-full border border-slate/20 bg-white p-2" aria-label="Abrir menu">
+        <Icon name="menu" />
+      </summary>
+      <div class="absolute right-0 mt-3 w-64 rounded-2xl border border-slate/10 bg-white p-4 shadow-card">
+        <div class="flex flex-col gap-3 text-sm font-semibold text-slate">
+          {nav.map((item) => (
+            <a class="hover:text-accent" href={item.href}>{item.label}</a>
+          ))}
+          <Button variant="primary" size="sm" href="#contacto">Hablemos</Button>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>

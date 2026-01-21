@@ -1,0 +1,82 @@
+---
+import "@/styles/global.css";
+import Header from "@/components/sections/Header.astro";
+import Footer from "@/components/sections/Footer.astro";
+import { buildSeo } from "@/lib/seo";
+import { ViewTransitions } from "astro:transitions";
+
+const { title, description, canonical, image, noindex = false, jsonLd = [] } = Astro.props as {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+};
+const seo = buildSeo({ title, description, canonical, image, noindex });
+const jsonLdItems = jsonLd as Record<string, unknown>[];
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <link rel="canonical" href={seo.canonical} />
+    {seo.noindex ? <meta name="robots" content="noindex, nofollow" /> : null}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ASSSIE" />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:url" content={seo.canonical} />
+    <meta property="og:image" content={seo.image} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={seo.image} />
+
+    <meta name="theme-color" content="#2563eb" />
+
+    <ViewTransitions />
+
+    {jsonLdItems.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} is:inline />
+    ))}
+  </head>
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2">
+      Saltar al contenido
+    </a>
+    <Header />
+    <main id="main" class="pt-20">
+      <slot />
+    </main>
+    <Footer />
+
+    <script is:inline>
+      const revealTargets = document.querySelectorAll(".reveal, .reveal-stagger");
+      if (revealTargets.length) {
+        if (!("IntersectionObserver" in window)) {
+          revealTargets.forEach((target) => target.classList.add("is-visible"));
+        } else {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+          );
+
+          revealTargets.forEach((target) => observer.observe(target));
+        }
+      }
+    </script>
+  </body>
+</html>

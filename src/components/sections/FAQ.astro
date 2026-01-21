@@ -1,0 +1,23 @@
+---
+import SectionHeading from "@/components/molecules/SectionHeading.astro";
+import FAQItem from "@/components/molecules/FAQItem.astro";
+import { faq } from "@/content/faq";
+---
+<section id="faq" class="bg-surface py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="reveal">
+      <SectionHeading
+        eyebrow="FAQ"
+        title="Respuestas r?pidas"
+        subtitle="Si necesitas mas detalle, escr?benos y respondemos con un plan claro."
+      />
+    </div>
+    <div class="mt-10 grid gap-4 md:grid-cols-2 reveal-stagger">
+      {faq.map((item, index) => (
+        <div style={`--stagger: ${index};`}>
+          <FAQItem item={item} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

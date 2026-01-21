@@ -1,0 +1,13 @@
+---
+const { eyebrow, title, subtitle, align = "left" } = Astro.props;
+const alignClass = align === "center" ? "text-center" : "text-left";
+---
+<div class={`space-y-3 ${alignClass}`}>
+  {eyebrow ? (
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">{eyebrow}</p>
+  ) : null}
+  <h2 class="font-display text-3xl font-semibold text-ink sm:text-4xl">{title}</h2>
+  {subtitle ? (
+    <p class="max-w-2xl text-base text-slate sm:text-lg">{subtitle}</p>
+  ) : null}
+</div>

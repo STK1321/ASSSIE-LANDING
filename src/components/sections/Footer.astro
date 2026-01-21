@@ -1,0 +1,44 @@
+---
+import { site } from "@/content/site";
+---
+<footer class="border-t border-slate/10 bg-white">
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <div class="grid gap-8 md:grid-cols-[1.4fr_1fr_1fr] reveal">
+      <div class="space-y-3">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-accent text-white">A</span>
+          <div>
+            <p class="font-display text-lg font-semibold text-ink">{site.name}</p>
+            <p class="text-xs text-slate">{site.slogan}</p>
+          </div>
+        </div>
+        <p class="text-sm text-slate">
+          Soluciones en datos, automatizaci?n y marketing para empresas en crecimiento.
+        </p>
+        <p class="text-xs text-slate">© {new Date().getFullYear()} {site.name}. Todos los derechos reservados.</p>
+      </div>
+      <div class="space-y-3">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Secciones</p>
+        <div class="flex flex-col gap-2 text-sm font-semibold text-slate">
+          <a href="#servicios" class="hover:text-accent">Servicios</a>
+          <a href="#proceso" class="hover:text-accent">Proceso</a>
+          <a href="#planes" class="hover:text-accent">Planes</a>
+          <a href="#contacto" class="hover:text-accent">Contacto</a>
+        </div>
+      </div>
+      <div class="space-y-3">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Contacto</p>
+        <div class="flex flex-col gap-2 text-sm text-slate">
+          <span>{site.email}</span>
+          <span>{site.whatsapp}</span>
+        </div>
+        <div class="flex flex-wrap gap-4 text-sm font-semibold text-slate">
+          <a href={site.social.linkedin} target="_blank" rel="noopener" class="hover:text-accent">LinkedIn</a>
+          <a href={site.social.instagram} target="_blank" rel="noopener" class="hover:text-accent">Instagram</a>
+          <a href={site.social.tiktok} target="_blank" rel="noopener" class="hover:text-accent">TikTok</a>
+        </div>
+        <a href="#" class="text-xs text-slate hover:text-accent">Aviso legal</a>
+      </div>
+    </div>
+  </div>
+</footer>
