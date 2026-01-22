@@ -54,41 +54,47 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
         </p>
       </div>
 
-      <div class="grid gap-6 lg:grid-cols-3">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Ideal para</p>
-          <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-ideal></ul>
-        </div>
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Alcance</p>
-          <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-scope></ul>
-        </div>
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Entregables</p>
-          <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-deliverables></ul>
-        </div>
+      <div id="service-modal-empty" class="rounded-2xl border border-slate/10 bg-surface px-4 py-3 text-sm text-slate">
+        Selecciona un servicio para ver detalles y alcance.
       </div>
 
-      <div class="rounded-2xl border border-slate/10 bg-surface px-4 py-3 text-sm text-slate">
-        Tiempo tipico: <span class="font-semibold text-ink" data-service-modal-timeline></span>
-      </div>
+      <div id="service-modal-content" class="space-y-6 hidden">
+        <div class="grid gap-6 lg:grid-cols-3">
+          <div data-section-ideal>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Ideal para</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-ideal></ul>
+          </div>
+          <div data-section-scope>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Alcance</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-scope></ul>
+          </div>
+          <div data-section-deliverables>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Entregables</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-deliverables></ul>
+          </div>
+        </div>
 
-      <div class="flex flex-wrap gap-3">
-        <button
-          type="button"
-          class="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-          data-service-modal-cta
-        >
-          Quiero este servicio
-        </button>
-        <a
-          class="inline-flex items-center justify-center gap-2 rounded-full border border-slate/20 bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-          target="_blank"
-          rel="noopener"
-          data-service-modal-whatsapp
-        >
-          WhatsApp
-        </a>
+        <div class="rounded-2xl border border-slate/10 bg-surface px-4 py-3 text-sm text-slate" data-section-timeline>
+          Tiempo tipico: <span class="font-semibold text-ink" data-service-modal-timeline></span>
+        </div>
+
+        <div class="flex flex-wrap gap-3" data-section-cta>
+          <button
+            type="button"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            data-service-modal-cta
+          >
+            Quiero este servicio
+          </button>
+          <a
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-slate/20 bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            target="_blank"
+            rel="noopener"
+            data-service-modal-whatsapp
+          >
+            WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -108,6 +114,13 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
   const timelineEl = dialog?.querySelector("[data-service-modal-timeline]");
   const ctaButton = dialog?.querySelector("[data-service-modal-cta]");
   const whatsappButton = dialog?.querySelector("[data-service-modal-whatsapp]");
+  const emptyState = dialog?.querySelector("#service-modal-empty");
+  const contentState = dialog?.querySelector("#service-modal-content");
+  const idealSection = dialog?.querySelector("[data-section-ideal]");
+  const scopeSection = dialog?.querySelector("[data-section-scope]");
+  const deliverablesSection = dialog?.querySelector("[data-section-deliverables]");
+  const timelineSection = dialog?.querySelector("[data-section-timeline]");
+  const ctaSection = dialog?.querySelector("[data-section-cta]");
 
   let activeTrigger = null;
   let activeService = null;
@@ -133,10 +146,6 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
   };
 
   const setContent = (service) => {
-    if (!service) {
-      setPlaceholder();
-      return;
-    }
     if (titleEl) titleEl.textContent = `${service.order}. ${service.title}`;
     if (subtitleEl) subtitleEl.textContent = service.subtitle;
     if (descriptionEl) descriptionEl.textContent = service.description;
@@ -178,6 +187,25 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     }
   };
 
+  const setModalState = (service) => {
+    if (!service) {
+      setPlaceholder();
+      emptyState?.classList.remove("hidden");
+      contentState?.classList.add("hidden");
+      return;
+    }
+
+    emptyState?.classList.add("hidden");
+    contentState?.classList.remove("hidden");
+
+    setContent(service);
+    idealSection?.classList.toggle("hidden", !service.idealFor?.length);
+    scopeSection?.classList.toggle("hidden", !service.scope?.length);
+    deliverablesSection?.classList.toggle("hidden", !service.deliverables?.length);
+    timelineSection?.classList.toggle("hidden", !service.typicalTimeline);
+    ctaSection?.classList.toggle("hidden", false);
+  };
+
   const trapFocus = (event) => {
     if (!modalPanel || event.key !== "Tab") return;
     const focusable = Array.from(modalPanel.querySelectorAll(focusableSelectors.join(",")));
@@ -199,7 +227,7 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     if (!service) return;
     activeTrigger = trigger;
     activeService = service;
-    setContent(service);
+    setModalState(service);
     dialog.showModal();
     document.body.classList.add("overflow-hidden");
     dialog.dataset.state = "open";
@@ -212,10 +240,12 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     dialog.close();
     dialog.dataset.state = "closed";
     document.body.classList.remove("overflow-hidden");
+    activeService = null;
+    setModalState(null);
     if (activeTrigger) activeTrigger.focus();
   };
 
-  setPlaceholder();
+  setModalState(null);
 
   openButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
