@@ -11,7 +11,18 @@ const { item } = Astro.props as { item: CaseStudy };
   <ul class="mt-4 space-y-2 text-sm text-slate">
     {item.highlights.map((highlight: string) => (
       <li class="flex gap-2">
-        <Icon name="check" class="h-4 w-4 text-accent" />
+        <svg
+          viewBox="0 0 24 24"
+          class="h-4 w-4 shrink-0 text-accent"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 13l4 4L19 7"></path>
+        </svg>
         <span>{highlight}</span>
       </li>
     ))}
@@ -20,12 +31,23 @@ const { item } = Astro.props as { item: CaseStudy };
     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Entregables</p>
     <ul class="mt-2 space-y-2 text-sm text-slate">
       {item.deliverables.map((deliverable: string) => (
-        <li class="flex gap-2">
-          <Icon name="check" class="h-4 w-4 text-accent" />
-          <span>{deliverable}</span>
-        </li>
-      ))}
-    </ul>
+      <li class="flex gap-2">
+        <svg
+          viewBox="0 0 24 24"
+          class="h-4 w-4 shrink-0 text-accent"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 13l4 4L19 7"></path>
+        </svg>
+        <span>{deliverable}</span>
+      </li>
+    ))}
+  </ul>
   </div>
   <p class="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate">
     Tiempo típico: <span class="font-normal normal-case text-slate">{item.typicalTimeline}</span>

@@ -58,7 +58,8 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
         Selecciona un servicio para ver detalles y alcance.
       </div>
 
-      <div id="service-modal-content" class="space-y-6 hidden">
+      <div id="service-modal-dynamic" class="space-y-6"></div>
+      <template id="service-modal-template">
         <div class="grid gap-6 lg:grid-cols-3">
           <div data-section-ideal>
             <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Ideal para</p>
@@ -95,7 +96,7 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
             WhatsApp
           </a>
         </div>
-      </div>
+      </template>
     </div>
   </div>
 </dialog>
@@ -108,19 +109,21 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
   const titleEl = dialog?.querySelector("#service-modal-title");
   const subtitleEl = dialog?.querySelector("[data-service-modal-subtitle]");
   const descriptionEl = dialog?.querySelector("#service-modal-description");
-  const idealEl = dialog?.querySelector("[data-service-modal-ideal]");
-  const scopeEl = dialog?.querySelector("[data-service-modal-scope]");
-  const deliverablesEl = dialog?.querySelector("[data-service-modal-deliverables]");
-  const timelineEl = dialog?.querySelector("[data-service-modal-timeline]");
-  const ctaButton = dialog?.querySelector("[data-service-modal-cta]");
-  const whatsappButton = dialog?.querySelector("[data-service-modal-whatsapp]");
   const emptyState = dialog?.querySelector("#service-modal-empty");
-  const contentState = dialog?.querySelector("#service-modal-content");
-  const idealSection = dialog?.querySelector("[data-section-ideal]");
-  const scopeSection = dialog?.querySelector("[data-section-scope]");
-  const deliverablesSection = dialog?.querySelector("[data-section-deliverables]");
-  const timelineSection = dialog?.querySelector("[data-section-timeline]");
-  const ctaSection = dialog?.querySelector("[data-section-cta]");
+  const dynamicMount = dialog?.querySelector("#service-modal-dynamic");
+  const template = dialog?.querySelector("#service-modal-template");
+
+  let idealEl = null;
+  let scopeEl = null;
+  let deliverablesEl = null;
+  let timelineEl = null;
+  let ctaButton = null;
+  let whatsappButton = null;
+  let idealSection = null;
+  let scopeSection = null;
+  let deliverablesSection = null;
+  let timelineSection = null;
+  let ctaSection = null;
 
   let activeTrigger = null;
   let activeService = null;
@@ -138,11 +141,40 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     if (titleEl) titleEl.textContent = "Selecciona un servicio";
     if (subtitleEl) subtitleEl.textContent = "";
     if (descriptionEl) descriptionEl.textContent = "Selecciona un servicio para ver su alcance.";
-    if (timelineEl) timelineEl.textContent = "-";
-    if (idealEl) idealEl.innerHTML = "";
-    if (scopeEl) scopeEl.innerHTML = "";
-    if (deliverablesEl) deliverablesEl.innerHTML = "";
-    if (whatsappButton) whatsappButton.removeAttribute("href");
+  };
+
+  const unmountTemplate = () => {
+    if (!dynamicMount) return;
+    dynamicMount.innerHTML = "";
+    idealEl = null;
+    scopeEl = null;
+    deliverablesEl = null;
+    timelineEl = null;
+    ctaButton = null;
+    whatsappButton = null;
+    idealSection = null;
+    scopeSection = null;
+    deliverablesSection = null;
+    timelineSection = null;
+    ctaSection = null;
+  };
+
+  const mountTemplate = () => {
+    if (!dynamicMount || !template) return;
+    dynamicMount.innerHTML = "";
+    const fragment = template.content.cloneNode(true);
+    dynamicMount.appendChild(fragment);
+    idealEl = dialog?.querySelector("[data-service-modal-ideal]");
+    scopeEl = dialog?.querySelector("[data-service-modal-scope]");
+    deliverablesEl = dialog?.querySelector("[data-service-modal-deliverables]");
+    timelineEl = dialog?.querySelector("[data-service-modal-timeline]");
+    ctaButton = dialog?.querySelector("[data-service-modal-cta]");
+    whatsappButton = dialog?.querySelector("[data-service-modal-whatsapp]");
+    idealSection = dialog?.querySelector("[data-section-ideal]");
+    scopeSection = dialog?.querySelector("[data-section-scope]");
+    deliverablesSection = dialog?.querySelector("[data-section-deliverables]");
+    timelineSection = dialog?.querySelector("[data-section-timeline]");
+    ctaSection = dialog?.querySelector("[data-section-cta]");
   };
 
   const setContent = (service) => {
@@ -156,7 +188,7 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
       service.idealFor.forEach((item) => {
         const li = document.createElement("li");
         li.className = "flex gap-2";
-        li.innerHTML = `<span class="text-accent">*</span><span>${item}</span>`;
+        li.innerHTML = `<svg viewBox="0 0 24 24" class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg><span>${item}</span>`;
         idealEl.appendChild(li);
       });
     }
@@ -166,7 +198,7 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
       service.scope.forEach((item) => {
         const li = document.createElement("li");
         li.className = "flex gap-2";
-        li.innerHTML = `<span class="text-accent">*</span><span>${item}</span>`;
+        li.innerHTML = `<svg viewBox="0 0 24 24" class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg><span>${item}</span>`;
         scopeEl.appendChild(li);
       });
     }
@@ -176,7 +208,7 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
       service.deliverables.forEach((item) => {
         const li = document.createElement("li");
         li.className = "flex gap-2";
-        li.innerHTML = `<span class="text-accent">*</span><span>${item}</span>`;
+        li.innerHTML = `<svg viewBox="0 0 24 24" class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg><span>${item}</span>`;
         deliverablesEl.appendChild(li);
       });
     }
@@ -191,19 +223,31 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     if (!service) {
       setPlaceholder();
       emptyState?.classList.remove("hidden");
-      contentState?.classList.add("hidden");
+      unmountTemplate();
       return;
     }
 
     emptyState?.classList.add("hidden");
-    contentState?.classList.remove("hidden");
-
+    mountTemplate();
     setContent(service);
     idealSection?.classList.toggle("hidden", !service.idealFor?.length);
     scopeSection?.classList.toggle("hidden", !service.scope?.length);
     deliverablesSection?.classList.toggle("hidden", !service.deliverables?.length);
     timelineSection?.classList.toggle("hidden", !service.typicalTimeline);
     ctaSection?.classList.toggle("hidden", false);
+
+    ctaButton?.addEventListener(
+      "click",
+      () => {
+        const interestInput = document.querySelector("#serviceInterest");
+        if (interestInput && service) {
+          interestInput.value = service.title || "";
+        }
+        closeModal();
+        document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" });
+      },
+      { once: true }
+    );
   };
 
   const trapFocus = (event) => {
@@ -266,12 +310,5 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     trapFocus(event);
   });
 
-  ctaButton?.addEventListener("click", () => {
-    const interestInput = document.querySelector("#serviceInterest");
-    if (interestInput && activeService) {
-      interestInput.value = activeService.title || "";
-    }
-    closeModal();
-    document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" });
-  });
+  unmountTemplate();
 </script>
