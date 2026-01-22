@@ -11,3 +11,15 @@ export const POST: APIRoute = async ({ request }) => {
     }
   });
 };
+
+export const GET: APIRoute = async () => {
+  return new Response(
+    JSON.stringify({ ok: false, message: "Use POST to submit a lead." }),
+    {
+      status: 405,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  );
+};
