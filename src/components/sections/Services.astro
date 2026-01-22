@@ -46,10 +46,12 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     <div class="space-y-4">
       <div>
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Servicio</p>
-        <h3 id="service-modal-title" class="mt-2 text-2xl font-semibold text-ink"></h3>
+        <h3 id="service-modal-title" class="mt-2 text-2xl font-semibold text-ink">Selecciona un servicio</h3>
         <p class="mt-2 text-sm text-slate" data-service-modal-subtitle></p>
         <p class="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate">Descripción corta</p>
-        <p id="service-modal-description" class="mt-2 text-sm text-slate"></p>
+        <p id="service-modal-description" class="mt-2 text-sm text-slate">
+          Selecciona un servicio para ver su alcance.
+        </p>
       </div>
 
       <div class="grid gap-6 lg:grid-cols-3">
@@ -119,8 +121,22 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     "[tabindex]:not([tabindex='-1'])"
   ];
 
+  const setPlaceholder = () => {
+    if (titleEl) titleEl.textContent = "Selecciona un servicio";
+    if (subtitleEl) subtitleEl.textContent = "";
+    if (descriptionEl) descriptionEl.textContent = "Selecciona un servicio para ver su alcance.";
+    if (timelineEl) timelineEl.textContent = "-";
+    if (idealEl) idealEl.innerHTML = "";
+    if (scopeEl) scopeEl.innerHTML = "";
+    if (deliverablesEl) deliverablesEl.innerHTML = "";
+    if (whatsappButton) whatsappButton.removeAttribute("href");
+  };
+
   const setContent = (service) => {
-    if (!service) return;
+    if (!service) {
+      setPlaceholder();
+      return;
+    }
     if (titleEl) titleEl.textContent = `${service.order}. ${service.title}`;
     if (subtitleEl) subtitleEl.textContent = service.subtitle;
     if (descriptionEl) descriptionEl.textContent = service.description;
@@ -198,6 +214,8 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     document.body.classList.remove("overflow-hidden");
     if (activeTrigger) activeTrigger.focus();
   };
+
+  setPlaceholder();
 
   openButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
