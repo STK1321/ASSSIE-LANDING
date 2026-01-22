@@ -1,4 +1,4 @@
-﻿export const stack = [
+export const stack = [
   "Astro",
   "React",
   "Node.js",
@@ -6,16 +6,15 @@
   "Python",
   "FastAPI / Django",
   "PostgreSQL",
-  "mongoDB",
+  "MongoDB",
   "Redis",
-  "Vercel",
   "Docker",
+  "Cloud",
   "GA4",
   "Meta",
   "Tag Manager",
-  "Azure",
-  "GCP",
+  "Vercel",
   "AWS",
-  "MCP"
+  "GCP",
+  "Azure"
 ];
-

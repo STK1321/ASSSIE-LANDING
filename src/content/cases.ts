@@ -1,8 +1,10 @@
-﻿export type CaseStudy = {
+export type CaseStudy = {
   title: string;
   industry: string;
   outcome: string;
   highlights: string[];
+  deliverables: string[];
+  typicalTimeline: string;
 };
 
 export const cases: CaseStudy[] = [
@@ -14,7 +16,13 @@ export const cases: CaseStudy[] = [
       "Flujos automatizados para solicitudes y seguimiento",
       "Visibilidad de estados en un solo dashboard",
       "Menos fricción entre ventas y operaciones"
-    ]
+    ],
+    deliverables: [
+      "Mapa de procesos",
+      "Flujos automatizados",
+      "Dashboard de seguimiento"
+    ],
+    typicalTimeline: "2-4 semanas"
   },
   {
     title: "Caso B: Marketing con medición real",
@@ -24,7 +32,13 @@ export const cases: CaseStudy[] = [
       "Tracking completo con GA4 y Meta",
       "Tablero de rendimiento por canal",
       "Aprendizajes accionables para iterar campañas"
-    ]
+    ],
+    deliverables: [
+      "Plan de medición",
+      "Dashboard de performance",
+      "Checklist de optimización"
+    ],
+    typicalTimeline: "2-3 semanas"
   },
   {
     title: "Caso C: Desarrollo a medida",
@@ -34,7 +48,12 @@ export const cases: CaseStudy[] = [
       "Aplicaciones conectadas a sistemas existentes",
       "Automatización de reportes y alertas",
       "Arquitectura preparada para crecimiento"
-    ]
+    ],
+    deliverables: [
+      "MVP funcional",
+      "Documentación técnica",
+      "Guía de despliegue"
+    ],
+    typicalTimeline: "4-6 semanas"
   }
 ];
-

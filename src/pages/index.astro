@@ -1,4 +1,4 @@
-﻿---
+---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
 import Services from "@/components/sections/Services.astro";
@@ -10,7 +10,7 @@ import SeoPromise from "@/components/sections/SeoPromise.astro";
 import FAQ from "@/components/sections/FAQ.astro";
 import Contact from "@/components/sections/Contact.astro";
 import { faq } from "@/content/faq";
-import { buildOrganizationSchema, buildProfessionalServiceSchema, buildFaqSchema } from "@/lib/seo/schema";
+import { buildOrganizationSchema, buildProfessionalServiceSchema, buildFaqSchema } from "@/lib/seo/schemas";
 
 const jsonLd = [buildOrganizationSchema(), buildProfessionalServiceSchema(), buildFaqSchema(faq)];
 ---
@@ -29,4 +29,3 @@ const jsonLd = [buildOrganizationSchema(), buildProfessionalServiceSchema(), bui
   <FAQ />
   <Contact />
 </BaseLayout>
-

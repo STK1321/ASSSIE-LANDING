@@ -1,4 +1,4 @@
-﻿---
+---
 import Button from "@/components/atoms/Button.astro";
 import Icon from "@/components/atoms/Icon.astro";
 import SectionHeading from "@/components/molecules/SectionHeading.astro";
@@ -16,14 +16,15 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
           subtitle="Cuéntanos tu reto principal y te respondemos con un plan claro y accionable."
         />
         <div class="rounded-3xl border border-slate/10 bg-white p-6 shadow-card">
-          <form id="lead-form" class="space-y-4" method="post" action="/api/lead">
+          <form id="lead-form" class="space-y-4" method="post" action="/api/lead" novalidate>
+            <input id="serviceInterest" name="serviceInterest" type="hidden" />
             <div>
               <label class="text-sm font-semibold text-ink" for="name">Nombre</label>
               <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="name" name="name" type="text" required />
             </div>
             <div>
               <label class="text-sm font-semibold text-ink" for="email">Email</label>
-              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="email" name="email" type="email" required />
+              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="email" name="email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required />
             </div>
             <div>
               <label class="text-sm font-semibold text-ink" for="company">Empresa</label>
@@ -33,13 +34,36 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
               <label class="text-sm font-semibold text-ink" for="goal">Objetivo principal</label>
               <textarea class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="goal" name="goal" rows="3" required></textarea>
             </div>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="text-sm font-semibold text-ink" for="budget">Presupuesto</label>
+                <select class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="budget" name="budget" required>
+                  <option value="">Selecciona un rango</option>
+                  <option value="500-1000">USD 500 - 1.000</option>
+                  <option value="1000-3000">USD 1.000 - 3.000</option>
+                  <option value="3000+">USD 3.000+</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-sm font-semibold text-ink" for="channel">Canal preferido</label>
+                <select class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="channel" name="channel" required>
+                  <option value="">Selecciona un canal</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="email">Email</option>
+                  <option value="call">Llamada</option>
+                </select>
+              </div>
+            </div>
             <div class="flex flex-wrap gap-3 pt-2">
-              <Button as="button" type="submit" variant="primary">Enviar solicitud</Button>
+              <Button as="button" type="submit" variant="primary" data-submit>
+                Agenda una llamada
+              </Button>
               <Button variant="ghost" href={whatsappLink} target="_blank" rel="noopener">
                 <Icon name="whatsapp" class="h-4 w-4" />
-                Escríbenos por WhatsApp
+                WhatsApp
               </Button>
             </div>
+            <p class="text-xs text-slate" data-submit-status aria-live="polite" role="status"></p>
             <p class="text-xs text-slate">
               Respondemos en 24-48 horas hábiles con próximos pasos.
             </p>
@@ -73,5 +97,55 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
       </div>
     </div>
   </div>
-</section>
 
+  <script is:inline>
+    const form = document.getElementById("lead-form");
+    const status = form?.querySelector("[data-submit-status]");
+    const submitButton = form?.querySelector("[data-submit]");
+
+    const statusClasses = {
+      loading: "text-slate",
+      success: "text-emerald-600",
+      error: "text-rose-600"
+    };
+
+    const setStatus = (state, message) => {
+      if (!status) return;
+      status.textContent = message;
+      status.dataset.state = state;
+      status.classList.remove("text-slate", "text-emerald-600", "text-rose-600");
+      status.classList.add(statusClasses[state] ?? "text-slate");
+    };
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!form || !submitButton) return;
+
+      submitButton.setAttribute("disabled", "true");
+      setStatus("loading", "Enviando solicitud...");
+
+      const formData = new FormData(form);
+      const interest = formData.get("serviceInterest")?.toString() ?? "";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData
+        });
+
+        if (!response.ok) throw new Error("Request failed");
+
+        form.reset();
+        if (interest) {
+          const interestInput = form.querySelector("#serviceInterest");
+          if (interestInput) interestInput.value = interest;
+        }
+        setStatus("success", "Listo. Te contactaremos en breve.");
+      } catch (error) {
+        setStatus("error", "No pudimos enviar tu solicitud. Inténtalo nuevamente.");
+      } finally {
+        submitButton.removeAttribute("disabled");
+      }
+    });
+  </script>
+</section>

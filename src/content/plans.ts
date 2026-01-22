@@ -1,4 +1,4 @@
-﻿export type Plan = {
+export type Plan = {
   name: string;
   tagline: string;
   price: string;
@@ -59,4 +59,3 @@ export const plans: Plan[] = [
     cta: "Agendar llamada"
   }
 ];
-

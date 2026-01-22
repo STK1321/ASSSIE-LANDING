@@ -1,4 +1,4 @@
-﻿export type FaqItem = {
+export type FaqItem = {
   question: string;
   answer: string;
 };
@@ -37,4 +37,3 @@ export const faq: FaqItem[] = [
     answer: "Sí. Diseñamos arquitectura modular para crecer sin rehacer el sistema."
   }
 ];
-

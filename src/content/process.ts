@@ -1,4 +1,4 @@
-﻿export type ProcessStep = {
+export type ProcessStep = {
   title: string;
   detail: string;
 };
@@ -25,4 +25,3 @@ export const processSteps: ProcessStep[] = [
     detail: "Ajustamos y escalamos con base en resultados reales."
   }
 ];
-

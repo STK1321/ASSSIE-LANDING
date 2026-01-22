@@ -2,6 +2,9 @@
 import SectionHeading from "@/components/molecules/SectionHeading.astro";
 import ServiceCard from "@/components/molecules/ServiceCard.astro";
 import { services } from "@/content/services";
+import { site } from "@/content/site";
+
+const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
 ---
 <section id="servicios" class="bg-surface py-20">
   <div class="mx-auto max-w-6xl px-6">
@@ -9,7 +12,7 @@ import { services } from "@/content/services";
       <SectionHeading
         eyebrow="Servicios"
         title="Servicios que resuelven problemas reales"
-        subtitle="Soluciones orientadas a negocio para reducir costos, automatizar procesos y tomar mejores decisiones."
+        subtitle="Soluciones orientadas a negocio para automatización de procesos en empresas y marketing digital para empresas en crecimiento. También hacemos desarrollo de software a medida para empresas en Colombia."
       />
     </div>
     <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3 reveal-stagger">
@@ -21,3 +24,206 @@ import { services } from "@/content/services";
     </div>
   </div>
 </section>
+
+<dialog
+  id="service-modal"
+  class="w-full max-w-3xl rounded-3xl border border-white/70 bg-white p-0 shadow-card"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="service-modal-title"
+  aria-describedby="service-modal-description"
+>
+  <div class="relative p-8" data-modal-panel>
+    <button
+      type="button"
+      class="absolute right-4 top-4 rounded-full border border-slate/20 p-2 text-slate transition hover:border-accent hover:text-accent"
+      data-service-close
+      aria-label="Cerrar modal"
+    >
+      ✕
+    </button>
+
+    <div class="space-y-4">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Servicio</p>
+        <h3 id="service-modal-title" class="mt-2 text-2xl font-semibold text-ink"></h3>
+        <p class="mt-2 text-sm text-slate" data-service-modal-subtitle></p>
+        <p class="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate">Descripción corta</p>
+        <p id="service-modal-description" class="mt-2 text-sm text-slate"></p>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-3">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Ideal para</p>
+          <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-ideal></ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Alcance</p>
+          <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-scope></ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Entregables</p>
+          <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-deliverables></ul>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-slate/10 bg-surface px-4 py-3 text-sm text-slate">
+        Tiempo típico: <span class="font-semibold text-ink" data-service-modal-timeline></span>
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <button
+          type="button"
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          data-service-modal-cta
+        >
+          Quiero este servicio
+        </button>
+        <a
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-slate/20 bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          target="_blank"
+          rel="noopener"
+          data-service-modal-whatsapp
+        >
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script define:vars={{ services, whatsappLink }} is:inline>
+  const dialog = document.getElementById("service-modal");
+  const modalPanel = dialog?.querySelector("[data-modal-panel]");
+  const openButtons = document.querySelectorAll("[data-service-open]");
+  const closeButton = dialog?.querySelector("[data-service-close]");
+  const titleEl = dialog?.querySelector("#service-modal-title");
+  const subtitleEl = dialog?.querySelector("[data-service-modal-subtitle]");
+  const descriptionEl = dialog?.querySelector("#service-modal-description");
+  const idealEl = dialog?.querySelector("[data-service-modal-ideal]");
+  const scopeEl = dialog?.querySelector("[data-service-modal-scope]");
+  const deliverablesEl = dialog?.querySelector("[data-service-modal-deliverables]");
+  const timelineEl = dialog?.querySelector("[data-service-modal-timeline]");
+  const ctaButton = dialog?.querySelector("[data-service-modal-cta]");
+  const whatsappButton = dialog?.querySelector("[data-service-modal-whatsapp]");
+
+  let activeTrigger = null;
+  let activeService = null;
+
+  const focusableSelectors = [
+    "a[href]",
+    "button:not([disabled])",
+    "textarea",
+    "input",
+    "select",
+    "[tabindex]:not([tabindex='-1'])"
+  ];
+
+  const setContent = (service) => {
+    if (!service) return;
+    if (titleEl) titleEl.textContent = `${service.order}. ${service.title}`;
+    if (subtitleEl) subtitleEl.textContent = service.subtitle;
+    if (descriptionEl) descriptionEl.textContent = service.description;
+    if (timelineEl) timelineEl.textContent = service.typicalTimeline;
+
+    if (idealEl) {
+      idealEl.innerHTML = "";
+      service.idealFor.forEach((item) => {
+        const li = document.createElement("li");
+        li.className = "flex gap-2";
+        li.innerHTML = `<span class="text-accent">✓</span><span>${item}</span>`;
+        idealEl.appendChild(li);
+      });
+    }
+
+    if (scopeEl) {
+      scopeEl.innerHTML = "";
+      service.scope.forEach((item) => {
+        const li = document.createElement("li");
+        li.className = "flex gap-2";
+        li.innerHTML = `<span class="text-accent">✓</span><span>${item}</span>`;
+        scopeEl.appendChild(li);
+      });
+    }
+
+    if (deliverablesEl) {
+      deliverablesEl.innerHTML = "";
+      service.deliverables.forEach((item) => {
+        const li = document.createElement("li");
+        li.className = "flex gap-2";
+        li.innerHTML = `<span class="text-accent">✓</span><span>${item}</span>`;
+        deliverablesEl.appendChild(li);
+      });
+    }
+
+    if (whatsappButton) {
+      const message = encodeURIComponent(`Hola, me interesa el servicio ${service.title}.`);
+      whatsappButton.setAttribute("href", `${whatsappLink}?text=${message}`);
+    }
+  };
+
+  const trapFocus = (event) => {
+    if (!modalPanel || event.key !== "Tab") return;
+    const focusable = Array.from(modalPanel.querySelectorAll(focusableSelectors.join(",")));
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
+  const openModal = (serviceId, trigger) => {
+    if (!dialog) return;
+    const service = services.find((item) => item.id === serviceId);
+    if (!service) return;
+    activeTrigger = trigger;
+    activeService = service;
+    setContent(service);
+    dialog.showModal();
+    document.body.classList.add("overflow-hidden");
+    dialog.dataset.state = "open";
+    const focusable = modalPanel?.querySelectorAll(focusableSelectors.join(",")) ?? [];
+    if (focusable.length) focusable[0].focus();
+  };
+
+  const closeModal = () => {
+    if (!dialog) return;
+    dialog.close();
+    dialog.dataset.state = "closed";
+    document.body.classList.remove("overflow-hidden");
+    if (activeTrigger) activeTrigger.focus();
+  };
+
+  openButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const target = event.currentTarget;
+      const serviceId = target.getAttribute("data-service-id");
+      if (serviceId) openModal(serviceId, target);
+    });
+  });
+
+  closeButton?.addEventListener("click", closeModal);
+  dialog?.addEventListener("click", (event) => {
+    if (event.target === dialog) closeModal();
+  });
+
+  dialog?.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeModal();
+    trapFocus(event);
+  });
+
+  ctaButton?.addEventListener("click", () => {
+    const interestInput = document.querySelector("#serviceInterest");
+    if (interestInput && activeService) {
+      interestInput.value = activeService.title || "";
+    }
+    closeModal();
+    document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" });
+  });
+</script>

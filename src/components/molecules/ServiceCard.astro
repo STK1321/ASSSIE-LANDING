@@ -3,6 +3,14 @@ import Icon from "@/components/atoms/Icon.astro";
 import type { Service } from "@/content/services";
 
 const { service } = Astro.props as { service: Service };
+const orderLabels: Record<number, string> = {
+  1: "1️⃣",
+  2: "2️⃣",
+  3: "3️⃣",
+  4: "4️⃣",
+  5: "5️⃣"
+};
+const orderLabel = orderLabels[service.order] ?? `${service.order}.`;
 ---
 <article class="group flex h-full flex-col rounded-3xl border border-slate/10 bg-white p-6 shadow-card transition hover:-translate-y-1">
   <div class="flex items-center gap-3">
@@ -10,16 +18,36 @@ const { service } = Astro.props as { service: Service };
       <Icon name={service.icon} class="h-6 w-6" />
     </span>
     <div>
-      <h3 class="text-lg font-semibold text-ink">{service.title}</h3>
+      <h3 class="text-lg font-semibold text-ink">{orderLabel} {service.title}</h3>
       <p class="text-sm text-slate">{service.subtitle}</p>
     </div>
   </div>
-  <ul class="mt-4 space-y-2 text-sm text-slate">
-    {service.bullets.map((bullet: string) => (
-      <li class="flex gap-2">
-        <Icon name="check" class="h-4 w-4 text-accent" />
-        <span>{bullet}</span>
-      </li>
-    ))}
-  </ul>
+  <div class="mt-4">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Descripción corta</p>
+    <p class="mt-2 text-sm text-slate">{service.description}</p>
+  </div>
+  <div class="mt-4">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Ideal para</p>
+    <ul class="mt-2 space-y-2 text-sm text-slate">
+      {service.idealFor.map((item: string) => (
+        <li class="flex gap-2">
+          <Icon name="check" class="h-4 w-4 text-accent" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="mt-auto pt-6">
+    <button
+      type="button"
+      class="inline-flex items-center justify-center gap-2 rounded-full border border-slate/20 bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+      data-service-open
+      data-service-id={service.id}
+      aria-label={`Ver alcance de ${service.title}`}
+      aria-haspopup="dialog"
+    >
+      Ver alcance
+      <Icon name="arrow" class="h-4 w-4" />
+    </button>
+  </div>
 </article>

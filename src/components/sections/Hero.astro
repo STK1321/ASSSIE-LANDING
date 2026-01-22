@@ -1,4 +1,4 @@
-﻿---
+---
 import Button from "@/components/atoms/Button.astro";
 import Icon from "@/components/atoms/Icon.astro";
 import { site } from "@/content/site";
@@ -9,6 +9,11 @@ const badges = [
   { label: "Desarrollo a medida", href: "#servicios" }
 ];
 const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
+const trustItems = [
+  "Respuesta en 24-48h",
+  "Diagnóstico inicial 20 min",
+  "Código y documentación incluidos"
+];
 ---
 <section id="top" class="relative overflow-hidden bg-hero">
   <div class="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden="true"></div>
@@ -35,9 +40,17 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
         <Button variant="primary" href="#contacto">Agenda una llamada</Button>
         <Button variant="ghost" href={whatsappLink} target="_blank" rel="noopener">
           <Icon name="whatsapp" class="h-4 w-4" />
-          Escríbenos por WhatsApp
+          WhatsApp
         </Button>
       </div>
+      <ul class="grid gap-2 text-sm text-slate">
+        {trustItems.map((item) => (
+          <li class="flex items-center gap-2">
+            <Icon name="check" class="h-4 w-4 text-accent" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
     <div class="flex-1 reveal" style="--reveal-delay: 120ms;">
       <div class="rounded-3xl border border-white/60 bg-white/80 p-6 shadow-card backdrop-blur">
@@ -66,4 +79,3 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     </div>
   </div>
 </section>
-

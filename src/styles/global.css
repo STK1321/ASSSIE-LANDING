@@ -44,6 +44,23 @@ a {
   background: rgba(15, 118, 110, 0.2);
 }
 
+dialog::backdrop {
+  background: rgba(11, 18, 32, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+dialog[data-state="open"] [data-modal-panel] {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+dialog[data-state="closed"] [data-modal-panel] {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
 .reveal,
 .reveal-stagger > * {
   opacity: 0;
