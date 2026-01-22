@@ -13,7 +13,7 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
         <SectionHeading
           eyebrow="Contacto"
           title="Hablemos de tu objetivo"
-          subtitle="Cuéntanos tu reto principal y te respondemos con un plan claro y accionable."
+          subtitle="Cuentanos tu reto principal y te respondemos con un plan claro y accionable."
         />
         <div class="rounded-3xl border border-slate/10 bg-white p-6 shadow-card">
           <form id="lead-form" class="space-y-4" method="post" action="/api/lead" novalidate>
@@ -39,9 +39,9 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
                 <label class="text-sm font-semibold text-ink" for="budget">Presupuesto</label>
                 <select class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="budget" name="budget" required>
                   <option value="">Selecciona un rango</option>
-                  <option value="500-1000">USD 500 - 1.000</option>
-                  <option value="1000-3000">USD 1.000 - 3.000</option>
-                  <option value="3000+">USD 3.000+</option>
+                  <option value="<2000000">Menos de $2.000.000 COP</option>
+                  <option value="2000000-5000000">$2.000.000 - $5.000.000 COP</option>
+                  <option value=">5000000">Mas de $5.000.000 COP</option>
                 </select>
               </div>
               <div>
@@ -65,7 +65,7 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
             </div>
             <p class="text-xs text-slate" data-submit-status aria-live="polite" role="status"></p>
             <p class="text-xs text-slate">
-              Sin spam. Respuesta en 24–48h.
+              Sin spam. Respuesta en 24-48h.
             </p>
           </form>
         </div>
@@ -82,15 +82,15 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
           <ul class="mt-3 space-y-2 text-sm text-slate">
             <li class="flex gap-2">
               <Icon name="check" class="h-4 w-4 text-accent" />
-              <span>Revisión de objetivos y procesos actuales.</span>
+              <span>Revision de objetivos y procesos actuales.</span>
             </li>
             <li class="flex gap-2">
               <Icon name="check" class="h-4 w-4 text-accent" />
-              <span>Propuesta inicial de automatización y data.</span>
+              <span>Propuesta inicial de automatizacion y data.</span>
             </li>
             <li class="flex gap-2">
               <Icon name="check" class="h-4 w-4 text-accent" />
-              <span>Estimación de tiempos y próximos pasos.</span>
+              <span>Estimacion de tiempos y proximos pasos.</span>
             </li>
           </ul>
         </div>
@@ -142,7 +142,7 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
         }
         setStatus("success", "Listo. Te contactaremos en breve.");
       } catch (error) {
-        setStatus("error", "No pudimos enviar tu solicitud. Inténtalo nuevamente.");
+        setStatus("error", "No pudimos enviar tu solicitud. Intentalo nuevamente.");
       } finally {
         submitButton.removeAttribute("disabled");
       }
