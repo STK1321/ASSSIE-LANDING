@@ -1,4 +1,4 @@
-export type FaqItem = {
+﻿export type FaqItem = {
   question: string;
   answer: string;
 };
@@ -6,34 +6,35 @@ export type FaqItem = {
 export const faq: FaqItem[] = [
   {
     question: "¿Cuánto tarda un proyecto?",
-    answer: "Depende del alcance. Un MVP de automatización puede tardar 3 a 5 semanas, mientras que un desarrollo a medida puede tomar más tiempo."
+    answer: "Depende del alcance. Un sprint inicial puede estar listo en 2 a 4 semanas, y luego iteramos según prioridades."
   },
   {
     question: "¿Cómo se definen los precios?",
-    answer: "Trabajamos con planes mensuales o presupuestos por proyecto, según complejidad, tiempos y recursos necesarios."
+    answer: "Trabajamos por plan mensual o alcance personalizado. La cotización se basa en objetivos, complejidad e integraciones."
   },
   {
     question: "¿Qué necesito para empezar?",
-    answer: "Una reunión inicial para entender objetivos, acceso a datos clave y los procesos actuales."
-  },
-  {
-    question: "¿Qué entregables voy a recibir?",
-    answer: "Roadmap, tableros, documentación técnica, reportes y la solución implementada con capacitación."
+    answer: "Una llamada de diagnóstico, acceso a datos clave y claridad sobre el objetivo principal del negocio."
   },
   {
     question: "¿El código es mío?",
-    answer: "Sí, entregamos el código y la propiedad intelectual de lo desarrollado para tu empresa."
+    answer: "Sí. El código y la documentación quedan para tu empresa desde el primer día."
   },
   {
-    question: "¿Ofrecen soporte continuo?",
-    answer: "Sí, contamos con planes de soporte y mejora continua según necesidad."
+    question: "¿Incluyen soporte continuo?",
+    answer: "Sí, contamos con acompañamiento para optimización y mejoras según tu etapa."
   },
   {
-    question: "¿Incluyen SEO técnico?",
-    answer: "Sí, implementamos SEO técnico, performance y medición desde el inicio."
+    question: "¿Qué incluye el SEO técnico?",
+    answer: "Estructura correcta, metadatos, performance, indexación y medición para posicionar desde el inicio."
   },
   {
     question: "¿Cómo aplican IA en los proyectos?",
-    answer: "Usamos IA para analítica, automatizaciones, y contenido creativo según el caso."
+    answer: "Usamos IA para automatizar procesos, analizar datos y escalar producción de contenido cuando aporta valor real."
+  },
+  {
+    question: "¿El proyecto es escalable?",
+    answer: "Sí. Diseñamos arquitectura modular para crecer sin rehacer el sistema."
   }
 ];
+

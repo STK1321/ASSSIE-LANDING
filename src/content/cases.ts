@@ -1,4 +1,4 @@
-export type CaseStudy = {
+﻿export type CaseStudy = {
   title: string;
   industry: string;
   outcome: string;
@@ -7,33 +7,34 @@ export type CaseStudy = {
 
 export const cases: CaseStudy[] = [
   {
-    title: "Caso A",
+    title: "Caso A: Automatización operativa",
     industry: "Servicios profesionales",
-    outcome: "Reducción de tareas manuales y mejor trazabilidad comercial.",
+    outcome: "Procesos internos más ordenados y equipos con foco en tareas de valor.",
     highlights: [
-      "Automatización de contacto inicial y seguimiento",
-      "Dashboard de pipeline en tiempo real",
-      "Mejora en tiempos de respuesta"
+      "Flujos automatizados para solicitudes y seguimiento",
+      "Visibilidad de estados en un solo dashboard",
+      "Menos fricción entre ventas y operaciones"
     ]
   },
   {
-    title: "Caso B",
+    title: "Caso B: Marketing con medición real",
     industry: "Retail y ecommerce",
-    outcome: "Mejor medición de campañas y decisiones de pauta más claras.",
+    outcome: "Decisiones de pauta basadas en datos confiables y atribución clara.",
     highlights: [
-      "Tracking completo con GA4 y CAPI",
-      "Segmentación de audiencias con datos propios",
-      "Reportes ejecutivos semanales"
+      "Tracking completo con GA4 y Meta",
+      "Tablero de rendimiento por canal",
+      "Aprendizajes accionables para iterar campañas"
     ]
   },
   {
-    title: "Caso C",
+    title: "Caso C: Desarrollo a medida",
     industry: "Salud y bienestar",
-    outcome: "Procesos internos más ordenados y mejor visibilidad de demanda.",
+    outcome: "Producto digital alineado con procesos reales y listo para escalar.",
     highlights: [
-      "Integración con CRM y WhatsApp",
-      "Predicción de demanda por sucursal",
-      "Notificaciones automáticas"
+      "Aplicaciones conectadas a sistemas existentes",
+      "Automatización de reportes y alertas",
+      "Arquitectura preparada para crecimiento"
     ]
   }
 ];
+

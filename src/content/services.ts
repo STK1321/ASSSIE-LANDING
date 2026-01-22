@@ -1,65 +1,60 @@
-export type Service = {
+﻿export type Service = {
   title: string;
-  description: string;
+  subtitle: string;
   icon: string;
   bullets: string[];
-  cta: string;
 };
 
 export const services: Service[] = [
   {
-    title: "Data & ML",
-    description: "Analítica de datos accionable para equipos que necesitan decidir rápido.",
+    title: "Data & Machine Learning",
+    subtitle: "Predicción de demanda y churn",
     icon: "data",
     bullets: [
-      "Dashboards y KPIs que entienden negocio",
-      "Modelos de predicción (churn, demanda, LTV)",
-      "Medición confiable con datos listos para decisión"
-    ],
-    cta: "Ver alcance"
+      "Dashboards accionables para equipos directivos",
+      "Modelos predictivos conectados a tu operación",
+      "Integración con datos existentes"
+    ]
   },
   {
-    title: "Marketing 360",
-    description: "Estrategia, contenido y medición integral para crecer con claridad.",
+    title: "Marketing Digital & Redes",
+    subtitle: "Estrategia, contenido y campañas medibles",
     icon: "marketing",
     bullets: [
-      "Plan de contenidos y pauta multicanal",
-      "Tracking que atribuye canales y ventas reales",
-      "SEO técnico que mejora visibilidad y conversión"
-    ],
-    cta: "Ver alcance"
+      "Planeación de contenido y ejecución multicanal",
+      "Medición real con GA4, Meta y tracking",
+      "Optimización continua de conversión"
+    ]
   },
   {
-    title: "Automatización de procesos",
-    description: "Flujos conectados que reducen tareas manuales y errores.",
+    title: "Automatización de Procesos",
+    subtitle: "Bots, flujos y notificaciones",
     icon: "automation",
     bullets: [
-      "Integraciones WhatsApp/CRM y pagos",
-      "Bots y notificaciones inteligentes",
-      "Procesos con menos errores y trazabilidad clara"
-    ],
-    cta: "Ver alcance"
+      "Integraciones con CRM, pagos y mensajería",
+      "Reducción de tareas manuales y errores",
+      "Visibilidad operativa en tiempo real"
+    ]
   },
   {
-    title: "Desarrollo a medida",
-    description: "Soluciones digitales hechas para tu operación real.",
+    title: "Desarrollo a Medida",
+    subtitle: "Web apps, APIs y mobile",
     icon: "dev",
     bullets: [
-      "Web apps, APIs y mobile",
-      "Arquitectura escalable sin rework",
-      "Performance y seguridad desde el inicio"
-    ],
-    cta: "Ver alcance"
+      "Arquitectura escalable y mantenible",
+      "Integraciones con sistemas internos",
+      "Código limpio con foco en performance"
+    ]
   },
   {
-    title: "IA Creativa",
-    description: "Contenido audiovisual con IA para acelerar producción.",
+    title: "IA para Video e Imagen",
+    subtitle: "Contenido automatizado para redes",
     icon: "ai",
     bullets: [
-      "Guiones, reels y piezas publicitarias",
-      "Edición y variaciones en volumen",
-      "Contenido más rápido sin perder calidad"
-    ],
-    cta: "Ver alcance"
+      "Creativos listos para pauta y redes",
+      "Flujos de producción más rápidos",
+      "Versiones y formatos a escala"
+    ]
   }
 ];
+

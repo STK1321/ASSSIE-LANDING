@@ -1,4 +1,4 @@
-export type ProcessStep = {
+﻿export type ProcessStep = {
   title: string;
   detail: string;
 };
@@ -6,22 +6,23 @@ export type ProcessStep = {
 export const processSteps: ProcessStep[] = [
   {
     title: "Diagnóstico",
-    detail: "Levantamos datos, objetivos y restricciones para priorizar rápido."
+    detail: "Auditamos objetivos, datos y procesos para priorizar rápido."
   },
   {
     title: "Diseño",
-    detail: "Definimos arquitectura, roadmap y entregables claros."
+    detail: "Definimos arquitectura, entregables y roadmap claro."
   },
   {
     title: "Implementación",
-    detail: "Construimos y conectamos sistemas con entregas iterativas."
+    detail: "Construimos e integramos con entregas iterativas."
   },
   {
     title: "Medición",
-    detail: "Configuramos KPIs, dashboards y seguimiento continuo."
+    detail: "Configuramos KPIs, dashboards y tracking confiable."
   },
   {
-    title: "Optimización",
+    title: "Optimización continua",
     detail: "Ajustamos y escalamos con base en resultados reales."
   }
 ];
+

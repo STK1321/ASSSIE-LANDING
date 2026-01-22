@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+﻿import { site } from "@/content/site";
 import type { FaqItem } from "@/content/faq";
 
 export const buildOrganizationSchema = () => ({
@@ -19,11 +19,11 @@ export const buildProfessionalServiceSchema = () => ({
   email: site.email,
   areaServed: "Latam",
   description:
-    "Agencia de automatizaci?n, marketing digital, anal?tica de datos y desarrollo a medida.",
+    "Agencia de automatización, datos e IA para empresas en crecimiento. Marketing digital, desarrollo a medida y optimización de procesos.",
   serviceType: [
-    "automatizaci?n de procesos",
+    "automatización de procesos",
     "marketing digital",
-    "anal?tica de datos",
+    "analítica de datos",
     "desarrollo a medida",
     "IA para contenido"
   ]
@@ -41,3 +41,4 @@ export const buildFaqSchema = (faq: FaqItem[]) => ({
     }
   }))
 });
+

@@ -1,6 +1,6 @@
-export const site = {
+﻿export const site = {
   name: "ASSSIE",
-  slogan: "Datos, automatización e IA para crecer sin fricción",
+  slogan: "Automatización, datos e IA para escalar tu negocio",
   url: "https://asssie.com",
   email: "hola@asssie.com",
   whatsapp: "+573186933354",
@@ -13,3 +13,4 @@ export const site = {
   locale: "es",
   locales: ["es"]
 };
+

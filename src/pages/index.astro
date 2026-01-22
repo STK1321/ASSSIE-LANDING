@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
 import Services from "@/components/sections/Services.astro";
@@ -6,6 +6,7 @@ import Process from "@/components/sections/Process.astro";
 import Cases from "@/components/sections/Cases.astro";
 import Plans from "@/components/sections/Plans.astro";
 import Stack from "@/components/sections/Stack.astro";
+import SeoPromise from "@/components/sections/SeoPromise.astro";
 import FAQ from "@/components/sections/FAQ.astro";
 import Contact from "@/components/sections/Contact.astro";
 import { faq } from "@/content/faq";
@@ -14,8 +15,8 @@ import { buildOrganizationSchema, buildProfessionalServiceSchema, buildFaqSchema
 const jsonLd = [buildOrganizationSchema(), buildProfessionalServiceSchema(), buildFaqSchema(faq)];
 ---
 <BaseLayout
-  title="ASSSIE | Datos, automatizaci?n e IA para crecer sin fricci?n"
-  description="ASSSIE es una agencia de automatizaci?n de procesos, marketing digital, anal?tica de datos y desarrollo a medida para empresas en crecimiento."
+  title="ASSSIE | Automatización, IA y Marketing Digital para Empresas"
+  description="Agencia de automatización, datos e IA para PYMES en crecimiento. Marketing digital medible, desarrollo a medida y optimización de procesos en Latam."
   jsonLd={jsonLd}
 >
   <Hero />
@@ -24,6 +25,8 @@ const jsonLd = [buildOrganizationSchema(), buildProfessionalServiceSchema(), bui
   <Cases />
   <Plans />
   <Stack />
+  <SeoPromise />
   <FAQ />
   <Contact />
 </BaseLayout>
+

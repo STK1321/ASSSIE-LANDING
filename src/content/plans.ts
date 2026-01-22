@@ -1,4 +1,4 @@
-export type Plan = {
+﻿export type Plan = {
   name: string;
   tagline: string;
   price: string;
@@ -11,51 +11,52 @@ export type Plan = {
 export const plans: Plan[] = [
   {
     name: "Starter",
-    tagline: "Marketing y medición para empezar con foco.",
-    price: "Desde USD 690/mes",
+    tagline: "Marketing + medición básica",
+    price: "Plan mensual",
     includes: [
       "Estrategia de marketing digital",
-      "Plan de contenidos mensual",
+      "Calendario de contenido y campañas",
       "Configuración de GA4 y Tag Manager",
-      "Reporte básico de performance"
+      "Reporte mensual con aprendizajes"
     ],
     excludes: [
       "Automatizaciones avanzadas",
-      "Modelos de machine learning",
-      "Desarrollo a medida"
+      "Dashboards a medida",
+      "Desarrollo de producto"
     ],
     cta: "Quiero Starter"
   },
   {
     name: "Growth",
-    tagline: "Automatización + data para escalar con orden.",
-    price: "Desde USD 1.490/mes",
+    tagline: "Automatización + data",
+    price: "Plan mensual",
     includes: [
       "Todo lo de Starter",
       "Automatización de procesos clave",
-      "Dashboards y analítica avanzada",
-      "Optimización de campañas"
+      "Dashboards accionables",
+      "Optimización continua"
     ],
     excludes: [
-      "Desarrollo de producto completo",
-      "IA creativa a escala"
+      "IA creativa a escala",
+      "Desarrollo de producto completo"
     ],
     cta: "Quiero Growth",
     highlighted: true
   },
   {
     name: "Custom",
-    tagline: "Soluciones a medida con IA e integraciones complejas.",
-    price: "Hablemos",
+    tagline: "Desarrollo + IA + integraciones",
+    price: "A medida",
     includes: [
-      "Desarrollo a medida",
-      "Integraciones y arquitectura cloud",
-      "IA para contenido y procesos",
-      "Soporte dedicado"
+      "Producto digital a medida",
+      "Integraciones con sistemas y datos",
+      "IA aplicada a procesos y contenido",
+      "Soporte y evolución continua"
     ],
     excludes: [
       "Paquetes cerrados"
     ],
-    cta: "Agendar reunión"
+    cta: "Agendar llamada"
   }
 ];
+

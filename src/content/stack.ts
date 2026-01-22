@@ -1,10 +1,21 @@
-export const stack = [
-  "Estrategia centrada en objetivos",
-  "Automatización sin fricción",
-  "Medición confiable y continua",
-  "Seguridad y privacidad",
-  "Escalabilidad por etapas",
-  "Integraciones con herramientas actuales",
-  "Documentación y transferencia",
-  "Soporte y mejora continua"
+﻿export const stack = [
+  "Astro",
+  "React",
+  "Node.js",
+  "TypeScript",
+  "Python",
+  "FastAPI / Django",
+  "PostgreSQL",
+  "mongoDB",
+  "Redis",
+  "Vercel",
+  "Docker",
+  "GA4",
+  "Meta",
+  "Tag Manager",
+  "Azure",
+  "GCP",
+  "AWS",
+  "MCP"
 ];
+

@@ -1,4 +1,4 @@
----
+﻿---
 import Button from "@/components/atoms/Button.astro";
 import Icon from "@/components/atoms/Icon.astro";
 import { site } from "@/content/site";
@@ -6,9 +6,7 @@ import { site } from "@/content/site";
 const nav = [
   { label: "Servicios", href: "#servicios" },
   { label: "Proceso", href: "#proceso" },
-  { label: "Casos", href: "#casos" },
   { label: "Planes", href: "#planes" },
-  { label: "FAQ", href: "#faq" },
   { label: "Contacto", href: "#contacto" }
 ];
 ---
@@ -18,14 +16,14 @@ const nav = [
       <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-accent text-white">A</span>
       {site.name}
     </a>
-    <nav class="hidden items-center gap-6 text-sm font-semibold text-slate md:flex" aria-label="Navegacion principal">
+    <nav class="hidden items-center gap-6 text-sm font-semibold text-slate md:flex" aria-label="Navegación principal">
       {nav.map((item) => (
         <a class="hover:text-accent" href={item.href}>{item.label}</a>
       ))}
-      <Button variant="primary" size="sm" href="#contacto">Hablemos</Button>
+      <Button variant="primary" size="sm" href="#contacto">Agenda una llamada</Button>
     </nav>
     <details class="relative md:hidden">
-      <summary class="list-none rounded-full border border-slate/20 bg-white p-2" aria-label="Abrir menu">
+      <summary class="list-none rounded-full border border-slate/20 bg-white p-2" aria-label="Abrir menú">
         <Icon name="menu" />
       </summary>
       <div class="absolute right-0 mt-3 w-64 rounded-2xl border border-slate/10 bg-white p-4 shadow-card">
@@ -33,9 +31,10 @@ const nav = [
           {nav.map((item) => (
             <a class="hover:text-accent" href={item.href}>{item.label}</a>
           ))}
-          <Button variant="primary" size="sm" href="#contacto">Hablemos</Button>
+          <Button variant="primary" size="sm" href="#contacto">Agenda una llamada</Button>
         </div>
       </div>
     </details>
   </div>
 </header>
+

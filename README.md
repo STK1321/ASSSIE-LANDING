@@ -1,6 +1,6 @@
-# ASSSIE Landing Page (Astro)
+﻿# ASSSIE Landing Page (Astro)
 
-Landing page estatica en Astro + TypeScript, optimizada para SEO t?cnico, performance y conversion.
+Landing page para agencia de automatizacion, datos e IA. Enfocada en conversion, SEO tecnico y performance.
 
 ## Instalacion
 
@@ -13,48 +13,59 @@ npm run dev
 
 - `npm run dev` - entorno local
 - `npm run build` - build de produccion
-- `npm run preview` - preview del build
+- `npm run preview` - previsualizacion del build
 - `npm run lint` - chequeo de tipos Astro
+
+## Arquitectura
+
+```
+src/
+ ├─ pages/
+ ├─ layouts/
+ ├─ components/
+ │   ├─ atoms/
+ │   ├─ molecules/
+ │   └─ sections/
+ ├─ content/
+ ├─ lib/seo/
+ └─ styles/
+public/
+```
 
 ## Contenido editable
 
+- Hero + textos base: `src/components/sections/Hero.astro`
 - Servicios: `src/content/services.ts`
 - Proceso: `src/content/process.ts`
-- Casos: `src/content/cases.ts`
+- Casos tipo: `src/content/cases.ts`
 - Planes: `src/content/plans.ts`
 - FAQ: `src/content/faq.ts`
 - Stack: `src/content/stack.ts`
-- Marca/Contacto: `src/content/site.ts`
+- Datos de marca/contacto: `src/content/site.ts`
 
-## SEO
+## SEO tecnico
 
-- Configuracion base en `src/layouts/BaseLayout.astro`
-- Helpers y schema JSON-LD en `src/lib/seo/`
+- Meta tags, Open Graph y Twitter Cards: `src/layouts/BaseLayout.astro`
+- JSON-LD (Organization, ProfessionalService, FAQPage): `src/lib/seo/`
 - `public/robots.txt` y `public/sitemap.xml`
-- OpenGraph en `public/og-image.svg`
+- Imagen OG: `public/og-image.svg`
 
 ## Formulario
 
 - Endpoint placeholder: `src/pages/api/lead.ts`
-- Validacion frontend con Zod en `src/components/sections/Contact.astro`
+- Formulario simple en `src/components/sections/Contact.astro`
 
-Para integrar con Email/CRM/WhatsApp, reemplazar el handler del endpoint o conectar un webhook.
-
-## Performance
-
-- Tailwind sin preflight para reducir CSS base
-- Render estatico con Astro
-- Imagenes optimizadas y lazy loading (cuando agregues imagenes reales)
+Para integrar con Email/CRM/WhatsApp, reemplaza el handler del endpoint o conecta un webhook.
 
 ## Deploy recomendado
 
 - Vercel o Netlify
 
-## Checklist SEO/Performance
+## Checklist
 
-- [ ] Ajustar `site.url` y datos reales en `src/content/site.ts`
-- [ ] Reemplazar `public/og-image.svg` con imagen definitiva
-- [ ] Completar `public/sitemap.xml` con p?ginas futuras
-- [ ] Configurar dominio en `astro.config.mjs`
-- [ ] Revisar titles y descriptions por p?gina
-- [ ] Validar Core Web Vitals en Lighthouse
+- [ ] Ajustar `site.url` en `src/content/site.ts` y `astro.config.mjs`
+- [ ] Actualizar `public/og-image.svg`
+- [ ] Completar `public/sitemap.xml` con futuras paginas
+- [ ] Verificar metadatos por pagina
+- [ ] Validar accesibilidad y Core Web Vitals
+- [ ] Configurar analytics (GA4/Tag Manager)

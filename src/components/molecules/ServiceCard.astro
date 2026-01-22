@@ -1,6 +1,5 @@
 ---
 import Icon from "@/components/atoms/Icon.astro";
-import Button from "@/components/atoms/Button.astro";
 import type { Service } from "@/content/services";
 
 const { service } = Astro.props as { service: Service };
@@ -12,7 +11,7 @@ const { service } = Astro.props as { service: Service };
     </span>
     <div>
       <h3 class="text-lg font-semibold text-ink">{service.title}</h3>
-      <p class="text-sm text-slate">{service.description}</p>
+      <p class="text-sm text-slate">{service.subtitle}</p>
     </div>
   </div>
   <ul class="mt-4 space-y-2 text-sm text-slate">
@@ -23,10 +22,4 @@ const { service } = Astro.props as { service: Service };
       </li>
     ))}
   </ul>
-  <div class="mt-auto pt-6">
-    <Button variant="ghost" size="sm" href="#contacto">
-      {service.cta}
-      <Icon name="arrow" class="h-4 w-4" />
-    </Button>
-  </div>
 </article>
