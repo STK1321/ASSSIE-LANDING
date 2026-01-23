@@ -23,36 +23,23 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
               <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="name" name="name" type="text" required />
             </div>
             <div>
-              <label class="text-sm font-semibold text-ink" for="email">Email</label>
-              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="email" name="email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required />
-            </div>
-            <div>
               <label class="text-sm font-semibold text-ink" for="company">Empresa</label>
               <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="company" name="company" type="text" required />
             </div>
             <div>
-              <label class="text-sm font-semibold text-ink" for="goal">Objetivo principal</label>
+              <label class="text-sm font-semibold text-ink" for="goal">¿Qué problema quieres resolver?</label>
               <textarea class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="goal" name="goal" rows="3" required></textarea>
             </div>
-            <div class="grid gap-4 md:grid-cols-2">
-              <div>
-                <label class="text-sm font-semibold text-ink" for="budget">Presupuesto</label>
-                <select class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="budget" name="budget" required>
-                  <option value="">Selecciona un rango</option>
-                  <option value="<2000000">Menos de $2.000.000 COP</option>
-                  <option value="2000000-5000000">$2.000.000 - $5.000.000 COP</option>
-                  <option value=">5000000">Más de $5.000.000 COP</option>
-                </select>
-              </div>
-              <div>
-                <label class="text-sm font-semibold text-ink" for="channel">Canal preferido</label>
-                <select class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="channel" name="channel" required>
-                  <option value="">Selecciona un canal</option>
-                  <option value="whatsapp">WhatsApp</option>
-                  <option value="email">Email</option>
-                  <option value="call">Llamada</option>
-                </select>
-              </div>
+            <div>
+              <label class="text-sm font-semibold text-ink" for="companySize">Tamaño aproximado de la empresa (opcional)</label>
+              <select class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="companySize" name="companySize">
+                <option value="">Selecciona un rango</option>
+                <option value="1-10">1-10</option>
+                <option value="11-50">11-50</option>
+                <option value="51-200">51-200</option>
+                <option value="201-1000">201-1000</option>
+                <option value="1000+">1000+</option>
+              </select>
             </div>
             <div class="flex flex-wrap gap-3 pt-2">
               <Button as="button" type="submit" variant="primary" data-submit>
