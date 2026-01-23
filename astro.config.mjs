@@ -4,6 +4,9 @@ import { fileURLToPath } from "url";
 
 export default defineConfig({
   integrations: [tailwind({ applyBaseStyles: false })],
+  build: {
+    inlineStylesheets: "always"
+  },
   site: "https://asssie.com",
   vite: {
     resolve: {
