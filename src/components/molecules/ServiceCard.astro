@@ -12,24 +12,25 @@ const orderLabels: Record<number, string> = {
 };
 const orderLabel = orderLabels[service.order] ?? `${service.order}.`;
 ---
-<article class="group flex h-full flex-col rounded-3xl border border-slate/10 bg-white p-6 shadow-card transition hover:-translate-y-1">
-  <div class="flex items-center gap-3">
-    <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+<article class="group flex h-full flex-col rounded-3xl border border-slate/10 bg-white p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:border-accent/20 hover:shadow-soft">
+  <div class="flex items-center gap-4">
+    <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent transition duration-300 group-hover:scale-105 group-hover:bg-accent/15">
       <Icon name={service.icon} class="h-6 w-6" />
     </span>
     <div>
-      <h3 class="text-lg font-semibold text-ink">{orderLabel} {service.title}</h3>
-      <p class="text-sm text-slate">{service.subtitle}</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">{orderLabel}</p>
+      <h3 class="text-xl font-semibold text-ink">{service.title}</h3>
+      <p class="text-sm text-slate-500">{service.subtitle}</p>
     </div>
   </div>
-  <div class="mt-4">
-    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Descripción corta</p>
-    <p class="mt-2 text-sm text-slate">{service.description}</p>
+  <div class="mt-5">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Descripción corta</p>
+    <p class="mt-2 text-sm text-slate line-clamp-2">{service.description}</p>
   </div>
-  <div class="mt-4">
-    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Ideal para</p>
+  <div class="mt-5">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Ideal para</p>
     <ul class="mt-2 space-y-2 text-sm text-slate">
-      {service.idealFor.map((item: string) => (
+      {service.idealFor.slice(0, 2).map((item: string) => (
         <li class="flex gap-2">
           <svg
             viewBox="0 0 24 24"
@@ -47,18 +48,24 @@ const orderLabel = orderLabels[service.order] ?? `${service.order}.`;
         </li>
       ))}
     </ul>
+    {service.idealFor.length > 2 ? (
+      <p class="mt-2 inline-flex items-center gap-1 text-xs text-slate-500/80">
+        Ver +{service.idealFor.length - 2} mas en el alcance
+        <span aria-hidden="true">→</span>
+      </p>
+    ) : null}
   </div>
-  <div class="mt-auto pt-6">
+  <div class="mt-auto pt-7">
     <button
       type="button"
-      class="inline-flex items-center justify-center gap-2 rounded-full border border-slate/20 bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+      class="inline-flex items-center justify-center gap-2 rounded-full border border-slate/20 bg-white px-4 py-2 text-sm font-semibold text-ink transition duration-300 hover:border-accent/30 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
       data-service-open
       data-service-id={service.id}
       aria-label={`Ver alcance de ${service.title}`}
       aria-haspopup="dialog"
     >
       Ver alcance
-      <Icon name="arrow" class="h-4 w-4" />
+      <Icon name="arrow" class="h-4 w-4 transition duration-300 group-hover:translate-x-1" />
     </button>
   </div>
 </article>

@@ -27,13 +27,13 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
 
 <dialog
   id="service-modal"
-  class="w-full max-w-3xl rounded-3xl border border-white/70 bg-white p-0 shadow-card"
+  class="w-full max-w-3xl rounded-3xl border border-white/70 bg-white p-0 shadow-card max-h-[90vh] overflow-hidden"
   role="dialog"
   aria-modal="true"
   aria-labelledby="service-modal-title"
   aria-describedby="service-modal-description"
 >
-  <div class="relative p-8" data-modal-panel>
+  <div class="relative max-h-[90vh] overflow-y-auto p-8 pr-7" data-modal-panel>
     <button
       type="button"
       class="absolute right-4 top-4 rounded-full border border-slate/20 p-2 text-slate transition hover:border-accent hover:text-accent"
@@ -54,47 +54,65 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
         </p>
       </div>
 
+      <div id="service-modal-dynamic" class="space-y-6"></div>
+
       <div id="service-modal-empty" class="rounded-2xl border border-slate/10 bg-surface px-4 py-3 text-sm text-slate">
         Selecciona un servicio para ver detalles y alcance.
       </div>
-
-      <div id="service-modal-dynamic" class="space-y-6"></div>
       <template id="service-modal-template">
+        <div
+          data-section-outcome
+          class="rounded-2xl border border-slate/10 bg-accent/5 px-4 py-3 text-sm text-slate"
+        >
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">Resultado esperado</p>
+          <p class="mt-2 font-semibold text-ink" data-service-modal-outcome></p>
+        </div>
+
         <div class="grid gap-6 lg:grid-cols-3">
           <div data-section-ideal>
-            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Ideal para</p>
-            <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-ideal></ul>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Ideal para</p>
+            <ul class="mt-2 space-y-2 text-sm font-normal text-slate-400" data-service-modal-ideal></ul>
           </div>
           <div data-section-scope>
-            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Alcance</p>
-            <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-scope></ul>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-ink">Alcance</p>
+            <ul class="mt-2 space-y-2 text-sm font-normal text-slate-700" data-service-modal-scope></ul>
           </div>
           <div data-section-deliverables>
-            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Entregables</p>
-            <ul class="mt-2 space-y-2 text-sm text-slate" data-service-modal-deliverables></ul>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-ink">Entregables</p>
+            <ul class="mt-2 space-y-2 text-sm font-normal text-slate-700" data-service-modal-deliverables></ul>
           </div>
         </div>
 
         <div class="rounded-2xl border border-slate/10 bg-surface px-4 py-3 text-sm text-slate" data-section-timeline>
-          Tiempo típico: <span class="font-semibold text-ink" data-service-modal-timeline></span>
+          <div class="flex items-center gap-2 font-semibold text-ink">
+            <span aria-hidden="true">⏱</span>
+            <span>Tiempo típico: <span class="font-semibold text-ink" data-service-modal-timeline></span></span>
+          </div>
+          <p class="mt-1 text-xs text-slate">Depende del estado de los datos y el alcance.</p>
         </div>
 
-        <div class="flex flex-wrap gap-3" data-section-cta>
-          <button
-            type="button"
-            class="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            data-service-modal-cta
-          >
-            Quiero este servicio
-          </button>
-          <a
-            class="inline-flex items-center justify-center gap-2 rounded-full border border-slate/20 bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            target="_blank"
-            rel="noopener"
-            data-service-modal-whatsapp
-          >
-            WhatsApp
-          </a>
+        <div class="flex flex-wrap gap-4" data-section-cta>
+          <div class="flex flex-col gap-1">
+            <button
+              type="button"
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              data-service-modal-cta
+            >
+              Quiero una propuesta
+            </button>
+            <p class="text-xs text-slate">Sin compromiso · Respuesta en 24-48h</p>
+          </div>
+          <div class="flex flex-col gap-1">
+            <a
+              class="inline-flex items-center justify-center gap-2 rounded-full border border-slate/20 bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              target="_blank"
+              rel="noopener"
+              data-service-modal-whatsapp
+            >
+              Hablar por WhatsApp
+            </a>
+            <p class="text-xs text-slate">Respuesta rápida</p>
+          </div>
         </div>
       </template>
     </div>
@@ -113,12 +131,14 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
   const dynamicMount = dialog?.querySelector("#service-modal-dynamic");
   const template = dialog?.querySelector("#service-modal-template");
 
+  let outcomeEl = null;
   let idealEl = null;
   let scopeEl = null;
   let deliverablesEl = null;
   let timelineEl = null;
   let ctaButton = null;
   let whatsappButton = null;
+  let outcomeSection = null;
   let idealSection = null;
   let scopeSection = null;
   let deliverablesSection = null;
@@ -146,12 +166,14 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
   const unmountTemplate = () => {
     if (!dynamicMount) return;
     dynamicMount.innerHTML = "";
+    outcomeEl = null;
     idealEl = null;
     scopeEl = null;
     deliverablesEl = null;
     timelineEl = null;
     ctaButton = null;
     whatsappButton = null;
+    outcomeSection = null;
     idealSection = null;
     scopeSection = null;
     deliverablesSection = null;
@@ -164,12 +186,14 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     dynamicMount.innerHTML = "";
     const fragment = template.content.cloneNode(true);
     dynamicMount.appendChild(fragment);
+    outcomeEl = dialog?.querySelector("[data-service-modal-outcome]");
     idealEl = dialog?.querySelector("[data-service-modal-ideal]");
     scopeEl = dialog?.querySelector("[data-service-modal-scope]");
     deliverablesEl = dialog?.querySelector("[data-service-modal-deliverables]");
     timelineEl = dialog?.querySelector("[data-service-modal-timeline]");
     ctaButton = dialog?.querySelector("[data-service-modal-cta]");
     whatsappButton = dialog?.querySelector("[data-service-modal-whatsapp]");
+    outcomeSection = dialog?.querySelector("[data-section-outcome]");
     idealSection = dialog?.querySelector("[data-section-ideal]");
     scopeSection = dialog?.querySelector("[data-section-scope]");
     deliverablesSection = dialog?.querySelector("[data-section-deliverables]");
@@ -181,14 +205,16 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     if (titleEl) titleEl.textContent = `${service.order}. ${service.title}`;
     if (subtitleEl) subtitleEl.textContent = service.subtitle;
     if (descriptionEl) descriptionEl.textContent = service.description;
+    if (outcomeEl) outcomeEl.textContent = service.expectedOutcome ?? "";
     if (timelineEl) timelineEl.textContent = service.typicalTimeline;
+    if (ctaButton) ctaButton.textContent = service.modalCtaLabel ?? "Quiero una propuesta";
 
     if (idealEl) {
       idealEl.innerHTML = "";
       service.idealFor.forEach((item) => {
         const li = document.createElement("li");
-        li.className = "flex gap-2";
-        li.innerHTML = `<svg viewBox="0 0 24 24" class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg><span>${item}</span>`;
+        li.className = "flex gap-2 leading-snug";
+        li.innerHTML = `<svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-accent" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg><span>${item}</span>`;
         idealEl.appendChild(li);
       });
     }
@@ -197,8 +223,8 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
       scopeEl.innerHTML = "";
       service.scope.forEach((item) => {
         const li = document.createElement("li");
-        li.className = "flex gap-2";
-        li.innerHTML = `<svg viewBox="0 0 24 24" class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg><span>${item}</span>`;
+        li.className = "flex gap-2 leading-snug";
+        li.innerHTML = `<svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-accent" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg><span>${item}</span>`;
         scopeEl.appendChild(li);
       });
     }
@@ -207,8 +233,8 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
       deliverablesEl.innerHTML = "";
       service.deliverables.forEach((item) => {
         const li = document.createElement("li");
-        li.className = "flex gap-2";
-        li.innerHTML = `<svg viewBox="0 0 24 24" class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg><span>${item}</span>`;
+        li.className = "flex gap-2 leading-snug";
+        li.innerHTML = `<svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-accent" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg><span>${item}</span>`;
         deliverablesEl.appendChild(li);
       });
     }
@@ -230,6 +256,7 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     emptyState?.classList.add("hidden");
     mountTemplate();
     setContent(service);
+    outcomeSection?.classList.toggle("hidden", !service.expectedOutcome);
     idealSection?.classList.toggle("hidden", !service.idealFor?.length);
     scopeSection?.classList.toggle("hidden", !service.scope?.length);
     deliverablesSection?.classList.toggle("hidden", !service.deliverables?.length);

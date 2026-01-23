@@ -9,6 +9,7 @@ export type Service = {
   scope: string[];
   deliverables: string[];
   typicalTimeline: string;
+  expectedOutcome: string;
   modalCtaLabel: string;
 };
 
@@ -39,7 +40,8 @@ export const services: Service[] = [
       "Documentación técnica y de negocio"
     ],
     typicalTimeline: "2 a 4 semanas",
-    modalCtaLabel: "Quiero este servicio"
+    expectedOutcome: "Decisiones basadas en datos confiables y accionables.",
+    modalCtaLabel: "Quiero una propuesta"
   },
   {
     id: "marketing",
@@ -67,7 +69,8 @@ export const services: Service[] = [
       "Reporte de métricas y recomendaciones"
     ],
     typicalTimeline: "2 a 3 semanas",
-    modalCtaLabel: "Quiero este servicio"
+    expectedOutcome: "Leads medibles y crecimiento sostenible.",
+    modalCtaLabel: "Quiero una propuesta"
   },
   {
     id: "automation",
@@ -95,7 +98,8 @@ export const services: Service[] = [
       "Soporte inicial post-entrega"
     ],
     typicalTimeline: "2 a 4 semanas",
-    modalCtaLabel: "Quiero este servicio"
+    expectedOutcome: "Procesos más rápidos, menos errores y menor costo operativo.",
+    modalCtaLabel: "Quiero una propuesta"
   },
   {
     id: "custom-dev",
@@ -123,7 +127,8 @@ export const services: Service[] = [
       "Guía de despliegue y mantenimiento"
     ],
     typicalTimeline: "3 a 6 semanas",
-    modalCtaLabel: "Quiero este servicio"
+    expectedOutcome: "Solución estable y escalable alineada a tu operación.",
+    modalCtaLabel: "Quiero una propuesta"
   },
   {
     id: "ai-creative",
@@ -151,6 +156,7 @@ export const services: Service[] = [
       "Recomendaciones de escalabilidad"
     ],
     typicalTimeline: "1 a 3 semanas",
-    modalCtaLabel: "Quiero este servicio"
+    expectedOutcome: "Contenido consistente, rápido y optimizado para redes.",
+    modalCtaLabel: "Quiero una propuesta"
   }
 ];
