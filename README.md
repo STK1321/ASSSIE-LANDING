@@ -55,11 +55,11 @@ El modal se renderiza en `src/components/molecules/ServiceModal.astro` y se abre
 
 ## Formulario
 
-- Endpoint placeholder: `src/pages/api/lead.ts`
-- Formulario con estados (loading/success/error) en `src/components/sections/Contact.astro`
-- Campo oculto `serviceInterest` prellenado desde el modal de servicios
+- Formulario en `src/components/sections/Contact.astro`
+- Estados (loading/success/error) y composición del mensaje en el mismo componente
+- Envío por WhatsApp: no hay endpoint ni servidor, y el sitio no recibe ni guarda los datos
 
-Para integrar con Email/CRM/WhatsApp, reemplaza el handler del endpoint o conecta un webhook.
+Para cambiar el número, edita `site.whatsapp` en `src/content/site.ts`.
 
 ## SEO técnico
 

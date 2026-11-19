@@ -4,7 +4,11 @@ import Icon from "@/components/atoms/Icon.astro";
 import SectionHeading from "@/components/molecules/SectionHeading.astro";
 import { site } from "@/content/site";
 
-const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
+const whatsappDigits = site.whatsapp.replace(/\D/g, "");
+const whatsappLink = `https://wa.me/${whatsappDigits}`;
+const baseMessage = "Hola, quiero contarles mi objetivo.";
+const waHref = (text: string) => `${whatsappLink}?text=${encodeURIComponent(text)}`;
+const fallbackHref = waHref(baseMessage);
 ---
 <section id="contacto" class="py-20">
   <div class="mx-auto max-w-6xl px-6">
@@ -13,22 +17,25 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
         <SectionHeading
           eyebrow="Contacto"
           title="Hablemos de tu objetivo"
-          subtitle="Cuéntanos tu reto principal y te respondemos con un plan claro y accionable."
+          subtitle="Cuéntanos tu objetivo. El formulario abre WhatsApp con el mensaje ya escrito, para que lo revises y lo envíes tú."
         />
         <div class="rounded-3xl border border-slate/10 bg-white p-6 shadow-card">
-          <form id="lead-form" class="space-y-4" method="post" action="/api/lead" novalidate>
-            <input id="serviceInterest" name="serviceInterest" type="hidden" />
+          <form id="lead-form" class="space-y-4" novalidate>
             <div>
               <label class="text-sm font-semibold text-ink" for="name">Nombre</label>
-              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="name" name="name" type="text" required />
+              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="name" name="name" type="text" autocomplete="name" required />
             </div>
             <div>
-              <label class="text-sm font-semibold text-ink" for="company">Empresa</label>
-              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="company" name="company" type="text" required />
+              <label class="text-sm font-semibold text-ink" for="whatsapp">Tu WhatsApp (opcional)</label>
+              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" />
             </div>
             <div>
               <label class="text-sm font-semibold text-ink" for="goal">¿Qué problema quieres resolver?</label>
               <textarea class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="goal" name="goal" rows="3" required></textarea>
+            </div>
+            <div>
+              <label class="text-sm font-semibold text-ink" for="company">Empresa (opcional)</label>
+              <input class="mt-2 w-full rounded-xl border border-slate/20 bg-white px-4 py-3 text-sm" id="company" name="company" type="text" autocomplete="organization" />
             </div>
             <div>
               <label class="text-sm font-semibold text-ink" for="companySize">Tamaño aproximado de la empresa (opcional)</label>
@@ -43,16 +50,18 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
             </div>
             <div class="flex flex-wrap gap-3 pt-2">
               <Button as="button" type="submit" variant="primary" data-submit>
-                Enviar solicitud
-              </Button>
-              <Button variant="ghost" href={whatsappLink} target="_blank" rel="noopener">
-                <Icon name="whatsapp" class="h-4 w-4" />
-                WhatsApp
+                Enviar por WhatsApp
               </Button>
             </div>
             <p class="text-xs text-slate" data-submit-status aria-live="polite" role="status"></p>
+            <noscript>
+              <Button href={fallbackHref} target="_blank" rel="noopener">
+                <Icon name="whatsapp" class="h-4 w-4" />
+                Escribir por WhatsApp
+              </Button>
+            </noscript>
             <p class="text-xs text-slate">
-              Sin spam. Respuesta en 24-48h.
+              Se abre WhatsApp con tu mensaje ya escrito. Lo revisas y lo envías tú.
             </p>
           </form>
         </div>
@@ -60,12 +69,14 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
       <div class="space-y-4 reveal" style="--reveal-delay: 120ms;">
         <div class="rounded-3xl border border-slate/10 bg-white p-6 shadow-card">
           <h3 class="text-lg font-semibold text-ink">Contacto directo</h3>
-          <p class="mt-2 text-sm text-slate">Email: {site.email}</p>
-          <p class="mt-1 text-sm text-slate">WhatsApp: {site.whatsapp}</p>
-          <p class="mt-1 text-sm text-slate">Zona: {site.address}</p>
+          <p class="mt-2 text-sm text-slate">
+            WhatsApp:
+            <a class="font-semibold text-accent hover:underline" href={whatsappLink} target="_blank" rel="noopener">{site.whatsapp}</a>
+          </p>
+          <p class="mt-1 text-sm text-slate">Zona: {site.address.locality}, {site.address.region}</p>
         </div>
         <div class="rounded-3xl border border-slate/10 bg-white p-6 shadow-card">
-          <h3 class="text-lg font-semibold text-ink">Lo que incluye la llamada</h3>
+          <h3 class="text-lg font-semibold text-ink">Lo que incluye la primera conversación</h3>
           <ul class="mt-3 space-y-2 text-sm text-slate">
             <li class="flex gap-2">
               <svg
@@ -118,7 +129,7 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
     </div>
   </div>
 
-  <script is:inline>
+  <script define:vars={{ whatsappDigits, baseMessage }}>
     const form = document.getElementById("lead-form");
     const status = form?.querySelector("[data-submit-status]");
     const submitButton = form?.querySelector("[data-submit]");
@@ -129,40 +140,74 @@ const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
       error: "text-rose-600"
     };
 
-    const setStatus = (state, message) => {
+    const waHref = (text) => `https://wa.me/${whatsappDigits}?text=${encodeURIComponent(text)}`;
+    const fallbackHref = waHref(baseMessage);
+
+    const buildMessage = (values) => {
+      const name = String(values.name || "").trim();
+      const goal = String(values.goal || "").trim();
+      const company = String(values.company || "").trim();
+      const companySize = String(values.companySize || "").trim();
+      const whatsapp = String(values.whatsapp || "").trim();
+
+      let message = `Hola, soy ${name}. ${goal}`;
+      if (company && companySize) {
+        message += `\n\nEmpresa: ${company}. Tamaño: ${companySize} personas.`;
+      } else if (company) {
+        message += `\n\nEmpresa: ${company}.`;
+      } else if (companySize) {
+        message += `\n\nTamaño de la empresa: ${companySize} personas.`;
+      }
+      if (whatsapp) {
+        message += `\n\nMi WhatsApp para responderme: ${whatsapp}.`;
+      }
+      return message;
+    };
+
+    const setStatus = (state, message, linkHref) => {
       if (!status) return;
       status.textContent = message;
       status.dataset.state = state;
       status.classList.remove("text-slate", "text-emerald-600", "text-rose-600");
       status.classList.add(statusClasses[state] ?? "text-slate");
+
+      if (linkHref) {
+        const link = document.createElement("a");
+        link.href = linkHref;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.className = "font-semibold text-accent hover:underline";
+        link.textContent = linkHref;
+        status.append(" ", link);
+      }
     };
 
-    form?.addEventListener("submit", async (event) => {
+    form?.addEventListener("submit", (event) => {
       event.preventDefault();
       if (!form || !submitButton) return;
 
-      submitButton.setAttribute("disabled", "true");
-      setStatus("loading", "Enviando solicitud...");
+      const values = Object.fromEntries(new FormData(form).entries());
+      const name = String(values.name || "").trim();
+      const goal = String(values.goal || "").trim();
 
-      const formData = new FormData(form);
-      const interest = formData.get("serviceInterest")?.toString() ?? "";
+      if (!name || !goal) {
+        setStatus("error", "Escribe tu nombre y tu objetivo para abrir WhatsApp:", fallbackHref);
+        const missing = document.getElementById(name ? "goal" : "name");
+        if (missing instanceof HTMLElement) missing.focus();
+        return;
+      }
+
+      const href = waHref(buildMessage(values));
+
+      submitButton.setAttribute("disabled", "true");
+      setStatus("loading", "Abriendo WhatsApp...");
 
       try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: formData
-        });
-
-        if (!response.ok) throw new Error("Request failed");
-
+        window.open(href, "_blank", "noopener");
         form.reset();
-        if (interest) {
-          const interestInput = form.querySelector("#serviceInterest");
-          if (interestInput) interestInput.value = interest;
-        }
-        setStatus("success", "Listo. Te contactaremos en breve.");
-      } catch (error) {
-        setStatus("error", "No pudimos enviar tu solicitud. Intentalo nuevamente.");
+        setStatus("success", "Abrimos WhatsApp con tu mensaje. Revísalo y envíalo ahí.", href);
+      } catch {
+        setStatus("error", "No pudimos abrir WhatsApp. Abre este enlace tú:", href);
       } finally {
         submitButton.removeAttribute("disabled");
       }

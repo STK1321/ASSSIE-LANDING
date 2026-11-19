@@ -74,5 +74,9 @@ mustNotContain("qr-libre.html", product, 'href="#herramientas"');
 mustContain("footer privacy link", home, 'href="/privacidad"');
 mustContain("app privacy link", product, 'href="/qr-libre/privacidad"');
 
+mustContain("contact whatsapp", home, "wa.me");
+mustContain("contact fallback", home, "<noscript>");
+mustNotContain("contact endpoint", home, 'action="/api/lead"');
+
 if (failures.length) { console.error(failures.join("\n")); process.exit(1); }
 console.log(`ok — ${REQUIRED_ROUTES.length} routes checked`);
