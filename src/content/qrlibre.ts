@@ -63,7 +63,7 @@ export const qrlibre: QrLibreContent = {
     {
       question: "¿Necesito una cuenta o pagar una mensualidad?",
       answer:
-        "El código va a ser abierto. Cuando esté publicado, cualquiera va a poder leerlo, auditarlo y usarlo."
+        "No. QR Libre va a ser gratis y no va a pedir cuenta. El código también va a ser abierto: cuando esté publicado, cualquiera va a poder leerlo, auditarlo y usarlo."
     },
     {
       question: "¿Se conecta a mi cuenta bancaria?",
@@ -73,7 +73,7 @@ export const qrlibre: QrLibreContent = {
     {
       question: "¿Reemplaza el comprobante del banco?",
       answer:
-        "QR Libre va a avisar solamente que el pago entró. No va a mover plata ni a conectarse a tu cuenta bancaria."
+        "No. QR Libre solo va a avisar que entró un pago. El comprobante y el saldo siguen siendo los de tu banco: la app no los reemplaza ni los confirma."
     },
     {
       question: "¿Qué pasa con mis datos?",
