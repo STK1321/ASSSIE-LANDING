@@ -1,0 +1,19 @@
+---
+import SectionHeading from "@/components/molecules/SectionHeading.astro";
+import CapabilityCard from "@/components/molecules/CapabilityCard.astro";
+import { capabilities } from "@/content/capabilities";
+---
+<section id="que-hacemos" class="py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="reveal">
+      <SectionHeading eyebrow="Qué hacemos" title="Lo que construimos" />
+    </div>
+    <div class="reveal-stagger mt-10 grid gap-6 md:grid-cols-3">
+      {capabilities.map((capability, index) => (
+        <div style={`--stagger: ${index};`}>
+          <CapabilityCard capability={capability} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

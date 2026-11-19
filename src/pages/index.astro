@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
+import Capabilities from "@/components/sections/Capabilities.astro";
+import Direction from "@/components/sections/Direction.astro";
 import Services from "@/components/sections/Services.astro";
 import Process from "@/components/sections/Process.astro";
 import Cases from "@/components/sections/Cases.astro";
@@ -20,6 +22,8 @@ const jsonLd = [buildOrganizationSchema(), buildProfessionalServiceSchema(), bui
   jsonLd={jsonLd}
 >
   <Hero />
+  <Capabilities />
+  <Direction />
   <Services />
   <Process />
   <Cases />

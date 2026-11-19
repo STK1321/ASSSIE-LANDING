@@ -33,6 +33,10 @@ for (const href of anchors) {
     if (!home.includes(`id="${id}"`) && id !== "" && !PENDING_IDS.includes(id)) failures.push(`index.html: ${href} has no target`);
   }
 }
+// `prueba` belongs to Task 5; it stays in PENDING_IDS until its section exists.
+for (const id of ["que-hacemos", "herramientas", "proceso", "contacto"]) {
+  mustContain("index.html", home, `id="${id}"`);
+}
 const h1s = (home.match(/<h1/g) || []).length;
 if (h1s !== 1) failures.push(`index.html: expected 1 h1, found ${h1s}`);
 mustContain("hero headline", home, "Herramientas para el trabajo real");
