@@ -24,8 +24,9 @@ for (const word of FORBIDDEN) {
 }
 
 const ATTR = 'href="(#[^"]+|/[^"]*)"';
-// Task 5 empties this list once the redesign sections land.
-const PENDING_IDS = ["que-hacemos", "herramientas", "prueba"];
+// Task 5 emptied this list once the redesign sections landed. Keep the mechanism
+// for any section that is linked before it exists.
+const PENDING_IDS = [];
 const anchors = [...home.matchAll(new RegExp(ATTR, "g"))].map((m) => m[1]);
 for (const href of anchors) {
   if (href.startsWith("#")) {
@@ -33,8 +34,7 @@ for (const href of anchors) {
     if (!home.includes(`id="${id}"`) && id !== "" && !PENDING_IDS.includes(id)) failures.push(`index.html: ${href} has no target`);
   }
 }
-// `prueba` belongs to Task 5; it stays in PENDING_IDS until its section exists.
-for (const id of ["que-hacemos", "herramientas", "proceso", "contacto"]) {
+for (const id of ["que-hacemos", "herramientas", "prueba", "proceso", "contacto"]) {
   mustContain("index.html", home, `id="${id}"`);
 }
 const h1s = (home.match(/<h1/g) || []).length;
@@ -43,6 +43,12 @@ mustContain("hero headline", home, "Herramientas para el trabajo real");
 mustContain("hero tools cta", home, 'href="#herramientas"');
 mustNotContain("index.html", home, 'href="#seo"');
 mustNotContain("index.html", home, "Enfoque");
+
+for (const name of ["Proactive Watch", "Importadora"]) {
+  mustContain("index.html", home, name);
+}
+mustNotContain("index.html", home, "Caso A:");
+mustNotContain("index.html", home, "Plan mensual");
 
 mustNotContain("index.html", home, "hola@");
 

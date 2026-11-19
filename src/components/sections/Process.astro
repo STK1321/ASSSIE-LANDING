@@ -9,10 +9,10 @@ import { processSteps } from "@/content/process";
       <SectionHeading
         eyebrow="Cómo trabajamos"
         title="Un proceso claro, medible y colaborativo"
-        subtitle="Avanzamos en cinco pasos para reducir riesgo, acelerar aprendizaje y construir soluciones escalables."
+        subtitle="Avanzamos en tres pasos para reducir riesgo, acelerar aprendizaje y construir soluciones escalables."
       />
     </div>
-    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-5 reveal-stagger">
+    <div class="mt-10 grid gap-6 md:grid-cols-3 reveal-stagger">
       {processSteps.map((step, index) => (
         <div style={`--stagger: ${index};`}>
           <ProcessStep step={step} index={index} />

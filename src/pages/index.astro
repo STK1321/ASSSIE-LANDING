@@ -3,13 +3,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
 import Capabilities from "@/components/sections/Capabilities.astro";
 import Direction from "@/components/sections/Direction.astro";
-import Services from "@/components/sections/Services.astro";
+import Proof from "@/components/sections/Proof.astro";
 import Process from "@/components/sections/Process.astro";
-import Cases from "@/components/sections/Cases.astro";
-import Plans from "@/components/sections/Plans.astro";
-import Stack from "@/components/sections/Stack.astro";
-import SeoPromise from "@/components/sections/SeoPromise.astro";
-import FAQ from "@/components/sections/FAQ.astro";
 import Contact from "@/components/sections/Contact.astro";
 import { faq } from "@/content/faq";
 import { buildOrganizationSchema, buildProfessionalServiceSchema, buildFaqSchema } from "@/lib/seo/schemas";
@@ -24,12 +19,7 @@ const jsonLd = [buildOrganizationSchema(), buildProfessionalServiceSchema(), bui
   <Hero />
   <Capabilities />
   <Direction />
-  <Services />
+  <Proof />
   <Process />
-  <Cases />
-  <Plans />
-  <Stack />
-  <SeoPromise />
-  <FAQ />
   <Contact />
 </BaseLayout>

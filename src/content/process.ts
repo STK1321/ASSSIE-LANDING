@@ -5,23 +5,15 @@ export type ProcessStep = {
 
 export const processSteps: ProcessStep[] = [
   {
-    title: "Diagnóstico",
-    detail: "Auditamos objetivos, datos y procesos para priorizar rápido."
+    title: "Hablamos y miramos tu operación",
+    detail: "Nos cuentas cómo trabajas hoy y vemos dónde se pierde el tiempo."
   },
   {
-    title: "Diseño",
-    detail: "Definimos arquitectura, entregables y roadmap claro."
+    title: "Construimos lo más pequeño que sirve",
+    detail: "Una primera versión que ya resuelve algo real, sin esperar al sistema completo."
   },
   {
-    title: "Implementación",
-    detail: "Construimos e integramos con entregas iterativas."
-  },
-  {
-    title: "Medición",
-    detail: "Configuramos KPIs, dashboards y tracking confiable."
-  },
-  {
-    title: "Optimización continua",
-    detail: "Ajustamos y escalamos con base en resultados reales."
+    title: "Te entregamos el código y la documentación",
+    detail: "Queda tuyo: lo puedes leer, correr y cambiar sin depender de nosotros."
   }
 ];
