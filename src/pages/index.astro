@@ -6,10 +6,9 @@ import Direction from "@/components/sections/Direction.astro";
 import Proof from "@/components/sections/Proof.astro";
 import Process from "@/components/sections/Process.astro";
 import Contact from "@/components/sections/Contact.astro";
-import { faq } from "@/content/faq";
-import { buildOrganizationSchema, buildProfessionalServiceSchema, buildFaqSchema } from "@/lib/seo/schemas";
+import { buildOrganizationSchema, buildProfessionalServiceSchema } from "@/lib/seo/schemas";
 
-const jsonLd = [buildOrganizationSchema(), buildProfessionalServiceSchema(), buildFaqSchema(faq)];
+const jsonLd = [buildOrganizationSchema(), buildProfessionalServiceSchema()];
 ---
 <BaseLayout
   title="ASSSIE | Automatización, IA y Marketing Digital para Empresas"
