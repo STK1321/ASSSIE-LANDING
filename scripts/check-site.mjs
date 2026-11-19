@@ -23,6 +23,18 @@ for (const word of FORBIDDEN) {
   mustNotContain("sitemap.xml", await text("sitemap.xml"), word);
 }
 
+const ATTR = 'href="(#[^"]+|/[^"]*)"';
+// Task 5 empties this list once the redesign sections land.
+const PENDING_IDS = ["que-hacemos", "herramientas", "prueba"];
+const anchors = [...home.matchAll(new RegExp(ATTR, "g"))].map((m) => m[1]);
+for (const href of anchors) {
+  if (href.startsWith("#")) {
+    const id = href.slice(1);
+    if (!home.includes(`id="${id}"`) && id !== "" && !PENDING_IDS.includes(id)) failures.push(`index.html: ${href} has no target`);
+  }
+}
+mustNotContain("index.html", home, "hola@");
+
 const blocks = [...home.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
 if (blocks.length === 0) failures.push("index.html: no JSON-LD");
 const org = blocks.map((m) => JSON.parse(m[1])).find((b) => b["@type"] === "Organization");
