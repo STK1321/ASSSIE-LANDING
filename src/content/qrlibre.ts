@@ -63,7 +63,7 @@ export const qrlibre: QrLibreContent = {
     {
       question: "¿Necesito una cuenta o pagar una mensualidad?",
       answer:
-        "No. El diseño no pide cuenta, no muestra anuncios y no cobra mensualidad. Es software abierto: el código va a quedar a la vista."
+        "El código va a ser abierto. Cuando esté publicado, cualquiera va a poder leerlo, auditarlo y usarlo."
     },
     {
       question: "¿Se conecta a mi cuenta bancaria?",
@@ -73,12 +73,12 @@ export const qrlibre: QrLibreContent = {
     {
       question: "¿Reemplaza el comprobante del banco?",
       answer:
-        "No. El comprobante del banco sigue siendo el documento que vale. QR Libre solo avisa que el pago entró."
+        "QR Libre va a avisar solamente que el pago entró. No va a mover plata ni a conectarse a tu cuenta bancaria."
     },
     {
       question: "¿Qué pasa con mis datos?",
       answer:
-        "Quedan en tu teléfono. La app no envía el contenido de los mensajes a ningún servidor y no pide cuenta."
+        "Van a quedar en tu teléfono. La app no va a enviar el contenido de los mensajes a ningún servidor y no va a pedir cuenta."
     }
   ],
   repo: ""
