@@ -33,6 +33,13 @@ for (const href of anchors) {
     if (!home.includes(`id="${id}"`) && id !== "" && !PENDING_IDS.includes(id)) failures.push(`index.html: ${href} has no target`);
   }
 }
+const h1s = (home.match(/<h1/g) || []).length;
+if (h1s !== 1) failures.push(`index.html: expected 1 h1, found ${h1s}`);
+mustContain("hero headline", home, "Herramientas para el trabajo real");
+mustContain("hero tools cta", home, 'href="#herramientas"');
+mustNotContain("index.html", home, 'href="#seo"');
+mustNotContain("index.html", home, "Enfoque");
+
 mustNotContain("index.html", home, "hola@");
 
 const blocks = [...home.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
