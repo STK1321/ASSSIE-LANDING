@@ -1,0 +1,163 @@
+---
+import ProductLayout from "@/layouts/ProductLayout.astro";
+import Button from "@/components/atoms/Button.astro";
+import Icon from "@/components/atoms/Icon.astro";
+import SectionHeading from "@/components/molecules/SectionHeading.astro";
+import FAQItem from "@/components/molecules/FAQItem.astro";
+import { qrlibre } from "@/content/qrlibre";
+import { site } from "@/content/site";
+
+const accent = "#1d4ed8";
+const canonical = `${site.url}/qr-libre`;
+const whatsappHref = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
+const intro =
+  "QR Libre es una app de Android para el comerciante que cobra por QR y no puede revisar el teléfono en medio de la atención. Está en construcción: todavía no hay una versión instalable. Esto es lo que va a hacer, lo que no hace y en qué va el proyecto.";
+---
+<ProductLayout
+  title={`${qrlibre.name} | ${qrlibre.tagline}`}
+  description="QR Libre es una app de Android en construcción que va a avisar en voz alta cuando entre un pago por QR. No confirma pagos, no se conecta a tu banco y no reemplaza el comprobante."
+  canonical={canonical}
+  accent={accent}
+>
+  <section class="pb-16 pt-12 sm:pt-16">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="reveal space-y-6">
+        <div class="flex flex-wrap items-center gap-3">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--product-accent)]">{qrlibre.name}</p>
+          <span class="rounded-full border border-slate/20 bg-white px-3 py-1 text-xs font-semibold text-slate">{qrlibre.status}</span>
+        </div>
+        <h1 class="font-display text-4xl font-semibold text-ink sm:text-6xl">{qrlibre.tagline}</h1>
+        <p class="max-w-3xl text-lg text-slate">{intro}</p>
+        <p class="text-sm font-semibold text-slate">Un proyecto de {site.name}</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="alcance" class="border-t border-slate/10 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="reveal">
+        <SectionHeading
+          eyebrow="Alcance"
+          title="Qué hace y qué no hace"
+          subtitle="Sin letra pequeña: lo que la app promete y lo que deja por fuera. Los límites importan tanto como las funciones."
+        />
+      </div>
+      <div class="reveal-stagger mt-10 grid gap-6 md:grid-cols-2">
+        {[
+          { kind: "does", title: "Qué hace", items: qrlibre.what, tone: "bg-white" },
+          { kind: "doesNot", title: "Qué no hace", items: qrlibre.notWhat, tone: "bg-surface" }
+        ].map((column, index) => (
+          <div class={`h-full rounded-3xl border border-slate/10 p-6 sm:p-8 ${column.tone}`} style={`--stagger: ${index};`}>
+            <h3 class="font-display text-xl font-semibold text-ink">{column.title}</h3>
+            <ul class="mt-5 space-y-3 text-sm text-slate">
+              {column.items.map((item) => (
+                <li class="flex gap-3">
+                  {column.kind === "does" ? (
+                    <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--product-accent)]" />
+                  ) : (
+                    <span class="mt-2.5 block h-px w-4 shrink-0 bg-slate/50" aria-hidden="true"></span>
+                  )}
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-slate/10 bg-surface py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="reveal">
+        <SectionHeading
+          eyebrow="El recorrido"
+          title="Cómo funciona"
+          subtitle="Tres pasos, de la instalación al aviso en voz alta. Sin configuración técnica ni equipos nuevos."
+        />
+      </div>
+      <ol role="list" class="reveal-stagger mt-10 grid gap-6 md:grid-cols-3">
+        {qrlibre.how.map((step, index) => (
+          <li class="flex h-full flex-col rounded-3xl border border-slate/10 bg-white p-6 shadow-card" style={`--stagger: ${index};`}>
+            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--product-accent)]">Paso {index + 1}</span>
+            <h3 class="mt-3 font-display text-xl font-semibold text-ink">{step.title}</h3>
+            <p class="mt-3 text-sm text-slate">{step.detail}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="border-t border-slate/10 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="reveal">
+        <SectionHeading
+          eyebrow="Dónde va el proyecto"
+          title="Estado"
+          subtitle="Qué existe hoy y cuándo se actualizó esta página."
+        />
+      </div>
+      <div class="reveal-stagger mt-10 grid gap-6 md:grid-cols-[1.2fr_1fr]">
+        <div class="rounded-3xl border border-slate/10 bg-white p-6 sm:p-8" style="--stagger: 0;">
+          <dl class="grid gap-6 sm:grid-cols-2">
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Estado</dt>
+              <dd class="mt-2 text-base font-semibold text-ink">{qrlibre.status}</dd>
+            </div>
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Última actualización</dt>
+              <dd class="mt-2 text-base font-semibold text-ink">{qrlibre.updated}</dd>
+            </div>
+          </dl>
+          <p class="mt-6 text-sm text-slate">
+            Todavía no hay una versión instalable. Cuando la haya, el botón de descarga va a estar en esta sección.
+          </p>
+        </div>
+        <div class="rounded-3xl border border-dashed border-slate/30 bg-surface p-6 sm:p-8" style="--stagger: 1;">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Código</p>
+          {qrlibre.repo ? (
+            <div class="mt-3 space-y-3">
+              <p class="text-sm text-slate">El código está abierto: puedes leerlo, copiarlo y adaptarlo.</p>
+              <Button href={qrlibre.repo} target="_blank" rel="noopener">Ver el repositorio</Button>
+            </div>
+          ) : (
+            <div class="mt-3 space-y-3">
+              <p class="text-sm text-slate">El repositorio todavía no está público. Cuando abramos el código, el enlace va a estar aquí.</p>
+              <Button as="button" type="button" variant="ghost" disabled aria-disabled="true" class="cursor-not-allowed opacity-60">
+                Repositorio
+              </Button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-slate/10 bg-surface py-16 sm:py-20">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="reveal">
+        <SectionHeading eyebrow="Preguntas" title="Preguntas frecuentes" />
+      </div>
+      <div class="reveal-stagger mt-10 grid gap-4">
+        {qrlibre.faq.map((item, index) => (
+          <div style={`--stagger: ${index};`}>
+            <FAQItem item={item} />
+          </div>
+        ))}
+      </div>
+      <p class="mt-8 text-sm text-slate">
+        Si tu pregunta no está aquí,
+        <a class="inline-flex items-center gap-2 font-semibold text-[color:var(--product-accent)] hover:underline" href={whatsappHref} target="_blank" rel="noopener">
+          <Icon name="whatsapp" class="h-4 w-4" />
+          escríbenos por WhatsApp
+        </a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="mx-auto max-w-6xl px-6">
+      <a href="/" class="text-sm font-semibold text-slate hover:text-[color:var(--product-accent)]">Un proyecto de {site.name}</a>
+    </div>
+  </section>
+</ProductLayout>

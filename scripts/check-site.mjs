@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 const DIST = "dist";
 const ORIGIN = "https://asssie.co";
-const REQUIRED_ROUTES = ["index.html"];
+const REQUIRED_ROUTES = ["index.html", "qr-libre/index.html"];
 const FORBIDDEN = ["asssie.com", "Descripción corta", "Ver +1 mas", "soluciones integrales", "transformación digital"];
 const failures = [];
 
@@ -60,6 +60,14 @@ else {
   if (org.url !== ORIGIN) failures.push(`Organization.url is ${org.url}`);
   if ("email" in org) failures.push("Organization must not publish an email");
 }
+
+const product = await text("qr-libre/index.html");
+mustContain("qr-libre canonical", product, `<link rel="canonical" href="${ORIGIN}/qr-libre"`);
+mustContain("qr-libre h1", product, "<h1");
+mustContain("qr-libre status", product, "En construcción");
+mustContain("qr-libre limits", product, "no confirma");
+mustContain("qr-libre nav prefix", product, 'href="/#herramientas"');
+mustNotContain("qr-libre.html", product, 'href="#herramientas"');
 
 if (failures.length) { console.error(failures.join("\n")); process.exit(1); }
 console.log(`ok — ${REQUIRED_ROUTES.length} routes checked`);
