@@ -1,15 +1,10 @@
 export const site = {
   name: "ASSSIE",
-  slogan: "Automatización, datos e IA para escalar tu negocio",
-  url: "https://asssie.com",
-  email: "hola@asssie.com",
+  slogan: "Herramientas para el trabajo real",
+  url: "https://asssie.co",
   whatsapp: "+573186933354",
-  address: "Sibaté, Cundinamarca, Colombia",
-  social: {
-    linkedin: "https://www.linkedin.com/in/erik-rojas-a10858180/",
-    instagram: "https://www.instagram.com/",
-    tiktok: "https://www.tiktok.com/"
-  },
+  address: { locality: "Sibaté", region: "Cundinamarca", country: "CO" },
+  github: "",
+  social: {},
   locale: "es",
-  locales: ["es"]
 };
