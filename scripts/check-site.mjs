@@ -11,6 +11,8 @@ const text = async (p) => readFile(join(DIST, p), "utf8");
 const mustContain = (name, haystack, needle) => { if (!haystack.includes(needle)) failures.push(`${name}: missing ${needle}`); };
 const mustNotContain = (name, haystack, needle) => { if (haystack.includes(needle)) failures.push(`${name}: contains ${needle}`); };
 
+REQUIRED_ROUTES.push("privacidad/index.html", "qr-libre/privacidad/index.html");
+
 for (const route of REQUIRED_ROUTES) {
   try { await access(join(DIST, route)); } catch { failures.push(`route missing: ${route}`); }
 }
@@ -68,6 +70,9 @@ mustContain("qr-libre status", product, "En construcción");
 mustContain("qr-libre limits", product, "no confirma");
 mustContain("qr-libre nav prefix", product, 'href="/#herramientas"');
 mustNotContain("qr-libre.html", product, 'href="#herramientas"');
+
+mustContain("footer privacy link", home, 'href="/privacidad"');
+mustContain("app privacy link", product, 'href="/qr-libre/privacidad"');
 
 if (failures.length) { console.error(failures.join("\n")); process.exit(1); }
 console.log(`ok — ${REQUIRED_ROUTES.length} routes checked`);
