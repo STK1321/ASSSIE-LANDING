@@ -21,5 +21,5 @@ export const direction: { intro: string; steps: DirectionStep[]; closing: string
     }
   ],
   closing:
-    "Nada de esto pide cuenta, anuncios ni depender de nosotros. El código es abierto; si un día no estamos, sigue funcionando."
+    "Nada de esto pide cuenta, anuncios ni depender de nosotros. El código va a ser abierto; si un día no estamos, va a seguir funcionando."
 };
