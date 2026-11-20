@@ -1,0 +1,21 @@
+# ASSSIE
+
+ASSSIE construye herramientas para el trabajo real: software propio y abierto para el comercio que cobra por QR y para la empresa chica que vive en tres Excel.
+
+## Páginas
+
+- https://asssie.co/ — Qué construye ASSSIE, las herramientas públicas y cómo trabajar con nosotros.
+- https://asssie.co/qr-libre — QR Libre: app de Android en construcción que va a avisar en voz alta cuando entre un pago por QR.
+- https://asssie.co/privacidad — Qué datos pide el sitio y cómo se tratan.
+- https://asssie.co/qr-libre/privacidad — Privacidad de la app QR Libre.
+
+## Contacto
+
+WhatsApp: +573186933354
+https://wa.me/573186933354
+
+## Código
+
+El repositorio de QR Libre todavía no es público. Cuando se publique, va a ser abierto bajo licencia MIT.
+
+Última actualización: 2026-11-19

@@ -6,18 +6,29 @@ import SectionHeading from "@/components/molecules/SectionHeading.astro";
 import FAQItem from "@/components/molecules/FAQItem.astro";
 import { qrlibre } from "@/content/qrlibre";
 import { site } from "@/content/site";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildSoftwareApplicationSchema
+} from "@/lib/seo/schemas";
 
 const accent = "#1d4ed8";
 const canonical = `${site.url}/qr-libre`;
 const whatsappHref = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
 const intro =
   "QR Libre es una app de Android para el comerciante que cobra por QR y no puede revisar el teléfono en medio de la atención. Está en construcción: todavía no hay una versión instalable. Esto es lo que va a hacer, lo que no hace y en qué va el proyecto.";
+const jsonLd = [
+  buildSoftwareApplicationSchema(),
+  buildFaqSchema(qrlibre.faq),
+  buildBreadcrumbSchema("/qr-libre", qrlibre.name)
+];
 ---
 <ProductLayout
   title={`${qrlibre.name} | ${qrlibre.tagline}`}
   description="QR Libre es una app de Android en construcción que va a avisar en voz alta cuando entre un pago por QR. No confirma pagos, no se conecta a tu banco y no reemplaza el comprobante."
   canonical={canonical}
   accent={accent}
+  jsonLd={jsonLd}
 >
   <section class="pb-16 pt-12 sm:pt-16">
     <div class="mx-auto max-w-4xl px-6">

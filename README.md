@@ -64,10 +64,10 @@ Para cambiar el número, edita `site.whatsapp` en `src/content/site.ts`.
 ## SEO técnico
 
 - Meta tags, Open Graph y Twitter Cards: `src/layouts/BaseLayout.astro`
-- JSON-LD (Organization, ProfessionalService, FAQPage): `src/lib/seo/schemas.ts`
+- JSON-LD (Organization, WebSite, SoftwareApplication, FAQPage, BreadcrumbList): `src/lib/seo/schemas.ts`
 - Helper SEO: `src/lib/seo/seo.ts`
-- `public/robots.txt` y `public/sitemap.xml`
-- Imagen OG: `public/og-image.svg`
+- `public/robots.txt`, `public/sitemap.xml` y `public/llms.txt`
+- Imagen OG: `public/og-image.png` (1200×630)
 
 ## Deploy recomendado
 
@@ -76,8 +76,8 @@ Para cambiar el número, edita `site.whatsapp` en `src/content/site.ts`.
 ## Checklist
 
 - [ ] Ajustar `site.url` en `src/content/site.ts` y `astro.config.mjs`
-- [ ] Actualizar `public/og-image.svg`
-- [ ] Completar `public/sitemap.xml` con futuras páginas
+- [ ] Actualizar `public/og-image.png`
+- [ ] Completar `public/sitemap.xml` y `public/llms.txt` con futuras páginas
 - [ ] Verificar metadatos por página
 - [ ] Validar accesibilidad y Core Web Vitals
 - [ ] Configurar analytics (GA4/Tag Manager)

@@ -6,13 +6,13 @@ import Direction from "@/components/sections/Direction.astro";
 import Proof from "@/components/sections/Proof.astro";
 import Process from "@/components/sections/Process.astro";
 import Contact from "@/components/sections/Contact.astro";
-import { buildOrganizationSchema, buildProfessionalServiceSchema } from "@/lib/seo/schemas";
+import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/seo/schemas";
 
-const jsonLd = [buildOrganizationSchema(), buildProfessionalServiceSchema()];
+const jsonLd = [buildOrganizationSchema(), buildWebSiteSchema()];
 ---
 <BaseLayout
-  title="ASSSIE | Automatización, IA y Marketing Digital para Empresas"
-  description="Agencia de automatización, datos e IA para PYMES en crecimiento. Marketing digital medible, desarrollo a medida y optimización de procesos en Latam."
+  title="ASSSIE | Herramientas para el trabajo real"
+  description="Software propio y trabajo a medida para el comercio que cobra por QR y la empresa chica que vive en tres Excel. Código abierto, sin cuenta y sin anuncios."
   jsonLd={jsonLd}
 >
   <Hero />

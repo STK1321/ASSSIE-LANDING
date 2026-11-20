@@ -56,12 +56,21 @@ mustNotContain("index.html", home, "hola@");
 
 const blocks = [...home.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
 if (blocks.length === 0) failures.push("index.html: no JSON-LD");
-const org = blocks.map((m) => JSON.parse(m[1])).find((b) => b["@type"] === "Organization");
+const homeBlocks = blocks.map((m) => JSON.parse(m[1]));
+const org = homeBlocks.find((b) => b["@type"] === "Organization");
 if (!org) failures.push("index.html: no Organization schema");
 else {
   if (org.url !== ORIGIN) failures.push(`Organization.url is ${org.url}`);
   if ("email" in org) failures.push("Organization must not publish an email");
+  if (org.address?.["@type"] !== "PostalAddress") failures.push("Organization needs a PostalAddress");
+  if (org.contactPoint?.["@type"] !== "ContactPoint") failures.push("Organization needs a ContactPoint");
+  if (org.contactPoint?.contactType !== "sales") failures.push("Organization contactPoint.contactType must be sales");
+  if (!org.contactPoint?.telephone) failures.push("Organization contactPoint needs a telephone");
+  if ("sameAs" in org && (!Array.isArray(org.sameAs) || org.sameAs.length === 0)) failures.push("Organization.sameAs must be omitted when there is no profile");
 }
+const website = homeBlocks.find((b) => b["@type"] === "WebSite");
+if (!website) failures.push("index.html: no WebSite schema");
+else if (website.url !== ORIGIN || website.name !== "ASSSIE") failures.push("WebSite name/url are wrong");
 
 const product = await text("qr-libre/index.html");
 mustContain("qr-libre canonical", product, `<link rel="canonical" href="${ORIGIN}/qr-libre"`);
@@ -70,6 +79,34 @@ mustContain("qr-libre status", product, "En construcción");
 mustContain("qr-libre limits", product, "no confirma");
 mustContain("qr-libre nav prefix", product, 'href="/#herramientas"');
 mustNotContain("qr-libre.html", product, 'href="#herramientas"');
+
+const productBlocks = [...product.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
+const app = productBlocks.find((b) => b["@type"] === "SoftwareApplication");
+if (!app) failures.push("qr-libre: no SoftwareApplication schema");
+else {
+  if (app.isAccessibleForFree !== true) failures.push("SoftwareApplication.isAccessibleForFree must be true");
+  if (!("license" in app)) failures.push("SoftwareApplication needs a license");
+  if ("codeRepository" in app) failures.push("SoftwareApplication must omit codeRepository while the repo is private");
+  if ("installUrl" in app) failures.push("SoftwareApplication must omit installUrl while the app is not installable");
+}
+const productFaq = productBlocks.find((b) => b["@type"] === "FAQPage");
+if (!productFaq) failures.push("qr-libre: no FAQPage schema");
+else if (productFaq.mainEntity?.length !== 5) failures.push(`qr-libre FAQPage has ${productFaq.mainEntity?.length ?? 0} questions`);
+const breadcrumb = productBlocks.find((b) => b["@type"] === "BreadcrumbList");
+if (!breadcrumb) failures.push("qr-libre: no BreadcrumbList schema");
+else if (breadcrumb.itemListElement?.length !== 2) failures.push("BreadcrumbList must have exactly two ListItems");
+
+const optionalText = async (p) => { try { return await text(p); } catch { failures.push(`missing dist/${p}`); return ""; } };
+
+mustContain("og image", home, 'property="og:image" content="https://asssie.co/og-image.png"');
+mustContain("twitter image", product, 'name="twitter:image" content="https://asssie.co/og-image.png"');
+mustContain("llms", await optionalText("llms.txt"), "/qr-libre");
+
+const sitemap = await text("sitemap.xml");
+const expectedLocs = [`${ORIGIN}/`, `${ORIGIN}/qr-libre`, `${ORIGIN}/privacidad`, `${ORIGIN}/qr-libre/privacidad`];
+const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+if (locs.length !== expectedLocs.length) failures.push(`sitemap.xml: expected ${expectedLocs.length} urls, found ${locs.length}`);
+for (const loc of expectedLocs) mustContain("sitemap", sitemap, `<loc>${loc}</loc>`);
 
 mustContain("footer privacy link", home, 'href="/privacidad"');
 mustContain("app privacy link", product, 'href="/qr-libre/privacidad"');
