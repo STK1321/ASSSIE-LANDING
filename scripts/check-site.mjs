@@ -1,29 +1,95 @@
-import { readFile, access } from "node:fs/promises";
-import { join } from "node:path";
+import { readFile, access, readdir } from "node:fs/promises";
+import { extname, join, relative, sep } from "node:path";
 
 const DIST = "dist";
 const ORIGIN = "https://asssie.co";
-const REQUIRED_ROUTES = ["index.html", "qr-libre/index.html"];
+const REQUIRED_ROUTES = [
+  "index.html",
+  "qr-libre/index.html",
+  "privacidad/index.html",
+  "qr-libre/privacidad/index.html",
+];
 const FORBIDDEN = ["asssie.com", "Descripción corta", "Ver +1 mas", "soluciones integrales", "transformación digital"];
+// Strings the redesign removed. They must not survive on any page, not only the home.
+const LEGACY = [...FORBIDDEN, "1️⃣", "Plan mensual"];
+const TEXT_EXTENSIONS = new Set([".html", ".txt", ".xml", ".svg", ".css", ".js", ".json"]);
 const failures = [];
 
-const text = async (p) => readFile(join(DIST, p), "utf8");
 const mustContain = (name, haystack, needle) => { if (!haystack.includes(needle)) failures.push(`${name}: missing ${needle}`); };
 const mustNotContain = (name, haystack, needle) => { if (haystack.includes(needle)) failures.push(`${name}: contains ${needle}`); };
+const mustNotContainCI = (name, haystack, needle) => {
+  if (haystack.toLowerCase().includes(needle.toLowerCase())) failures.push(`${name}: contains ${needle}`);
+};
 
-REQUIRED_ROUTES.push("privacidad/index.html", "qr-libre/privacidad/index.html");
+// Every dist read goes through here. A missing file becomes a named failure
+// instead of an unhandled ENOENT that hides the assertions after it.
+const readDist = async (p) => {
+  try {
+    return await readFile(join(DIST, p), "utf8");
+  } catch {
+    failures.push(`dist/${p}: missing or unreadable`);
+    return "";
+  }
+};
+
+const listFiles = async (dir) => {
+  const entries = await readdir(dir, { withFileTypes: true });
+  const files = [];
+  for (const entry of entries) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) files.push(...(await listFiles(full)));
+    else files.push(full);
+  }
+  return files;
+};
 
 for (const route of REQUIRED_ROUTES) {
   try { await access(join(DIST, route)); } catch { failures.push(`route missing: ${route}`); }
 }
 
-const home = await text("index.html");
-mustContain("index canonical", home, `<link rel="canonical" href="${ORIGIN}/"`);
-for (const word of FORBIDDEN) {
-  mustNotContain("index.html", home, word);
-  mustNotContain("robots.txt", await text("robots.txt"), word);
-  mustNotContain("sitemap.xml", await text("sitemap.xml"), word);
+let distFiles = [];
+try { distFiles = await listFiles(DIST); } catch { failures.push(`dist/: missing or unreadable; run npm run build first`); }
+
+const rel = (file) => relative(DIST, file).split(sep).join("/");
+const pages = new Map();
+for (const file of distFiles.filter((f) => extname(f) === ".html")) {
+  pages.set(rel(file), await readDist(rel(file)));
 }
+const textFiles = distFiles.filter((f) => TEXT_EXTENSIONS.has(extname(f).toLowerCase()));
+const home = pages.get("index.html") ?? "";
+
+// Any string the old site shipped must be gone from every page and from llms.txt.
+for (const target of [...pages.keys(), "llms.txt"]) {
+  const content = target === "llms.txt" ? await readDist("llms.txt") : pages.get(target);
+  for (const word of LEGACY) mustNotContain(target, content, word);
+}
+for (const target of ["robots.txt", "sitemap.xml"]) {
+  const content = await readDist(target);
+  for (const word of FORBIDDEN) mustNotContain(target, content, word);
+}
+
+// A template that leaked a raw object is a real bug; it must never ship.
+for (const file of distFiles) {
+  const name = rel(file);
+  mustNotContain(`${name} [object Object]`, await readDist(name), "[object Object]");
+}
+
+// There is no email contact anywhere: WhatsApp is the only channel.
+for (const file of textFiles) {
+  const name = rel(file);
+  const content = await readDist(name);
+  mustNotContainCI(`${name} email`, content, "mailto:");
+  mustNotContainCI(`${name} email`, content, "email");
+}
+
+// FAQPage is valid only on the QR Libre page; it was removed from the home.
+for (const [name, content] of pages) {
+  if (name === "qr-libre/index.html") mustContain("qr-libre FAQPage", content, "FAQPage");
+  else mustNotContain(`${name} FAQPage`, content, "FAQPage");
+}
+
+// The home canonical must be exact: a prefix would also match /qr-libre.
+mustContain("index canonical", home, `<link rel="canonical" href="${ORIGIN}/">`);
 
 const ATTR = 'href="(#[^"]+|/[^"]*)"';
 // Task 5 emptied this list once the redesign sections landed. Keep the mechanism
@@ -50,7 +116,6 @@ for (const name of ["Proactive Watch", "Importadora"]) {
   mustContain("index.html", home, name);
 }
 mustNotContain("index.html", home, "Caso A:");
-mustNotContain("index.html", home, "Plan mensual");
 
 mustNotContain("index.html", home, "hola@");
 
@@ -72,13 +137,13 @@ const website = homeBlocks.find((b) => b["@type"] === "WebSite");
 if (!website) failures.push("index.html: no WebSite schema");
 else if (website.url !== ORIGIN || website.name !== "ASSSIE") failures.push("WebSite name/url are wrong");
 
-const product = await text("qr-libre/index.html");
+const product = pages.get("qr-libre/index.html") ?? "";
 mustContain("qr-libre canonical", product, `<link rel="canonical" href="${ORIGIN}/qr-libre"`);
 mustContain("qr-libre h1", product, "<h1");
 mustContain("qr-libre status", product, "En construcción");
 mustContain("qr-libre limits", product, "no confirma");
 mustContain("qr-libre nav prefix", product, 'href="/#herramientas"');
-mustNotContain("qr-libre.html", product, 'href="#herramientas"');
+mustNotContain("qr-libre", product, 'href="#herramientas"');
 
 const productBlocks = [...product.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
 const app = productBlocks.find((b) => b["@type"] === "SoftwareApplication");
@@ -96,13 +161,11 @@ const breadcrumb = productBlocks.find((b) => b["@type"] === "BreadcrumbList");
 if (!breadcrumb) failures.push("qr-libre: no BreadcrumbList schema");
 else if (breadcrumb.itemListElement?.length !== 2) failures.push("BreadcrumbList must have exactly two ListItems");
 
-const optionalText = async (p) => { try { return await text(p); } catch { failures.push(`missing dist/${p}`); return ""; } };
-
 mustContain("og image", home, 'property="og:image" content="https://asssie.co/og-image.png"');
 mustContain("twitter image", product, 'name="twitter:image" content="https://asssie.co/og-image.png"');
-mustContain("llms", await optionalText("llms.txt"), "/qr-libre");
+mustContain("llms", await readDist("llms.txt"), "/qr-libre");
 
-const sitemap = await text("sitemap.xml");
+const sitemap = await readDist("sitemap.xml");
 const expectedLocs = [`${ORIGIN}/`, `${ORIGIN}/qr-libre`, `${ORIGIN}/privacidad`, `${ORIGIN}/qr-libre/privacidad`];
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 if (locs.length !== expectedLocs.length) failures.push(`sitemap.xml: expected ${expectedLocs.length} urls, found ${locs.length}`);
@@ -116,4 +179,4 @@ mustContain("contact fallback", home, "<noscript>");
 mustNotContain("contact endpoint", home, 'action="/api/lead"');
 
 if (failures.length) { console.error(failures.join("\n")); process.exit(1); }
-console.log(`ok — ${REQUIRED_ROUTES.length} routes checked`);
+console.log(`ok — ${REQUIRED_ROUTES.length} routes checked, ${pages.size} pages scanned`);
