@@ -49,7 +49,7 @@ const fallbackHref = waHref(baseMessage);
               </select>
             </div>
             <div class="flex flex-wrap gap-3 pt-2">
-              <Button as="button" type="submit" variant="primary" data-submit>
+              <Button as="button" type="button" variant="primary" data-submit>
                 Enviar por WhatsApp
               </Button>
             </div>
@@ -141,7 +141,6 @@ const fallbackHref = waHref(baseMessage);
     };
 
     const waHref = (text) => `https://wa.me/${whatsappDigits}?text=${encodeURIComponent(text)}`;
-    const fallbackHref = waHref(baseMessage);
 
     const buildMessage = (values) => {
       const name = String(values.name || "").trim();
@@ -150,7 +149,17 @@ const fallbackHref = waHref(baseMessage);
       const companySize = String(values.companySize || "").trim();
       const whatsapp = String(values.whatsapp || "").trim();
 
-      let message = `Hola, soy ${name}. ${goal}`;
+      let message;
+      if (name && goal) {
+        message = `Hola, soy ${name}. ${goal}`;
+      } else if (name) {
+        message = `Hola, soy ${name}.`;
+      } else if (goal) {
+        message = `Hola, quiero contarles: ${goal}`;
+      } else {
+        message = baseMessage;
+      }
+
       if (company && companySize) {
         message += `\n\nEmpresa: ${company}. Tamaño: ${companySize} personas.`;
       } else if (company) {
@@ -182,22 +191,34 @@ const fallbackHref = waHref(baseMessage);
       }
     };
 
+    // The form has no submit control. With more than one text field, Enter does not
+    // implicitly submit. This guard only catches programmatic submits when JS is on.
     form?.addEventListener("submit", (event) => {
       event.preventDefault();
+    });
+
+    submitButton?.addEventListener("click", () => {
       if (!form || !submitButton) return;
 
       const values = Object.fromEntries(new FormData(form).entries());
       const name = String(values.name || "").trim();
       const goal = String(values.goal || "").trim();
+      const href = waHref(buildMessage(values));
 
-      if (!name || !goal) {
-        setStatus("error", "Escribe tu nombre y tu objetivo para abrir WhatsApp:", fallbackHref);
-        const missing = document.getElementById(name ? "goal" : "name");
-        if (missing instanceof HTMLElement) missing.focus();
+      const missing = [];
+      if (!name) missing.push("tu nombre");
+      if (!goal) missing.push("contar qué necesitas");
+
+      if (missing.length) {
+        const message =
+          missing.length === 2
+            ? "Falta tu nombre y contar qué necesitas."
+            : `Falta ${missing[0]}.`;
+        setStatus("error", message, href);
+        const field = document.getElementById(!name ? "name" : "goal");
+        if (field instanceof HTMLElement) field.focus();
         return;
       }
-
-      const href = waHref(buildMessage(values));
 
       submitButton.setAttribute("disabled", "true");
       setStatus("loading", "Abriendo WhatsApp...");
