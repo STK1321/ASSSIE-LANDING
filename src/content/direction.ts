@@ -7,7 +7,7 @@ export const direction: { intro: string; steps: DirectionStep[]; closing: string
     {
       title: "QR Libre",
       detail:
-        "Empezamos por lo primero: QR Libre avisa en voz alta cuando entra un pago, sin comprar equipos y sin mensualidad."
+        "Empezamos por lo primero: QR Libre va a avisar en voz alta cuando entre un pago, sin comprar equipos y sin mensualidad."
     },
     {
       title: "Conciliación",

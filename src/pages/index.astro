@@ -6,13 +6,13 @@ import Direction from "@/components/sections/Direction.astro";
 import Proof from "@/components/sections/Proof.astro";
 import Process from "@/components/sections/Process.astro";
 import Contact from "@/components/sections/Contact.astro";
-import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/seo/schemas";
+import { buildOrganizationSchema, buildServiceSchema, buildWebSiteSchema } from "@/lib/seo/schemas";
 
-const jsonLd = [buildOrganizationSchema(), buildWebSiteSchema()];
+const jsonLd = [buildOrganizationSchema(), buildWebSiteSchema(), ...buildServiceSchema()];
 ---
 <BaseLayout
   title="ASSSIE | Herramientas para el trabajo real"
-  description="Software propio y trabajo a medida para el comercio que cobra por QR y la empresa chica que vive en tres Excel. Código abierto, sin cuenta y sin anuncios."
+  description="Software propio y trabajo a medida para el comercio que cobra por QR y la empresa chica que vive en tres Excel. Código abierto cuando se publique, sin cuenta y sin anuncios."
   jsonLd={jsonLd}
 >
   <Hero />

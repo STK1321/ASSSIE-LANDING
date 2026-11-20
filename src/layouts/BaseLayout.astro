@@ -47,6 +47,9 @@ const jsonLdItems = jsonLd as Record<string, unknown>[];
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Work+Sans:wght@400;600&display=swap"
       />
     </noscript>
+    <noscript>
+      <style>.reveal,.reveal-stagger>*{opacity:1!important;transform:none!important}</style>
+    </noscript>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{seo.title}</title>
@@ -60,6 +63,12 @@ const jsonLdItems = jsonLd as Record<string, unknown>[];
     <meta property="og:description" content={seo.description} />
     <meta property="og:url" content={seo.canonical} />
     <meta property="og:image" content={seo.image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Tarjeta de ASSSIE: el nombre, el lema Herramientas para el trabajo real y el sitio asssie.co."
+    />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={seo.title} />

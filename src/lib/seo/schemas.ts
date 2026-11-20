@@ -1,5 +1,6 @@
 import { site } from "@/content/site";
 import { qrlibre } from "@/content/qrlibre";
+import { capabilities } from "@/content/capabilities";
 
 export type FaqSchemaItem = {
   question: string;
@@ -13,7 +14,7 @@ export const buildOrganizationSchema = () => ({
   "@type": "Organization",
   name: site.name,
   url: site.url,
-  logo: `${site.url}/og-image.png`,
+  logo: `${site.url}/logo.png`,
   description: site.slogan,
   address: {
     "@type": "PostalAddress",
@@ -36,6 +37,22 @@ export const buildWebSiteSchema = () => ({
   name: site.name,
   url: site.url
 });
+
+// Each capability is a service the organization offers. The provider names and
+// links the same Organization published on the home, without a nested copy of
+// the address block.
+export const buildServiceSchema = () =>
+  capabilities.map((capability) => ({
+    "@context": CONTEXT,
+    "@type": "Service",
+    name: capability.problem,
+    description: capability.detail,
+    provider: {
+      "@type": "Organization",
+      name: site.name,
+      url: site.url
+    }
+  }));
 
 export const buildSoftwareApplicationSchema = () => ({
   "@context": CONTEXT,

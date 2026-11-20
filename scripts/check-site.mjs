@@ -138,7 +138,7 @@ if (!website) failures.push("index.html: no WebSite schema");
 else if (website.url !== ORIGIN || website.name !== "ASSSIE") failures.push("WebSite name/url are wrong");
 
 const product = pages.get("qr-libre/index.html") ?? "";
-mustContain("qr-libre canonical", product, `<link rel="canonical" href="${ORIGIN}/qr-libre"`);
+mustContain("qr-libre canonical", product, `<link rel="canonical" href="${ORIGIN}/qr-libre">`);
 mustContain("qr-libre h1", product, "<h1");
 mustContain("qr-libre status", product, "En construcción");
 mustContain("qr-libre limits", product, "no confirma");
@@ -161,8 +161,16 @@ const breadcrumb = productBlocks.find((b) => b["@type"] === "BreadcrumbList");
 if (!breadcrumb) failures.push("qr-libre: no BreadcrumbList schema");
 else if (breadcrumb.itemListElement?.length !== 2) failures.push("BreadcrumbList must have exactly two ListItems");
 
-mustContain("og image", home, 'property="og:image" content="https://asssie.co/og-image.png"');
-mustContain("twitter image", product, 'name="twitter:image" content="https://asssie.co/og-image.png"');
+mustContain("og image", home, 'property="og:image" content="https://asssie.co/og-image.jpg"');
+mustContain("twitter image", product, 'name="twitter:image" content="https://asssie.co/og-image.jpg"');
+
+// The preview asset must be a real JPEG under WhatsApp's 600 KB cap.
+const ogJpg = await readFile(join(DIST, "og-image.jpg")).catch(() => null);
+if (!ogJpg) failures.push("dist/og-image.jpg: missing or unreadable");
+else {
+  if (ogJpg[0] !== 0xff || ogJpg[1] !== 0xd8) failures.push("dist/og-image.jpg: not a JPEG (missing FF D8 signature)");
+  if (ogJpg.length >= 600 * 1024) failures.push(`dist/og-image.jpg: ${ogJpg.length} bytes, must be under 600 KB`);
+}
 mustContain("llms", await readDist("llms.txt"), "/qr-libre");
 
 const sitemap = await readDist("sitemap.xml");
@@ -174,8 +182,12 @@ for (const loc of expectedLocs) mustContain("sitemap", sitemap, `<loc>${loc}</lo
 mustContain("footer privacy link", home, 'href="/privacidad"');
 mustContain("app privacy link", product, 'href="/qr-libre/privacidad"');
 
-mustContain("contact whatsapp", home, "wa.me");
-mustContain("contact fallback", home, "<noscript>");
+// Scope the contact assertions to the contact section: the layout's font
+// <noscript> in <head> must not be able to satisfy the no-JS fallback check.
+const contactStart = home.indexOf('id="contacto"');
+const contact = contactStart >= 0 ? home.slice(contactStart) : "";
+mustContain("contact whatsapp", contact, "wa.me");
+mustContain("contact fallback", contact, "<noscript>");
 mustNotContain("contact endpoint", home, 'action="/api/lead"');
 
 if (failures.length) { console.error(failures.join("\n")); process.exit(1); }
