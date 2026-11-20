@@ -197,7 +197,7 @@ const fallbackHref = waHref(baseMessage);
       event.preventDefault();
     });
 
-    submitButton?.addEventListener("click", () => {
+    const submitToWhatsApp = () => {
       if (!form || !submitButton) return;
 
       const values = Object.fromEntries(new FormData(form).entries());
@@ -232,6 +232,17 @@ const fallbackHref = waHref(baseMessage);
       } finally {
         submitButton.removeAttribute("disabled");
       }
+    };
+
+    submitButton?.addEventListener("click", submitToWhatsApp);
+
+    // Enter in a single-line field does the same as the button. The textarea keeps
+    // Enter for new lines, and the select and button keep their native behavior.
+    form?.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" || event.isComposing || event.repeat) return;
+      if (!(event.target instanceof HTMLInputElement)) return;
+      event.preventDefault();
+      submitToWhatsApp();
     });
   </script>
 </section>

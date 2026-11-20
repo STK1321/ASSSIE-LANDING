@@ -1,6 +1,6 @@
 # ASSSIE
 
-ASSSIE construye herramientas para el trabajo real: software propio y abierto para el comercio que cobra por QR y para la empresa chica que vive en tres Excel.
+ASSSIE construye herramientas para el trabajo real: software propio que va a publicarse abierto, para el comercio que cobra por QR y para la empresa chica que vive en tres Excel.
 
 ## Páginas
 
