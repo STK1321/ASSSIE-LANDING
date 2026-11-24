@@ -1,0 +1,22 @@
+---
+import SectionHeading from "@/components/molecules/SectionHeading.astro";
+import ProofCard from "@/components/molecules/ProofCard.astro";
+import { proof } from "@/content/proof";
+---
+<section id="prueba" class="py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="reveal">
+      <SectionHeading
+        title="La prueba"
+        subtitle="Antes de contarte lo que podemos hacer, mira lo que ya hicimos. Dos operaciones reales corren con software que construimos: una importadora en Colombia y una empresa de monitoreo de seguridad que atiende propiedades en Estados Unidos. No son escenarios de portafolio ni maquetas; son negocios que abren todos los días."
+      />
+    </div>
+    <div class="reveal-stagger mt-10 grid gap-6 md:grid-cols-2">
+      {proof.map((item, index) => (
+        <div style={`--stagger: ${index};`}>
+          <ProofCard item={item} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

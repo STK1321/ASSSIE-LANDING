@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check:site": "node scripts/check-site.mjs",
+    "verify": "npm run build && npm run check:site",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "astro check"

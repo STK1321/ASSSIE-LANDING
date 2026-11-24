@@ -1,5 +1,18 @@
 ---
 import { site } from "@/content/site";
+
+const here = Astro.url.pathname;
+const link = (href: string) => (here === "/" ? href : `/${href}`);
+
+const nav = [
+  { label: "Qué hacemos", href: "#que-hacemos" },
+  { label: "Herramientas", href: "#herramientas" },
+  { label: "La prueba", href: "#prueba" },
+  { label: "Cómo trabajamos", href: "#proceso" },
+  { label: "Contacto", href: "#contacto" },
+];
+
+const whatsappHref = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
 ---
 <footer class="border-t border-slate/10 bg-white">
   <div class="mx-auto max-w-6xl px-6 py-12">
@@ -11,32 +24,29 @@ import { site } from "@/content/site";
             <p class="text-xs text-slate">{site.slogan}</p>
           </div>
         </div>
-        <p class="text-sm text-slate">
-          Agencia de automatización, datos e IA para empresas en crecimiento.
-        </p>
         <p class="text-xs text-slate">(c) {new Date().getFullYear()} {site.name}. Todos los derechos reservados.</p>
       </div>
       <div class="space-y-3">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Secciones</p>
         <div class="flex flex-col gap-2 text-sm font-semibold text-slate">
-          <a href="#servicios" class="hover:text-accent">Servicios</a>
-          <a href="#proceso" class="hover:text-accent">Proceso</a>
-          <a href="#planes" class="hover:text-accent">Planes</a>
-          <a href="#contacto" class="hover:text-accent">Contacto</a>
+          {nav.map((item) => (
+            <a href={link(item.href)} class="hover:text-accent">{item.label}</a>
+          ))}
         </div>
       </div>
       <div class="space-y-3">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Contacto</p>
         <div class="flex flex-col gap-2 text-sm text-slate">
-          <span>{site.email}</span>
-          <span>{site.whatsapp}</span>
+          <a href={whatsappHref} target="_blank" rel="noopener" class="font-semibold hover:text-accent">{site.whatsapp}</a>
+          <span>{site.address.locality}, {site.address.region}</span>
         </div>
-        <div class="flex flex-wrap gap-4 text-sm font-semibold text-slate">
-          <a href={site.social.linkedin} target="_blank" rel="noopener" class="hover:text-accent">LinkedIn</a>
-          <a href={site.social.instagram} target="_blank" rel="noopener" class="hover:text-accent">Instagram</a>
-          <a href={site.social.tiktok} target="_blank" rel="noopener" class="hover:text-accent">TikTok</a>
+        <div class="flex flex-col gap-2 text-xs text-slate">
+          <a href="/privacidad" class="hover:text-accent">Política de privacidad</a>
+          <a href="/qr-libre/privacidad" class="hover:text-accent">Privacidad de QR Libre</a>
+          {site.github && (
+            <a href={site.github} target="_blank" rel="noopener" class="hover:text-accent">GitHub</a>
+          )}
         </div>
-        <span class="text-xs text-slate">Política de privacidad y términos.</span>
       </div>
     </div>
   </div>

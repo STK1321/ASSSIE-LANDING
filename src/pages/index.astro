@@ -1,31 +1,24 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
-import Services from "@/components/sections/Services.astro";
+import Capabilities from "@/components/sections/Capabilities.astro";
+import Direction from "@/components/sections/Direction.astro";
+import Proof from "@/components/sections/Proof.astro";
 import Process from "@/components/sections/Process.astro";
-import Cases from "@/components/sections/Cases.astro";
-import Plans from "@/components/sections/Plans.astro";
-import Stack from "@/components/sections/Stack.astro";
-import SeoPromise from "@/components/sections/SeoPromise.astro";
-import FAQ from "@/components/sections/FAQ.astro";
 import Contact from "@/components/sections/Contact.astro";
-import { faq } from "@/content/faq";
-import { buildOrganizationSchema, buildProfessionalServiceSchema, buildFaqSchema } from "@/lib/seo/schemas";
+import { buildOrganizationSchema, buildServiceSchema, buildWebSiteSchema } from "@/lib/seo/schemas";
 
-const jsonLd = [buildOrganizationSchema(), buildProfessionalServiceSchema(), buildFaqSchema(faq)];
+const jsonLd = [buildOrganizationSchema(), buildWebSiteSchema(), ...buildServiceSchema()];
 ---
 <BaseLayout
-  title="ASSSIE | Automatización, IA y Marketing Digital para Empresas"
-  description="Agencia de automatización, datos e IA para PYMES en crecimiento. Marketing digital medible, desarrollo a medida y optimización de procesos en Latam."
+  title="ASSSIE | Herramientas para el trabajo real"
+  description="Software propio y trabajo a medida para el comercio que cobra por QR y la empresa chica que vive en tres Excel. Código abierto cuando se publique, sin cuenta y sin anuncios."
   jsonLd={jsonLd}
 >
   <Hero />
-  <Services />
+  <Capabilities />
+  <Direction />
+  <Proof />
   <Process />
-  <Cases />
-  <Plans />
-  <Stack />
-  <SeoPromise />
-  <FAQ />
   <Contact />
 </BaseLayout>

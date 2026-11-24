@@ -1,0 +1,92 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site } from "@/content/site";
+
+const canonical = `${site.url}/privacidad`;
+const updated = "2026-11-19";
+const updatedLabel = "19 de noviembre de 2026";
+const whatsappHref = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
+const whatsappLabel = "+57 318 693 3354";
+---
+<BaseLayout
+  title="Privacidad | ASSSIE"
+  description="Qué datos pide el formulario de ASSSIE, cómo se envían por WhatsApp y cómo pedir que se borren."
+  canonical={canonical}
+>
+  <section class="pb-10 pt-12 sm:pt-16">
+    <div class="mx-auto max-w-3xl px-6">
+      <div class="reveal space-y-5">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Privacidad</p>
+        <h1 class="font-display text-4xl font-semibold text-ink sm:text-5xl">Qué hacemos con tus datos</h1>
+        <p class="text-lg text-slate">
+          Cuando llenas el formulario de contacto, esto es lo que pasa con lo que escribes. Es corta a propósito.
+        </p>
+        <p class="text-sm text-slate">
+          Última actualización: <time datetime={updated}>{updatedLabel}</time>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-slate/10 py-12 sm:py-16">
+    <div class="mx-auto max-w-3xl space-y-10 px-6">
+      <div class="reveal space-y-3">
+        <h2 class="font-display text-2xl font-semibold text-ink">Quién responde</h2>
+        <p class="text-slate">
+          ASSSIE, en {site.address.locality}, {site.address.region}. Somos quienes reciben tu mensaje y te contestan.
+        </p>
+      </div>
+
+      <div class="reveal space-y-3">
+        <h2 class="font-display text-2xl font-semibold text-ink">Qué pide el formulario</h2>
+        <p class="text-slate">
+          Tu nombre y lo que necesitas son obligatorios. Tu empresa, tu número de WhatsApp y el tamaño de la empresa son opcionales; nos ayudan a responderte mejor.
+        </p>
+        <p class="text-slate">
+          También puedes dejar tu número de WhatsApp para que te respondamos por ahí. Es opcional.
+        </p>
+      </div>
+
+      <div class="reveal space-y-3">
+        <h2 class="font-display text-2xl font-semibold text-ink">Cómo llega tu mensaje</h2>
+        <p class="text-slate">
+          El formulario no envía nada a este sitio. Cuando pulsas el botón, se abre WhatsApp con un mensaje ya escrito.
+          Ahí lo revisas y lo envías tú.
+        </p>
+        <p class="text-slate">
+          WhatsApp es un servicio aparte. El mensaje que mandas también se rige por la
+          <a class="font-semibold text-accent hover:underline" href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">
+            política de privacidad de WhatsApp
+          </a>.
+        </p>
+      </div>
+
+      <div class="reveal space-y-3">
+        <h2 class="font-display text-2xl font-semibold text-ink">Servicios externos</h2>
+        <p class="text-slate">
+          Las tipografías de este sitio se cargan desde Google Fonts: para servirlas, Google recibe la dirección IP del visitante y datos del navegador.
+        </p>
+      </div>
+
+      <div class="reveal space-y-3">
+        <h2 class="font-display text-2xl font-semibold text-ink">Qué guardamos</h2>
+        <p class="text-slate">
+          Este sitio no guarda lo que escribes. Cuando envías el mensaje, lo que queda es la conversación de WhatsApp:
+          una copia en tu teléfono y otra en el nuestro.
+        </p>
+      </div>
+
+      <div class="reveal space-y-3">
+        <h2 class="font-display text-2xl font-semibold text-ink">Cómo pedir que lo borremos</h2>
+        <p class="text-slate">
+          Escríbenos por WhatsApp al
+          <a class="font-semibold text-accent hover:underline" href={whatsappHref} target="_blank" rel="noopener">{whatsappLabel}</a>
+          con el nombre que usaste en el formulario y la fecha aproximada. Borramos esa conversación de nuestro lado.
+        </p>
+        <p class="text-slate">
+          La copia que está en tu teléfono la borras tú desde WhatsApp.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

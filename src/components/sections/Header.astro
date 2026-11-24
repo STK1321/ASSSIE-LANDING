@@ -4,23 +4,25 @@ import Icon from "@/components/atoms/Icon.astro";
 import { site } from "@/content/site";
 
 const nav = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Planes", href: "#planes" },
-  { label: "Contacto", href: "#contacto" }
+  { label: "Qué hacemos", href: "#que-hacemos" },
+  { label: "Herramientas", href: "#herramientas" },
+  { label: "La prueba", href: "#prueba" },
+  { label: "Cómo trabajamos", href: "#proceso" },
 ];
+const here = Astro.url.pathname;
+const link = (href: string) => (here === "/" ? href : `/${href}`);
 ---
 <header class="fixed inset-x-0 top-0 z-50 border-b border-slate/10 bg-white/80 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href="#top" class="flex items-center gap-2 font-display text-lg font-semibold text-ink" aria-label="ASSSIE inicio">
+    <a href={link("#top")} class="flex items-center gap-2 font-display text-lg font-semibold text-ink" aria-label="ASSSIE inicio">
       <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-accent text-white">A</span>
       {site.name}
     </a>
     <nav class="hidden items-center gap-6 text-sm font-semibold text-slate md:flex" aria-label="Navegación principal">
       {nav.map((item) => (
-        <a class="hover:text-accent" href={item.href}>{item.label}</a>
+        <a class="hover:text-accent" href={link(item.href)}>{item.label}</a>
       ))}
-      <Button variant="primary" size="sm" href="#contacto">Quiero una propuesta</Button>
+      <Button variant="primary" size="sm" href={link("#contacto")}>Quiero una propuesta</Button>
     </nav>
     <details class="relative md:hidden">
       <summary class="list-none rounded-full border border-slate/20 bg-white p-2" aria-label="Abrir menú">
@@ -29,12 +31,11 @@ const nav = [
       <div class="absolute right-0 mt-3 w-64 rounded-2xl border border-slate/10 bg-white p-4 shadow-card">
         <div class="flex flex-col gap-3 text-sm font-semibold text-slate">
           {nav.map((item) => (
-            <a class="hover:text-accent" href={item.href}>{item.label}</a>
+            <a class="hover:text-accent" href={link(item.href)}>{item.label}</a>
           ))}
-          <Button variant="primary" size="sm" href="#contacto">Agenda una llamada</Button>
+          <Button variant="primary" size="sm" href={link("#contacto")}>Agenda una llamada</Button>
         </div>
       </div>
     </details>
   </div>
 </header>
-

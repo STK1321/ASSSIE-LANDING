@@ -1,8 +1,19 @@
-# ASSSIE Landing Page (Astro)
+# ASSSIE — sitio
 
-Landing page para agencia de automatización, datos e IA. Enfocada en conversión, SEO técnico y performance.
+Sitio de ASSSIE: herramientas de software para el trabajo real. Construimos software para el comercio que cobra por QR y para la empresa chica que vive en tres Excel. QR Libre es la primera herramienta; el trabajo a medida es lo que vendemos.
 
-## Instalación
+Sitio estático en Astro 4 + Tailwind 3. Sin backend, sin CMS y sin dependencias de runtime.
+
+## Rutas
+
+| Ruta | Qué es |
+| --- | --- |
+| `/` | La casa: qué construimos, hacia dónde vamos, la prueba, cómo trabajamos y el formulario de contacto. |
+| `/qr-libre` | La página de QR Libre: qué va a hacer la app, sus límites, el estado del proyecto y las preguntas frecuentes. |
+| `/privacidad` | Qué datos pide el formulario del sitio y cómo llegan a WhatsApp. |
+| `/qr-libre/privacidad` | Qué va a leer y guardar la app QR Libre, y cómo quitarle permisos. |
+
+## Desarrollo
 
 ```bash
 npm install
@@ -11,73 +22,46 @@ npm run dev
 
 ## Scripts
 
-- `npm run dev` - entorno local
-- `npm run build` - build de producción
-- `npm run preview` - previsualización del build
-- `npm run lint` - chequeo de tipos Astro
+- `npm run dev` — entorno local.
+- `npm run build` — build de producción en `dist/`.
+- `npm run preview` — previsualización del build.
+- `npm run verify` — build + verificación del `dist/` construido (el comando que debe pasar antes de publicar).
+- `npm run check:site` — solo la verificación, sin rebuild.
+- `npm run lint` — `astro check` (tipos y diagnósticos de Astro).
 
-## Arquitectura
+## Verificación
 
-```
-src/
- ├─ pages/
- ├─ layouts/
- ├─ components/
- │   ├─ atoms/
- │   ├─ molecules/
- │   └─ sections/
- ├─ content/
- ├─ lib/seo/
- └─ styles/
-public/
-```
+`npm run verify` compila y después corre `scripts/check-site.mjs`, un script de Node sin dependencias que revisa la salida construida:
 
-## Contenido editable
+- que existan las cuatro rutas;
+- el canonical exacto de la home y los enlaces internos con destino;
+- que `asssie.com` y las cadenas heredadas del sitio anterior no aparezcan en ninguna página ni en `llms.txt`, `robots.txt` y `sitemap.xml`;
+- que no haya `[object Object]` ni `mailto:`/email en `dist/`;
+- que `FAQPage` exista solo en `/qr-libre`;
+- los esquemas JSON-LD (Organization, WebSite, SoftwareApplication, FAQPage, BreadcrumbList), el sitemap y los enlaces de privacidad.
 
-- Hero + confianza: `src/components/sections/Hero.astro`
-- Servicios y modales: `src/content/services.ts`
-- Proceso: `src/content/process.ts`
-- Casos tipo: `src/content/cases.ts`
-- Planes: `src/content/plans.ts`
-- FAQ: `src/content/faq.ts`
-- Stack: `src/content/stack.ts`
-- Datos de marca/contacto: `src/content/site.ts`
+Para revisar tipos y diagnósticos de Astro: `npx astro check`.
 
-## Servicios + modal
+## Contenido
 
-El contenido de cada servicio vive en `src/content/services.ts` con estos campos:
+El texto editable vive en `src/content/`:
 
-- `id`, `title`, `subtitle`, `description`
-- `idealFor[]`, `benefits[]`, `scope[]`, `deliverables[]`
-- `typicalTimeline`, `modalCtaLabel`
+- `site.ts` — nombre, slogan, dominio canónico, WhatsApp y dirección.
+- `capabilities.ts` — los tres problemas que resuelve la casa.
+- `direction.ts` — las herramientas y hacia dónde va el trabajo.
+- `proof.ts` — las dos operaciones reales que usan software construido por ASSSIE.
+- `process.ts` — los tres pasos de trabajo.
+- `qrlibre.ts` — el contenido de QR Libre: alcance, recorrido, estado y preguntas frecuentes.
 
-El modal se renderiza en `src/components/molecules/ServiceModal.astro` y se abre desde los botones "Ver alcance".
+Las páginas están en `src/pages/`, los layouts en `src/layouts/`, las secciones en `src/components/sections/`, las moléculas y átomos en `src/components/`, y el SEO/JSON-LD en `src/lib/seo/`.
 
 ## Formulario
 
-- Endpoint placeholder: `src/pages/api/lead.ts`
-- Formulario con estados (loading/success/error) en `src/components/sections/Contact.astro`
-- Campo oculto `serviceInterest` prellenado desde el modal de servicios
+El formulario de `src/components/sections/Contact.astro` no envía nada a este sitio: compone un mensaje y abre WhatsApp para que lo revises y lo envíes tú. Sin JavaScript, el enlace de `<noscript>` abre WhatsApp con un mensaje base.
 
-Para integrar con Email/CRM/WhatsApp, reemplaza el handler del endpoint o conecta un webhook.
+Para cambiar el número, edita `site.whatsapp` en `src/content/site.ts`.
 
-## SEO técnico
+## Documentación
 
-- Meta tags, Open Graph y Twitter Cards: `src/layouts/BaseLayout.astro`
-- JSON-LD (Organization, ProfessionalService, FAQPage): `src/lib/seo/schemas.ts`
-- Helper SEO: `src/lib/seo/seo.ts`
-- `public/robots.txt` y `public/sitemap.xml`
-- Imagen OG: `public/og-image.svg`
-
-## Deploy recomendado
-
-- Vercel o Netlify
-
-## Checklist
-
-- [ ] Ajustar `site.url` en `src/content/site.ts` y `astro.config.mjs`
-- [ ] Actualizar `public/og-image.svg`
-- [ ] Completar `public/sitemap.xml` con futuras páginas
-- [ ] Verificar metadatos por página
-- [ ] Validar accesibilidad y Core Web Vitals
-- [ ] Configurar analytics (GA4/Tag Manager)
+- Diseño: `docs/superpowers/specs/2026-11-19-asssie-landing-redesign-design.md`
+- Plan de implementación: `docs/superpowers/plans/2026-11-19-asssie-landing-redesign.md`
