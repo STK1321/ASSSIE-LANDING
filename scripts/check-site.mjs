@@ -131,7 +131,7 @@ else {
   if (org.contactPoint?.["@type"] !== "ContactPoint") failures.push("Organization needs a ContactPoint");
   if (org.contactPoint?.contactType !== "sales") failures.push("Organization contactPoint.contactType must be sales");
   if (!org.contactPoint?.telephone) failures.push("Organization contactPoint needs a telephone");
-  if ("sameAs" in org && (!Array.isArray(org.sameAs) || org.sameAs.length === 0)) failures.push("Organization.sameAs must be omitted when there is no profile");
+  if (!Array.isArray(org.sameAs) || !org.sameAs.includes("https://github.com/ASSSIE-SAS")) failures.push("Organization.sameAs must point at the GitHub organization");
 }
 const website = homeBlocks.find((b) => b["@type"] === "WebSite");
 if (!website) failures.push("index.html: no WebSite schema");
@@ -151,7 +151,7 @@ if (!app) failures.push("qr-libre: no SoftwareApplication schema");
 else {
   if (app.isAccessibleForFree !== true) failures.push("SoftwareApplication.isAccessibleForFree must be true");
   if (!("license" in app)) failures.push("SoftwareApplication needs a license");
-  if ("codeRepository" in app) failures.push("SoftwareApplication must omit codeRepository while the repo is private");
+  if (app.codeRepository !== "https://github.com/ASSSIE-SAS/qr-libre") failures.push(`SoftwareApplication.codeRepository is ${app.codeRepository}`);
   if ("installUrl" in app) failures.push("SoftwareApplication must omit installUrl while the app is not installable");
 }
 const productFaq = productBlocks.find((b) => b["@type"] === "FAQPage");

@@ -4,7 +4,7 @@ export const site = {
   url: "https://www.asssie.co",
   whatsapp: "+573186933354",
   address: { locality: "Sibaté", region: "Cundinamarca", country: "CO" },
-  github: "",
+  github: "https://github.com/ASSSIE-SAS",
   social: {},
   locale: "es",
 };

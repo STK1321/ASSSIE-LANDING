@@ -16,6 +16,6 @@ https://wa.me/573186933354
 
 ## Código
 
-El repositorio de QR Libre todavía no es público. Cuando se publique, va a ser abierto bajo licencia MIT.
+El repositorio de QR Libre es público: https://github.com/ASSSIE-SAS/qr-libre — licencia MIT.
 
 Última actualización: 2026-11-24

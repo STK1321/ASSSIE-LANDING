@@ -58,7 +58,7 @@ export const qrlibre: QrLibreContent = {
     {
       question: "¿QR Libre ya se puede descargar?",
       answer:
-        "Todavía no. La app está en construcción: no hay una versión instalable ni un repositorio público. Esta página muestra la fecha del último cambio."
+        "Todavía no hay una versión instalable. El código ya está público en GitHub y esta página muestra la fecha del último cambio."
     },
     {
       question: "¿Necesito una cuenta o pagar una mensualidad?",
@@ -81,5 +81,5 @@ export const qrlibre: QrLibreContent = {
         "Van a quedar en tu teléfono. La app no va a enviar el contenido de los mensajes a ningún servidor y no va a pedir cuenta."
     }
   ],
-  repo: ""
+  repo: "https://github.com/ASSSIE-SAS/qr-libre"
 };
