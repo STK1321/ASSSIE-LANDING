@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://asssie.co/sitemap.xml
+Sitemap: https://www.asssie.co/sitemap.xml

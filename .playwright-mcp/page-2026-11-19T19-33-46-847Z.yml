@@ -1,0 +1,144 @@
+- generic [active] [ref=e1]:
+  - link "Saltar al contenido" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "ASSSIE inicio" [ref=e5] [cursor=pointer]:
+        - /url: /#top
+        - generic [ref=e6]: A
+        - text: ASSSIE
+      - navigation "Navegación principal" [ref=e7]:
+        - link "Qué hacemos" [ref=e8] [cursor=pointer]:
+          - /url: /#que-hacemos
+        - link "Herramientas" [ref=e9] [cursor=pointer]:
+          - /url: /#herramientas
+        - link "La prueba" [ref=e10] [cursor=pointer]:
+          - /url: /#prueba
+        - link "Cómo trabajamos" [ref=e11] [cursor=pointer]:
+          - /url: /#proceso
+        - link "Quiero una propuesta" [ref=e12] [cursor=pointer]:
+          - /url: /#contacto
+  - main [ref=e13]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - paragraph [ref=e18]: QR Libre
+        - generic [ref=e19]: En construcción
+      - heading "Tu pago suena. Tu negocio sigue." [level=1] [ref=e20]
+      - paragraph [ref=e21]: "QR Libre es una app de Android para el comerciante que cobra por QR y no puede revisar el teléfono en medio de la atención. Está en construcción: todavía no hay una versión instalable. Esto es lo que va a hacer, lo que no hace y en qué va el proyecto."
+      - paragraph [ref=e22]: Un proyecto de ASSSIE
+    - generic [ref=e24]:
+      - generic [ref=e26]:
+        - paragraph [ref=e27]: Alcance
+        - heading "Qué hace y qué no hace" [level=2] [ref=e28]
+        - paragraph [ref=e29]: "Sin letra pequeña: lo que la app promete y lo que deja por fuera. Los límites importan tanto como las funciones."
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - heading "Qué hace" [level=3] [ref=e32]
+          - list [ref=e33]:
+            - listitem [ref=e34]:
+              - generic [ref=e37]: Va a avisar en voz alta cuando entre un pago, sin que tengas que mirar la pantalla.
+            - listitem [ref=e38]:
+              - generic [ref=e41]: Va a leer solo los avisos de pago de las apps que tú decidas activar.
+            - listitem [ref=e42]:
+              - generic [ref=e45]: Va a funcionar sin cuenta, sin anuncios y sin mensualidad.
+        - generic [ref=e46]:
+          - heading "Qué no hace" [level=3] [ref=e47]
+          - list [ref=e48]:
+            - listitem [ref=e49]:
+              - generic [ref=e51]: "El aviso sirve para que te enteres, pero no confirma pagos: esa confirmación la da el banco."
+            - listitem [ref=e52]:
+              - generic [ref=e54]: No se conecta a ninguna cuenta bancaria ni consulta tus movimientos.
+            - listitem [ref=e55]:
+              - generic [ref=e57]: No reemplaza el comprobante del banco.
+    - generic [ref=e59]:
+      - generic [ref=e61]:
+        - paragraph [ref=e62]: El recorrido
+        - heading "Cómo funciona" [level=2] [ref=e63]
+        - paragraph [ref=e64]: Tres pasos, de la instalación al aviso en voz alta. Sin configuración técnica ni equipos nuevos.
+      - list [ref=e65]:
+        - listitem [ref=e66]:
+          - generic [ref=e67]: Paso 1
+          - heading "Activas los avisos que te importan" [level=3] [ref=e68]
+          - paragraph [ref=e69]: Cuando la instales, vas a darle acceso a las notificaciones y a elegir las apps de pago que usas. Nada más.
+        - listitem [ref=e70]:
+          - generic [ref=e71]: Paso 2
+          - heading "El banco avisa y la app lo entiende" [level=3] [ref=e72]
+          - paragraph [ref=e73]: "El aviso de pago llega al teléfono como siempre. QR Libre lo va a leer y a resumir: cuánto entró y de dónde."
+        - listitem [ref=e74]:
+          - generic [ref=e75]: Paso 3
+          - heading "El teléfono lo dice en voz alta" [level=3] [ref=e76]
+          - paragraph [ref=e77]: La app va a sonar y a decir el monto. Tú sigues atendiendo, sin abrir otra pantalla.
+    - generic [ref=e79]:
+      - generic [ref=e81]:
+        - paragraph [ref=e82]: Dónde va el proyecto
+        - heading "Estado" [level=2] [ref=e83]
+        - paragraph [ref=e84]: Qué existe hoy y cuándo se actualizó esta página.
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - generic [ref=e88]:
+              - term [ref=e89]: Estado
+              - definition [ref=e90]: En construcción
+            - generic [ref=e91]:
+              - term [ref=e92]: Última actualización
+              - definition [ref=e93]: 2026-11-19
+          - paragraph [ref=e94]: Todavía no hay una versión instalable. Cuando la haya, el botón de descarga va a estar en esta sección.
+        - generic [ref=e95]:
+          - paragraph [ref=e96]: Código
+          - generic [ref=e97]:
+            - paragraph [ref=e98]: El repositorio todavía no está público. Cuando abramos el código, el enlace va a estar aquí.
+            - button "Repositorio" [disabled] [ref=e99]
+    - generic [ref=e101]:
+      - generic [ref=e103]:
+        - paragraph [ref=e104]: Preguntas
+        - heading "Preguntas frecuentes" [level=2] [ref=e105]
+      - generic [ref=e106]:
+        - group [ref=e108]:
+          - generic "¿QR Libre ya se puede descargar?" [ref=e109] [cursor=pointer]
+        - group [ref=e111]:
+          - generic "¿Necesito una cuenta o pagar una mensualidad?" [ref=e112] [cursor=pointer]
+        - group [ref=e114]:
+          - generic "¿Se conecta a mi cuenta bancaria?" [ref=e115] [cursor=pointer]
+        - group [ref=e117]:
+          - generic "¿Reemplaza el comprobante del banco?" [ref=e118] [cursor=pointer]
+        - group [ref=e120]:
+          - generic "¿Qué pasa con mis datos?" [ref=e121] [cursor=pointer]
+      - paragraph [ref=e122]:
+        - text: Si tu pregunta no está aquí,
+        - link "escríbenos por WhatsApp" [ref=e123] [cursor=pointer]:
+          - /url: https://wa.me/573186933354
+        - text: .
+    - link "Un proyecto de ASSSIE" [ref=e128] [cursor=pointer]:
+      - /url: /
+  - contentinfo [ref=e129]:
+    - generic [ref=e131]:
+      - generic [ref=e132]:
+        - generic [ref=e134]:
+          - paragraph [ref=e135]: ASSSIE
+          - paragraph [ref=e136]: Herramientas para el trabajo real
+        - paragraph [ref=e137]: Un proyecto de ASSSIE
+        - paragraph [ref=e138]: (c) 2026 ASSSIE. Todos los derechos reservados.
+      - generic [ref=e139]:
+        - paragraph [ref=e140]: Secciones
+        - generic [ref=e141]:
+          - link "Qué hacemos" [ref=e142] [cursor=pointer]:
+            - /url: /#que-hacemos
+          - link "Herramientas" [ref=e143] [cursor=pointer]:
+            - /url: /#herramientas
+          - link "La prueba" [ref=e144] [cursor=pointer]:
+            - /url: /#prueba
+          - link "Cómo trabajamos" [ref=e145] [cursor=pointer]:
+            - /url: /#proceso
+          - link "Contacto" [ref=e146] [cursor=pointer]:
+            - /url: /#contacto
+      - generic [ref=e147]:
+        - paragraph [ref=e148]: Contacto
+        - generic [ref=e149]:
+          - link "+573186933354" [ref=e150] [cursor=pointer]:
+            - /url: https://wa.me/573186933354
+          - generic [ref=e151]: Sibaté, Cundinamarca
+        - generic [ref=e152]:
+          - link "Política de privacidad" [ref=e153] [cursor=pointer]:
+            - /url: /privacidad
+          - link "Privacidad de QR Libre" [ref=e154] [cursor=pointer]:
+            - /url: /qr-libre/privacidad

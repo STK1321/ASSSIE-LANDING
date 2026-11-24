@@ -2,7 +2,7 @@ import { readFile, access, readdir } from "node:fs/promises";
 import { extname, join, relative, sep } from "node:path";
 
 const DIST = "dist";
-const ORIGIN = "https://asssie.co";
+const ORIGIN = "https://www.asssie.co";
 const REQUIRED_ROUTES = [
   "index.html",
   "qr-libre/index.html",
@@ -161,8 +161,8 @@ const breadcrumb = productBlocks.find((b) => b["@type"] === "BreadcrumbList");
 if (!breadcrumb) failures.push("qr-libre: no BreadcrumbList schema");
 else if (breadcrumb.itemListElement?.length !== 2) failures.push("BreadcrumbList must have exactly two ListItems");
 
-mustContain("og image", home, 'property="og:image" content="https://asssie.co/og-image.jpg"');
-mustContain("twitter image", product, 'name="twitter:image" content="https://asssie.co/og-image.jpg"');
+mustContain("og image", home, 'property="og:image" content="https://www.asssie.co/og-image.jpg"');
+mustContain("twitter image", product, 'name="twitter:image" content="https://www.asssie.co/og-image.jpg"');
 
 // The preview asset must be a real JPEG under WhatsApp's 600 KB cap.
 const ogJpg = await readFile(join(DIST, "og-image.jpg")).catch(() => null);

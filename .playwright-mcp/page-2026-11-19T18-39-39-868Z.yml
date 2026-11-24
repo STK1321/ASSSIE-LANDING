@@ -1,0 +1,492 @@
+- generic [active] [ref=f6e1]:
+  - link "Saltar al contenido" [ref=f6e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f6e3]:
+    - generic [ref=f6e4]:
+      - link "ASSSIE inicio" [ref=f6e5] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=f6e6]: A
+        - text: ASSSIE
+      - navigation "Navegación principal" [ref=f6e7]:
+        - link "Qué hacemos" [ref=f6e8] [cursor=pointer]:
+          - /url: "#que-hacemos"
+        - link "Herramientas" [ref=f6e9] [cursor=pointer]:
+          - /url: "#herramientas"
+        - link "La prueba" [ref=f6e10] [cursor=pointer]:
+          - /url: "#prueba"
+        - link "Cómo trabajamos" [ref=f6e11] [cursor=pointer]:
+          - /url: "#proceso"
+        - link "Quiero una propuesta" [ref=f6e12] [cursor=pointer]:
+          - /url: "#contacto"
+  - main [ref=f6e13]:
+    - generic [ref=f6e16]:
+      - paragraph [ref=f6e17]: Bienes Públicos de ASSSIE
+      - heading "Herramientas para el trabajo real." [level=1] [ref=f6e18]
+      - paragraph [ref=f6e19]: Construimos software para el comercio que cobra por QR y para la empresa chica que vive en tres Excels. Lo publicamos abierto, para que cualquiera lo lea y lo use. Gratis en la superficie; a medida cuando tu operación no cabe.
+      - generic [ref=f6e20]:
+        - link "Ver las herramientas" [ref=f6e21] [cursor=pointer]:
+          - /url: "#herramientas"
+        - link "Hablemos por WhatsApp" [ref=f6e22] [cursor=pointer]:
+          - /url: https://wa.me/573186933354
+      - list [ref=f6e25]:
+        - listitem [ref=f6e26]:
+          - generic [ref=f6e29]: "Código abierto: lo puedes leer"
+        - listitem [ref=f6e30]:
+          - generic [ref=f6e33]: Sin cuenta y sin anuncios
+        - listitem [ref=f6e34]:
+          - generic [ref=f6e37]: Te entregamos el código y la documentación
+    - generic [ref=f6e39]:
+      - generic [ref=f6e41]:
+        - paragraph [ref=f6e42]: Qué hacemos
+        - heading "Lo que construimos" [level=2] [ref=f6e43]
+        - paragraph [ref=f6e44]: "Una empresa chica no necesita otro sistema: necesita que lo que ya tiene deje de estorbar. Casi siempre son tres cosas —las ventas en un Excel, los pagos en una cuenta, las decisiones en la cabeza del dueño— y ninguna habla con las otras. Eso es lo que construimos: la parte que falta para que el día cierre solo."
+      - generic [ref=f6e45]:
+        - article [ref=f6e47]:
+          - heading "La operación que vive en tres Excels" [level=3] [ref=f6e48]
+          - paragraph [ref=f6e49]: Construimos el sistema que la reemplaza
+          - paragraph [ref=f6e50]: Inventario, ventas y cartera en un solo lugar, con los datos que ya tienes.
+        - article [ref=f6e52]:
+          - heading "Los sistemas que no se hablan" [level=3] [ref=f6e53]
+          - paragraph [ref=f6e54]: Conectamos lo que ya usas
+          - paragraph [ref=f6e55]: Pagos, WhatsApp, planillas y el software viejo, sin cambiar de herramienta.
+        - article [ref=f6e57]:
+          - heading "Las decisiones que se toman a ciegas" [level=3] [ref=f6e58]
+          - paragraph [ref=f6e59]: Analítica y contenido con IA
+          - paragraph [ref=f6e60]: Qué te deja plata, qué no, y qué publicar sin adivinar.
+    - generic [ref=f6e62]:
+      - generic [ref=f6e63]:
+        - generic [ref=f6e64]:
+          - paragraph [ref=f6e65]: Hacia dónde vamos
+          - heading "Las herramientas" [level=2] [ref=f6e66]
+        - paragraph [ref=f6e67]: "Un comerciante en Colombia hace tres cosas todos los días: cobra, cuenta y cierra. Cada una vive en un lugar distinto —el QR del banco, el cuaderno, el WhatsApp— y ninguna le habla a la otra."
+      - list [ref=f6e68]:
+        - listitem [ref=f6e69]:
+          - heading "QR Libre" [level=3] [ref=f6e71]
+          - paragraph [ref=f6e72]: "Empezamos por lo primero: QR Libre avisa en voz alta cuando entra un pago, sin comprar equipos y sin mensualidad."
+        - listitem [ref=f6e73]:
+          - heading "Conciliación" [level=3] [ref=f6e75]
+          - paragraph [ref=f6e76]: "Sigue la conciliación: que la plata que entró coincida con lo que se vendió, sin abrir tres aplicaciones."
+        - listitem [ref=f6e77]:
+          - heading "Cierre" [level=3] [ref=f6e79]
+          - paragraph [ref=f6e80]: "Y el cierre: cuánto entró, cuánto salió, cuánto quedó, en una pantalla que se entiende sin ser contador."
+      - generic [ref=f6e81]:
+        - paragraph [ref=f6e83]: Nada de esto pide cuenta, anuncios ni depender de nosotros. El código es abierto; si un día no estamos, sigue funcionando.
+        - link "Conocer QR Libre" [ref=f6e84] [cursor=pointer]:
+          - /url: /qr-libre
+    - generic [ref=f6e86]:
+      - generic [ref=f6e88]:
+        - paragraph [ref=f6e89]: Servicios
+        - heading "Servicios que resuelven problemas reales" [level=2] [ref=f6e90]
+        - paragraph [ref=f6e91]: Soluciones orientadas a negocio para automatización de procesos en empresas y marketing digital para empresas en crecimiento. También hacemos desarrollo de software a medida para empresas en Colombia.
+      - generic [ref=f6e92]:
+        - article [ref=f6e94]:
+          - generic [ref=f6e99]:
+            - paragraph [ref=f6e100]: 1️⃣
+            - heading "Data & Machine Learning" [level=3] [ref=f6e101]
+            - paragraph [ref=f6e102]: Analítica y machine learning para decisiones con datos
+          - generic [ref=f6e103]:
+            - paragraph [ref=f6e104]: Descripción corta
+            - paragraph [ref=f6e105]: Aplicamos analítica y machine learning para que tu empresa tome mejores decisiones basadas en datos reales, no suposiciones.
+          - generic [ref=f6e106]:
+            - paragraph [ref=f6e107]: Ideal para
+            - list [ref=f6e108]:
+              - listitem [ref=f6e109]:
+                - generic [ref=f6e112]: Empresas con datos dispersos
+              - listitem [ref=f6e113]:
+                - generic [ref=f6e116]: Negocios que quieren predecir demanda, comportamiento o riesgo
+            - paragraph [ref=f6e117]:
+              - text: Ver +1 mas en el alcance
+              - generic [aria-hidden] [ref=f6e118]: →
+          - button "Ver alcance de Data & Machine Learning" [ref=f6e120] [cursor=pointer]: Ver alcance
+        - article [ref=f6e124]:
+          - generic [ref=f6e129]:
+            - paragraph [ref=f6e130]: 2️⃣
+            - heading "Marketing Digital & Redes" [level=3] [ref=f6e131]
+            - paragraph [ref=f6e132]: Estrategia medible alineada a objetivos de negocio
+          - generic [ref=f6e133]:
+            - paragraph [ref=f6e134]: Descripción corta
+            - paragraph [ref=f6e135]: Diseñamos estrategias de marketing medibles, orientadas a resultados y alineadas con objetivos reales de negocio.
+          - generic [ref=f6e136]:
+            - paragraph [ref=f6e137]: Ideal para
+            - list [ref=f6e138]:
+              - listitem [ref=f6e139]:
+                - generic [ref=f6e142]: Empresas que invierten en marketing pero no miden resultados
+              - listitem [ref=f6e143]:
+                - generic [ref=f6e146]: Marcas que quieren mejorar su presencia digital
+            - paragraph [ref=f6e147]:
+              - text: Ver +1 mas en el alcance
+              - generic [aria-hidden] [ref=f6e148]: →
+          - button "Ver alcance de Marketing Digital & Redes" [ref=f6e150] [cursor=pointer]: Ver alcance
+        - article [ref=f6e154]:
+          - generic [ref=f6e159]:
+            - paragraph [ref=f6e160]: 3️⃣
+            - heading "Automatización de Procesos" [level=3] [ref=f6e161]
+            - paragraph [ref=f6e162]: Flujos operativos más rápidos y sin errores
+          - generic [ref=f6e163]:
+            - paragraph [ref=f6e164]: Descripción corta
+            - paragraph [ref=f6e165]: Automatizamos tareas repetitivas y flujos operativos para reducir errores, tiempos y costos internos.
+          - generic [ref=f6e166]:
+            - paragraph [ref=f6e167]: Ideal para
+            - list [ref=f6e168]:
+              - listitem [ref=f6e169]:
+                - generic [ref=f6e172]: Procesos manuales (pagos, mensajes, validaciones)
+              - listitem [ref=f6e173]:
+                - generic [ref=f6e176]: Equipos operativos sobrecargados
+            - paragraph [ref=f6e177]:
+              - text: Ver +1 mas en el alcance
+              - generic [aria-hidden] [ref=f6e178]: →
+          - button "Ver alcance de Automatización de Procesos" [ref=f6e180] [cursor=pointer]: Ver alcance
+        - article [ref=f6e184]:
+          - generic [ref=f6e189]:
+            - paragraph [ref=f6e190]: 4️⃣
+            - heading "Desarrollo de Software a Medida" [level=3] [ref=f6e191]
+            - paragraph [ref=f6e192]: Producto escalable y alineado a tu operación
+          - generic [ref=f6e193]:
+            - paragraph [ref=f6e194]: Descripción corta
+            - paragraph [ref=f6e195]: Creamos software a medida, escalable y mantenible, alineado con tus procesos y necesidades reales.
+          - generic [ref=f6e196]:
+            - paragraph [ref=f6e197]: Ideal para
+            - list [ref=f6e198]:
+              - listitem [ref=f6e199]:
+                - generic [ref=f6e202]: Empresas con necesidades específicas
+              - listitem [ref=f6e203]:
+                - generic [ref=f6e206]: Productos internos o MVPs
+            - paragraph [ref=f6e207]:
+              - text: Ver +1 mas en el alcance
+              - generic [aria-hidden] [ref=f6e208]: →
+          - button "Ver alcance de Desarrollo de Software a Medida" [ref=f6e210] [cursor=pointer]: Ver alcance
+        - article [ref=f6e214]:
+          - generic [ref=f6e219]:
+            - paragraph [ref=f6e220]: 5️⃣
+            - heading "IA para Video e Imagen" [level=3] [ref=f6e221]
+            - paragraph [ref=f6e222]: Contenido visual rápido y consistente
+          - generic [ref=f6e223]:
+            - paragraph [ref=f6e224]: Descripción corta
+            - paragraph [ref=f6e225]: Utilizamos IA para optimizar y automatizar la creación de contenido visual, reduciendo tiempos de producción.
+          - generic [ref=f6e226]:
+            - paragraph [ref=f6e227]: Ideal para
+            - list [ref=f6e228]:
+              - listitem [ref=f6e229]:
+                - generic [ref=f6e232]: Marketing de contenidos
+              - listitem [ref=f6e233]:
+                - generic [ref=f6e236]: Redes sociales
+            - paragraph [ref=f6e237]:
+              - text: Ver +1 mas en el alcance
+              - generic [aria-hidden] [ref=f6e238]: →
+          - button "Ver alcance de IA para Video e Imagen" [ref=f6e240] [cursor=pointer]: Ver alcance
+    - generic [ref=f6e244]:
+      - generic [ref=f6e246]:
+        - paragraph [ref=f6e247]: Cómo trabajamos
+        - heading "Un proceso claro, medible y colaborativo" [level=2] [ref=f6e248]
+        - paragraph [ref=f6e249]: Avanzamos en cinco pasos para reducir riesgo, acelerar aprendizaje y construir soluciones escalables.
+      - generic [ref=f6e250]:
+        - generic [ref=f6e252]:
+          - paragraph [ref=f6e253]: Paso 1
+          - heading "Diagnóstico" [level=3] [ref=f6e254]
+          - paragraph [ref=f6e255]: Auditamos objetivos, datos y procesos para priorizar rápido.
+        - generic [ref=f6e257]:
+          - paragraph [ref=f6e258]: Paso 2
+          - heading "Diseño" [level=3] [ref=f6e259]
+          - paragraph [ref=f6e260]: Definimos arquitectura, entregables y roadmap claro.
+        - generic [ref=f6e262]:
+          - paragraph [ref=f6e263]: Paso 3
+          - heading "Implementación" [level=3] [ref=f6e264]
+          - paragraph [ref=f6e265]: Construimos e integramos con entregas iterativas.
+        - generic [ref=f6e267]:
+          - paragraph [ref=f6e268]: Paso 4
+          - heading "Medición" [level=3] [ref=f6e269]
+          - paragraph [ref=f6e270]: Configuramos KPIs, dashboards y tracking confiable.
+        - generic [ref=f6e272]:
+          - paragraph [ref=f6e273]: Paso 5
+          - heading "Optimización continua" [level=3] [ref=f6e274]
+          - paragraph [ref=f6e275]: Ajustamos y escalamos con base en resultados reales.
+    - generic [ref=f6e277]:
+      - generic [ref=f6e279]:
+        - paragraph [ref=f6e280]: Casos tipo
+        - heading "Escenarios reales, beneficios cualitativos" [level=2] [ref=f6e281]
+        - paragraph [ref=f6e282]: Ejemplos de cómo resolvemos problemas comunes en operaciones, marketing y tecnología.
+      - generic [ref=f6e283]:
+        - article [ref=f6e285]:
+          - paragraph [ref=f6e286]: "Caso A: Automatización operativa"
+          - heading "Servicios profesionales" [level=3] [ref=f6e287]
+          - paragraph [ref=f6e288]: Procesos internos más ordenados y equipos con foco en tareas de valor.
+          - list [ref=f6e289]:
+            - listitem [ref=f6e290]:
+              - generic [ref=f6e293]: Flujos automatizados para solicitudes y seguimiento
+            - listitem [ref=f6e294]:
+              - generic [ref=f6e297]: Visibilidad de estados en un solo dashboard
+            - listitem [ref=f6e298]:
+              - generic [ref=f6e301]: Menos fricción entre ventas y operaciones
+          - generic [ref=f6e302]:
+            - paragraph [ref=f6e303]: Entregables
+            - list [ref=f6e304]:
+              - listitem [ref=f6e305]:
+                - generic [ref=f6e308]: Mapa de procesos
+              - listitem [ref=f6e309]:
+                - generic [ref=f6e312]: Flujos automatizados
+              - listitem [ref=f6e313]:
+                - generic [ref=f6e316]: Dashboard de seguimiento
+          - paragraph [ref=f6e317]: "Tiempo típico: 2-4 semanas"
+        - article [ref=f6e319]:
+          - paragraph [ref=f6e320]: "Caso B: Marketing con medición real"
+          - heading "Retail y ecommerce" [level=3] [ref=f6e321]
+          - paragraph [ref=f6e322]: Decisiones de pauta basadas en datos confiables y atribución clara.
+          - list [ref=f6e323]:
+            - listitem [ref=f6e324]:
+              - generic [ref=f6e327]: Tracking completo con GA4 y Meta
+            - listitem [ref=f6e328]:
+              - generic [ref=f6e331]: Tablero de rendimiento por canal
+            - listitem [ref=f6e332]:
+              - generic [ref=f6e335]: Aprendizajes accionables para iterar campañas
+          - generic [ref=f6e336]:
+            - paragraph [ref=f6e337]: Entregables
+            - list [ref=f6e338]:
+              - listitem [ref=f6e339]:
+                - generic [ref=f6e342]: Plan de medición
+              - listitem [ref=f6e343]:
+                - generic [ref=f6e346]: Dashboard de performance
+              - listitem [ref=f6e347]:
+                - generic [ref=f6e350]: Checklist de optimización
+          - paragraph [ref=f6e351]: "Tiempo típico: 2-3 semanas"
+        - article [ref=f6e353]:
+          - paragraph [ref=f6e354]: "Caso C: Desarrollo a medida"
+          - heading "Salud y bienestar" [level=3] [ref=f6e355]
+          - paragraph [ref=f6e356]: Producto digital alineado con procesos reales y listo para escalar.
+          - list [ref=f6e357]:
+            - listitem [ref=f6e358]:
+              - generic [ref=f6e361]: Aplicaciones conectadas a sistemas existentes
+            - listitem [ref=f6e362]:
+              - generic [ref=f6e365]: Automatización de reportes y alertas
+            - listitem [ref=f6e366]:
+              - generic [ref=f6e369]: Arquitectura preparada para crecimiento
+          - generic [ref=f6e370]:
+            - paragraph [ref=f6e371]: Entregables
+            - list [ref=f6e372]:
+              - listitem [ref=f6e373]:
+                - generic [ref=f6e376]: MVP funcional
+              - listitem [ref=f6e377]:
+                - generic [ref=f6e380]: Documentación técnica
+              - listitem [ref=f6e381]:
+                - generic [ref=f6e384]: Guía de despliegue
+          - paragraph [ref=f6e385]: "Tiempo típico: 4-6 semanas"
+    - generic [ref=f6e387]:
+      - generic [ref=f6e389]:
+        - paragraph [ref=f6e390]: Planes
+        - heading "Modelos claros para cada etapa" [level=2] [ref=f6e391]
+        - paragraph [ref=f6e392]: Elige un plan base o armemos un alcance personalizado según tu operación.
+      - generic [ref=f6e393]:
+        - article [ref=f6e395]:
+          - heading "Starter" [level=3] [ref=f6e396]
+          - paragraph [ref=f6e397]: Marketing + medición básica
+          - paragraph [ref=f6e398]: Plan mensual
+          - generic [ref=f6e399]:
+            - paragraph [ref=f6e400]: Incluye
+            - list [ref=f6e401]:
+              - listitem [ref=f6e402]:
+                - generic [ref=f6e405]: Estrategia de marketing digital
+              - listitem [ref=f6e406]:
+                - generic [ref=f6e409]: Calendario de contenido y campañas
+              - listitem [ref=f6e410]:
+                - generic [ref=f6e413]: Configuración de GA4 y Tag Manager
+              - listitem [ref=f6e414]:
+                - generic [ref=f6e417]: Reporte mensual con aprendizajes
+          - generic [ref=f6e418]:
+            - paragraph [ref=f6e419]: No incluye
+            - list [ref=f6e420]:
+              - listitem [ref=f6e421]:
+                - generic [ref=f6e424]: Automatizaciones avanzadas
+              - listitem [ref=f6e425]:
+                - generic [ref=f6e428]: Dashboards a medida
+              - listitem [ref=f6e429]:
+                - generic [ref=f6e432]: Desarrollo de producto
+          - link "Quiero Starter" [ref=f6e434] [cursor=pointer]:
+            - /url: "#contacto"
+        - article [ref=f6e436]:
+          - heading "Growth" [level=3] [ref=f6e437]
+          - paragraph [ref=f6e438]: Automatización + data
+          - paragraph [ref=f6e439]: Plan mensual
+          - generic [ref=f6e440]:
+            - paragraph [ref=f6e441]: Incluye
+            - list [ref=f6e442]:
+              - listitem [ref=f6e443]:
+                - generic [ref=f6e446]: Todo lo de Starter
+              - listitem [ref=f6e447]:
+                - generic [ref=f6e450]: Automatización de procesos clave
+              - listitem [ref=f6e451]:
+                - generic [ref=f6e454]: Dashboards accionables
+              - listitem [ref=f6e455]:
+                - generic [ref=f6e458]: Optimización continua
+          - generic [ref=f6e459]:
+            - paragraph [ref=f6e460]: No incluye
+            - list [ref=f6e461]:
+              - listitem [ref=f6e462]:
+                - generic [ref=f6e465]: IA creativa a escala
+              - listitem [ref=f6e466]:
+                - generic [ref=f6e469]: Desarrollo de producto completo
+          - link "Quiero Growth" [ref=f6e471] [cursor=pointer]:
+            - /url: "#contacto"
+        - article [ref=f6e473]:
+          - heading "Custom" [level=3] [ref=f6e474]
+          - paragraph [ref=f6e475]: Desarrollo + IA + integraciones
+          - paragraph [ref=f6e476]: A medida
+          - generic [ref=f6e477]:
+            - paragraph [ref=f6e478]: Incluye
+            - list [ref=f6e479]:
+              - listitem [ref=f6e480]:
+                - generic [ref=f6e483]: Producto digital a medida
+              - listitem [ref=f6e484]:
+                - generic [ref=f6e487]: Integraciones con sistemas y datos
+              - listitem [ref=f6e488]:
+                - generic [ref=f6e491]: IA aplicada a procesos y contenido
+              - listitem [ref=f6e492]:
+                - generic [ref=f6e495]: Soporte y evolución continua
+          - generic [ref=f6e496]:
+            - paragraph [ref=f6e497]: No incluye
+            - list [ref=f6e498]:
+              - listitem [ref=f6e499]:
+                - generic [ref=f6e502]: Paquetes cerrados
+          - link "Agendar llamada" [ref=f6e504] [cursor=pointer]:
+            - /url: "#contacto"
+    - generic [ref=f6e506]:
+      - generic [ref=f6e508]:
+        - paragraph [ref=f6e509]: Stack tecnológico
+        - heading "Tecnología moderna, estable y escalable" [level=2] [ref=f6e510]
+        - paragraph [ref=f6e511]: Usamos herramientas robustas y probadas para construir soluciones rápidas, mantenibles y seguras.
+      - generic [ref=f6e512]:
+        - generic [ref=f6e513]: Astro
+        - generic [ref=f6e515]: React
+        - generic [ref=f6e517]: Node.js
+        - generic [ref=f6e519]: TypeScript
+        - generic [ref=f6e521]: Python
+        - generic [ref=f6e523]: FastAPI / Django
+        - generic [ref=f6e525]: PostgreSQL
+        - generic [ref=f6e527]: MongoDB
+        - generic [ref=f6e529]: Redis
+        - generic [ref=f6e531]: Docker
+        - generic [ref=f6e533]: Cloud
+        - generic [ref=f6e535]: GA4
+        - generic [ref=f6e537]: Meta
+        - generic [ref=f6e539]: Tag Manager
+        - generic [ref=f6e541]: Vercel
+        - generic [ref=f6e543]: AWS
+        - generic [ref=f6e545]: GCP
+        - generic [ref=f6e547]: Azure
+    - generic [ref=f6e551]:
+      - generic [ref=f6e552]:
+        - paragraph [ref=f6e553]: SEO + Performance
+        - heading "Visibilidad orgánica y velocidad real" [level=2] [ref=f6e554]
+        - paragraph [ref=f6e555]: Construimos con SEO técnico, alta velocidad y accesibilidad para que el sitio convierta y posicione desde el inicio.
+      - generic [ref=f6e556]:
+        - generic [ref=f6e557]:
+          - paragraph [ref=f6e558]: Estructura clara para que Google entienda tu oferta y servicios.
+          - paragraph [ref=f6e559]: Metadatos, schema y contenido optimizado para captar búsquedas relevantes.
+          - paragraph [ref=f6e560]: Accesibilidad real para llegar a más usuarios y reducir rebote.
+        - generic [ref=f6e561]:
+          - paragraph [ref=f6e562]: Performance enfocada en Core Web Vitals y carga rápida en mobile.
+          - paragraph [ref=f6e563]: Arquitectura limpia lista para crecer a múltiples páginas.
+          - paragraph [ref=f6e564]: Buenas prácticas web que facilitan mantenimiento y mejoras futuras.
+    - generic [ref=f6e566]:
+      - generic [ref=f6e568]:
+        - paragraph [ref=f6e569]: FAQ
+        - heading "Respuestas claras antes de empezar" [level=2] [ref=f6e570]
+        - paragraph [ref=f6e571]: Si necesitas más detalle, agenda una llamada y revisamos tu caso.
+      - generic [ref=f6e572]:
+        - group [ref=f6e574]:
+          - generic "¿Cuánto tarda un proyecto?" [ref=f6e575] [cursor=pointer]
+        - group [ref=f6e577]:
+          - generic "¿Cómo se definen los precios?" [ref=f6e578] [cursor=pointer]
+        - group [ref=f6e580]:
+          - generic "¿Qué necesito para empezar?" [ref=f6e581] [cursor=pointer]
+        - group [ref=f6e583]:
+          - generic "¿El código es mío?" [ref=f6e584] [cursor=pointer]
+        - group [ref=f6e586]:
+          - generic "¿Incluyen soporte continuo?" [ref=f6e587] [cursor=pointer]
+        - group [ref=f6e589]:
+          - generic "¿Qué incluye el SEO técnico?" [ref=f6e590] [cursor=pointer]
+        - group [ref=f6e592]:
+          - generic "¿Cómo aplican IA en los proyectos?" [ref=f6e593] [cursor=pointer]
+        - group [ref=f6e595]:
+          - generic "¿El proyecto es escalable?" [ref=f6e596] [cursor=pointer]
+    - generic [ref=f6e599]:
+      - generic [ref=f6e600]:
+        - generic [ref=f6e601]:
+          - paragraph [ref=f6e602]: Contacto
+          - heading "Hablemos de tu objetivo" [level=2] [ref=f6e603]
+          - paragraph [ref=f6e604]: Cuéntanos tu reto principal y te respondemos con un plan claro y accionable.
+        - generic [ref=f6e606]:
+          - generic [ref=f6e607]:
+            - text: Nombre
+            - textbox "Nombre" [ref=f6e608]
+          - generic [ref=f6e609]:
+            - text: Empresa
+            - textbox "Empresa" [ref=f6e610]
+          - generic [ref=f6e611]:
+            - text: ¿Qué problema quieres resolver?
+            - textbox "¿Qué problema quieres resolver?" [ref=f6e612]
+          - generic [ref=f6e613]:
+            - text: Tamaño aproximado de la empresa (opcional)
+            - combobox "Tamaño aproximado de la empresa (opcional)" [ref=f6e614]:
+              - option "Selecciona un rango" [selected]
+              - option "1-10"
+              - option "11-50"
+              - option "51-200"
+              - option "201-1000"
+              - option "1000+"
+          - generic [ref=f6e615]:
+            - button "Enviar solicitud" [ref=f6e616] [cursor=pointer]
+            - link "WhatsApp" [ref=f6e617] [cursor=pointer]:
+              - /url: https://wa.me/573186933354
+          - status
+          - paragraph [ref=f6e620]: Sin spam. Respuesta en 24-48h.
+      - generic [ref=f6e621]:
+        - generic [ref=f6e622]:
+          - heading "Contacto directo" [level=3] [ref=f6e623]
+          - paragraph [ref=f6e624]: "Email:"
+          - paragraph [ref=f6e625]: "WhatsApp: +573186933354"
+          - paragraph [ref=f6e626]: "Zona: [object Object]"
+        - generic [ref=f6e627]:
+          - heading "Lo que incluye la llamada" [level=3] [ref=f6e628]
+          - list [ref=f6e629]:
+            - listitem [ref=f6e630]:
+              - generic [ref=f6e633]: Revisión de objetivos y procesos actuales.
+            - listitem [ref=f6e634]:
+              - generic [ref=f6e637]: Propuesta inicial de automatización y data.
+            - listitem [ref=f6e638]:
+              - generic [ref=f6e641]: Estimación de tiempos y próximos pasos.
+  - contentinfo [ref=f6e642]:
+    - generic [ref=f6e644]:
+      - generic [ref=f6e645]:
+        - generic [ref=f6e647]:
+          - paragraph [ref=f6e648]: ASSSIE
+          - paragraph [ref=f6e649]: Herramientas para el trabajo real
+        - paragraph [ref=f6e650]: Un proyecto de ASSSIE
+        - paragraph [ref=f6e651]: (c) 2026 ASSSIE. Todos los derechos reservados.
+      - generic [ref=f6e652]:
+        - paragraph [ref=f6e653]: Secciones
+        - generic [ref=f6e654]:
+          - link "Qué hacemos" [ref=f6e655] [cursor=pointer]:
+            - /url: "#que-hacemos"
+          - link "Herramientas" [ref=f6e656] [cursor=pointer]:
+            - /url: "#herramientas"
+          - link "La prueba" [ref=f6e657] [cursor=pointer]:
+            - /url: "#prueba"
+          - link "Cómo trabajamos" [ref=f6e658] [cursor=pointer]:
+            - /url: "#proceso"
+          - link "Contacto" [ref=f6e659] [cursor=pointer]:
+            - /url: "#contacto"
+      - generic [ref=f6e660]:
+        - paragraph [ref=f6e661]: Contacto
+        - generic [ref=f6e662]:
+          - link "+573186933354" [ref=f6e663] [cursor=pointer]:
+            - /url: https://wa.me/573186933354
+          - generic [ref=f6e664]: Sibaté, Cundinamarca
+        - generic [ref=f6e665]:
+          - link "Política de privacidad" [ref=f6e666] [cursor=pointer]:
+            - /url: /privacidad
+          - link "Privacidad de QR Libre" [ref=f6e667] [cursor=pointer]:
+            - /url: /qr-libre/privacidad
+  - generic [ref=f6e670]:
+    - button "Menu" [ref=f6e671]
+    - button "Inspect" [ref=f6e677]
+    - button "Audit" [ref=f6e681]
+    - button "Settings" [ref=f6e686]

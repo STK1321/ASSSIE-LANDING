@@ -1,0 +1,101 @@
+- generic [active] [ref=f7e1]:
+  - link "Saltar al contenido" [ref=f7e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f7e3]:
+    - generic [ref=f7e4]:
+      - link "ASSSIE inicio" [ref=f7e5] [cursor=pointer]:
+        - /url: /#top
+        - generic [ref=f7e6]: A
+        - text: ASSSIE
+      - navigation "Navegación principal" [ref=f7e7]:
+        - link "Qué hacemos" [ref=f7e8] [cursor=pointer]:
+          - /url: /#que-hacemos
+        - link "Herramientas" [ref=f7e9] [cursor=pointer]:
+          - /url: /#herramientas
+        - link "La prueba" [ref=f7e10] [cursor=pointer]:
+          - /url: /#prueba
+        - link "Cómo trabajamos" [ref=f7e11] [cursor=pointer]:
+          - /url: /#proceso
+        - link "Quiero una propuesta" [ref=f7e12] [cursor=pointer]:
+          - /url: /#contacto
+  - main [ref=f7e13]:
+    - generic [ref=f7e16]:
+      - note [ref=f7e17]:
+        - paragraph [ref=f7e18]: Esta política aplica cuando la app esté publicada; hoy QR Libre está en construcción.
+      - paragraph [ref=f7e19]: QR Libre
+      - heading "Privacidad de QR Libre" [level=1] [ref=f7e20]
+      - paragraph [ref=f7e21]: Qué va a leer la app, qué va a guardar y qué no va a hacer. Todo queda en tu teléfono.
+      - paragraph [ref=f7e22]:
+        - text: "Última actualización:"
+        - time [ref=f7e23]: 19 de noviembre de 2026
+    - generic [ref=f7e25]:
+      - generic [ref=f7e26]:
+        - heading "Qué va a leer" [level=2] [ref=f7e27]
+        - paragraph [ref=f7e28]: Solo los avisos que llegan al teléfono, y solo los de las apps que tú actives. Para eso vas a darle acceso a las notificaciones cuando la instales.
+        - paragraph [ref=f7e29]: No va a leer los avisos de apps que no activaste, ni va a abrir tus conversaciones o tus archivos.
+      - generic [ref=f7e30]:
+        - heading "Qué va a guardar" [level=2] [ref=f7e31]
+        - paragraph [ref=f7e32]: El historial de pagos que arma con esos avisos y la lista de apps que activaste. Todo va a quedar en tu teléfono.
+        - paragraph [ref=f7e33]: Si desinstalas la app, Android borra esos datos del teléfono.
+      - generic [ref=f7e34]:
+        - heading "Qué no va a hacer" [level=2] [ref=f7e35]
+        - list [ref=f7e36]:
+          - listitem [ref=f7e37]:
+            - generic [ref=f7e39]: No va a pedir cuenta ni contraseña.
+          - listitem [ref=f7e40]:
+            - generic [ref=f7e42]: No va a mostrar anuncios ni vender datos.
+          - listitem [ref=f7e43]:
+            - generic [ref=f7e45]: No va a enviar el contenido de los mensajes a un servidor.
+      - generic [ref=f7e46]:
+        - heading "Cómo quitar el permiso de notificaciones" [level=2] [ref=f7e47]
+        - paragraph [ref=f7e48]: "Cuando la app esté publicada, puedes cortarle el acceso desde los ajustes de Android:"
+        - list [ref=f7e49]:
+          - listitem [ref=f7e50]: Abre Ajustes en tu teléfono.
+          - listitem [ref=f7e51]: Entra a Apps y busca QR Libre.
+          - listitem [ref=f7e52]: Abre Permisos y quita Notificaciones.
+          - listitem [ref=f7e53]: Para cortar el acceso a los avisos de otras apps, abre Ajustes → Apps → Acceso especial → Acceso a notificaciones y desactiva QR Libre.
+        - paragraph [ref=f7e54]: Los nombres de estas opciones cambian según la versión de Android.
+      - generic [ref=f7e55]:
+        - heading "Cómo borrar los datos locales" [level=2] [ref=f7e56]
+        - paragraph [ref=f7e57]: Cuando la app esté publicada, va a tener una opción para borrar el historial desde la misma app.
+        - paragraph [ref=f7e58]: Si quieres borrar todo de una vez, desinstala QR Libre. Android borra sus datos del teléfono con ella.
+      - generic [ref=f7e59]:
+        - heading "Contacto" [level=2] [ref=f7e60]
+        - paragraph [ref=f7e61]:
+          - text: Escríbenos por WhatsApp al
+          - link "+57 318 693 3354" [ref=f7e62] [cursor=pointer]:
+            - /url: https://wa.me/573186933354
+          - text: . Respondemos dudas sobre esta política y sobre el proyecto.
+        - paragraph [ref=f7e63]: QR Libre es un proyecto de ASSSIE.
+  - contentinfo [ref=f7e64]:
+    - generic [ref=f7e66]:
+      - generic [ref=f7e67]:
+        - generic [ref=f7e69]:
+          - paragraph [ref=f7e70]: ASSSIE
+          - paragraph [ref=f7e71]: Herramientas para el trabajo real
+        - paragraph [ref=f7e72]: Un proyecto de ASSSIE
+        - paragraph [ref=f7e73]: (c) 2026 ASSSIE. Todos los derechos reservados.
+      - generic [ref=f7e74]:
+        - paragraph [ref=f7e75]: Secciones
+        - generic [ref=f7e76]:
+          - link "Qué hacemos" [ref=f7e77] [cursor=pointer]:
+            - /url: /#que-hacemos
+          - link "Herramientas" [ref=f7e78] [cursor=pointer]:
+            - /url: /#herramientas
+          - link "La prueba" [ref=f7e79] [cursor=pointer]:
+            - /url: /#prueba
+          - link "Cómo trabajamos" [ref=f7e80] [cursor=pointer]:
+            - /url: /#proceso
+          - link "Contacto" [ref=f7e81] [cursor=pointer]:
+            - /url: /#contacto
+      - generic [ref=f7e82]:
+        - paragraph [ref=f7e83]: Contacto
+        - generic [ref=f7e84]:
+          - link "+573186933354" [ref=f7e85] [cursor=pointer]:
+            - /url: https://wa.me/573186933354
+          - generic [ref=f7e86]: Sibaté, Cundinamarca
+        - generic [ref=f7e87]:
+          - link "Política de privacidad" [ref=f7e88] [cursor=pointer]:
+            - /url: /privacidad
+          - link "Privacidad de QR Libre" [ref=f7e89] [cursor=pointer]:
+            - /url: /qr-libre/privacidad

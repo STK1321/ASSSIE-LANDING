@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     inlineStylesheets: "always"
   },
-  site: "https://asssie.co",
+  site: "https://www.asssie.co",
   vite: {
     resolve: {
       alias: {
