@@ -18,4 +18,4 @@ https://wa.me/573186933354
 
 El repositorio de QR Libre todavía no es público. Cuando se publique, va a ser abierto bajo licencia MIT.
 
-Última actualización: 2026-11-19
+Última actualización: 2026-11-24
