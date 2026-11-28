@@ -12,7 +12,6 @@ import {
   buildSoftwareApplicationSchema
 } from "@/lib/seo/schemas";
 
-const accent = "#1d4ed8";
 const canonical = `${site.url}/qr-libre`;
 const whatsappHref = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
 const intro =
@@ -27,24 +26,28 @@ const jsonLd = [
   title={`${qrlibre.name} | ${qrlibre.tagline}`}
   description="QR Libre es una app de Android en construcción que va a avisar en voz alta cuando entre un pago por QR. No confirma pagos, no se conecta a tu banco y no reemplaza el comprobante."
   canonical={canonical}
-  accent={accent}
   jsonLd={jsonLd}
 >
-  <section class="pb-16 pt-12 sm:pt-16">
-    <div class="mx-auto max-w-4xl px-6">
-      <div class="reveal space-y-6">
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="reveal max-w-4xl space-y-7">
         <div class="flex flex-wrap items-center gap-3">
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--product-accent)]">{qrlibre.name}</p>
-          <span class="rounded-full border border-slate/20 bg-white px-3 py-1 text-xs font-semibold text-slate">{qrlibre.status}</span>
+          <p class="text-xs font-medium uppercase tracking-[0.2em] text-muted">{qrlibre.name}</p>
+          <span class="inline-flex items-center gap-2 rounded-full bg-card px-3 py-1 text-xs font-medium text-muted">
+            <span class="h-1.5 w-1.5 rounded-full bg-lemon" aria-hidden="true"></span>
+            {qrlibre.status}
+          </span>
         </div>
-        <h1 class="font-display text-4xl font-semibold text-ink sm:text-6xl">{qrlibre.tagline}</h1>
-        <p class="max-w-3xl text-lg text-slate">{intro}</p>
-        <p class="text-sm font-semibold text-slate">Un proyecto de {site.name}</p>
+        <h1 class="font-display text-[clamp(2.5rem,7vw,5rem)] font-semibold leading-[0.96] tracking-[-0.03em] text-text">
+          {qrlibre.tagline}
+        </h1>
+        <p class="max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">{intro}</p>
+        <p class="text-sm font-medium text-text">Un proyecto de {site.name}</p>
       </div>
     </div>
   </section>
 
-  <section id="alcance" class="border-t border-slate/10 py-16 sm:py-20">
+  <section id="alcance" class="py-24 sm:py-28">
     <div class="mx-auto max-w-6xl px-6">
       <div class="reveal">
         <SectionHeading
@@ -52,24 +55,24 @@ const jsonLd = [
           title="Qué hace y qué no hace"
           subtitle="Sin letra pequeña: lo que la app promete y lo que deja por fuera. Los límites importan tanto como las funciones."
         />
-        <p class="mt-4 max-w-3xl text-base text-slate">
+        <p class="mt-6 max-w-3xl text-base leading-relaxed text-muted">
           QR Libre va a escuchar los avisos de pago que ya llegan al teléfono, de las apps que tú actives, y los va a decir en voz alta. No va a necesitar cuenta, no va a pedir permisos que no use y no se va a conectar a tu banco. Si el aviso no llega, la app no va a inventar nada: se va a quedar callada.
         </p>
       </div>
-      <div class="reveal-stagger mt-10 grid gap-6 md:grid-cols-2">
+      <div class="reveal-stagger mt-12 grid gap-6 md:grid-cols-2">
         {[
-          { kind: "does", title: "Qué hace", items: qrlibre.what, tone: "bg-white" },
-          { kind: "doesNot", title: "Qué no hace", items: qrlibre.notWhat, tone: "bg-surface" }
+          { kind: "does", title: "Qué hace", items: qrlibre.what },
+          { kind: "doesNot", title: "Qué no hace", items: qrlibre.notWhat }
         ].map((column, index) => (
-          <div class={`h-full rounded-3xl border border-slate/10 p-6 sm:p-8 ${column.tone}`} style={`--stagger: ${index};`}>
-            <h3 class="font-display text-xl font-semibold text-ink">{column.title}</h3>
-            <ul class="mt-5 space-y-3 text-sm text-slate">
+          <div class="flex h-full flex-col rounded-card bg-card p-7 sm:p-8" style={`--stagger: ${index};`}>
+            <h3 class="font-display text-xl font-semibold leading-snug text-text">{column.title}</h3>
+            <ul class="mt-5 space-y-3 text-sm leading-relaxed text-muted">
               {column.items.map((item) => (
                 <li class="flex gap-3">
                   {column.kind === "does" ? (
-                    <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--product-accent)]" />
+                    <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-lemon" />
                   ) : (
-                    <span class="mt-2.5 block h-px w-4 shrink-0 bg-slate/50" aria-hidden="true"></span>
+                    <span class="mt-2.5 block h-px w-4 shrink-0 bg-muted/40" aria-hidden="true"></span>
                   )}
                   <span>{item}</span>
                 </li>
@@ -81,7 +84,7 @@ const jsonLd = [
     </div>
   </section>
 
-  <section class="border-t border-slate/10 bg-surface py-16 sm:py-20">
+  <section class="bg-card py-24 sm:py-28">
     <div class="mx-auto max-w-6xl px-6">
       <div class="reveal">
         <SectionHeading
@@ -89,23 +92,23 @@ const jsonLd = [
           title="Cómo funciona"
           subtitle="Tres pasos, de la instalación al aviso en voz alta. Sin configuración técnica ni equipos nuevos."
         />
-        <p class="mt-4 max-w-3xl text-base text-slate">
+        <p class="mt-6 max-w-3xl text-base leading-relaxed text-muted">
           El recorrido tiene tres pasos y ninguno requiere configurar nada raro. Instalas la app, le das permiso para leer notificaciones y eliges de qué apps. Desde ahí, cada aviso de pago que llegue se convierte en una frase corta que se escucha desde el otro lado del mostrador.
         </p>
       </div>
-      <ol role="list" class="reveal-stagger mt-10 grid gap-6 md:grid-cols-3">
+      <ol role="list" class="reveal-stagger mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
         {qrlibre.how.map((step, index) => (
-          <li class="flex h-full flex-col rounded-3xl border border-slate/10 bg-white p-6" style={`--stagger: ${index};`}>
-            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--product-accent)]">Paso {index + 1}</span>
-            <h3 class="mt-3 font-display text-xl font-semibold text-ink">{step.title}</h3>
-            <p class="mt-3 text-sm text-slate">{step.detail}</p>
+          <li class="flex h-full flex-col border-t border-divider pt-6" style={`--stagger: ${index};`}>
+            <span class="text-xs font-medium text-muted">Paso {index + 1}</span>
+            <h3 class="mt-4 font-display text-xl font-semibold leading-snug text-text">{step.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{step.detail}</p>
           </li>
         ))}
       </ol>
     </div>
   </section>
 
-  <section class="border-t border-slate/10 py-16 sm:py-20">
+  <section class="py-24 sm:py-28">
     <div class="mx-auto max-w-6xl px-6">
       <div class="reveal">
         <SectionHeading
@@ -113,64 +116,64 @@ const jsonLd = [
           title="Estado"
           subtitle="Qué existe hoy y cuándo se actualizó esta página."
         />
-        <p class="mt-4 max-w-3xl text-base text-slate">
+        <p class="mt-6 max-w-3xl text-base leading-relaxed text-muted">
           QR Libre está en construcción y la fecha de abajo dice cuándo se actualizó esta página por última vez. Hoy no hay versión instalable; el código ya está público en GitHub. Cuando haya una versión, va a aparecer aquí, no en un formulario de espera.
         </p>
       </div>
-      <div class="reveal-stagger mt-10 grid gap-6 md:grid-cols-[1.2fr_1fr]">
-        <div class="rounded-3xl border border-slate/10 bg-white p-6 sm:p-8" style="--stagger: 0;">
-          <dl class="grid gap-6 sm:grid-cols-2">
+      <div class="reveal-stagger mt-12">
+        <div class="rounded-card bg-card p-7 sm:p-10" style="--stagger: 0;">
+          <dl class="grid gap-8 sm:grid-cols-2">
             <div>
-              <dt class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Estado</dt>
-              <dd class="mt-2 text-base font-semibold text-ink">{qrlibre.status}</dd>
+              <dt class="text-xs font-medium uppercase tracking-[0.2em] text-muted">Estado</dt>
+              <dd class="mt-2 text-base font-semibold text-text">{qrlibre.status}</dd>
             </div>
             <div>
-              <dt class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Última actualización</dt>
-              <dd class="mt-2 text-base font-semibold text-ink">{qrlibre.updated}</dd>
+              <dt class="text-xs font-medium uppercase tracking-[0.2em] text-muted">Última actualización</dt>
+              <dd class="mt-2 text-base font-semibold text-text">{qrlibre.updated}</dd>
             </div>
           </dl>
-          <p class="mt-6 text-sm text-slate">
+          <p class="mt-8 max-w-2xl text-sm leading-relaxed text-muted">
             Todavía no hay una versión instalable. Cuando la haya, el botón de descarga va a estar en esta sección.
           </p>
-        </div>
-        <div class="rounded-3xl border border-dashed border-slate/30 bg-surface p-6 sm:p-8" style="--stagger: 1;">
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Código</p>
-          {qrlibre.repo ? (
-            <div class="mt-3 space-y-3">
-              <p class="text-sm text-slate">El código está abierto: puedes leerlo, copiarlo y adaptarlo.</p>
-              <Button href={qrlibre.repo} target="_blank" rel="noopener">Ver el repositorio</Button>
-            </div>
-          ) : (
-            <div class="mt-3 space-y-3">
-              <p class="text-sm text-slate">El repositorio todavía no está público. Cuando abramos el código, el enlace va a estar aquí.</p>
-              <Button as="button" type="button" variant="ghost" disabled aria-disabled="true" class="cursor-not-allowed opacity-60">
-                Repositorio
-              </Button>
-            </div>
-          )}
+          <div class="mt-8 border-t border-divider pt-8">
+            <p class="text-xs font-medium uppercase tracking-[0.2em] text-muted">Código</p>
+            {qrlibre.repo ? (
+              <div class="mt-3 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <p class="max-w-xl text-sm leading-relaxed text-muted">El código está abierto: puedes leerlo, copiarlo y adaptarlo.</p>
+                <Button href={qrlibre.repo} target="_blank" rel="noopener" class="shrink-0">Ver el repositorio</Button>
+              </div>
+            ) : (
+              <div class="mt-3 space-y-3">
+                <p class="text-sm leading-relaxed text-muted">El repositorio todavía no está público. Cuando abramos el código, el enlace va a estar aquí.</p>
+                <Button as="button" type="button" variant="ghost" disabled aria-disabled="true" class="cursor-not-allowed opacity-50">
+                  Repositorio
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="border-t border-slate/10 bg-surface py-16 sm:py-20">
+  <section class="py-24 sm:py-28">
     <div class="mx-auto max-w-4xl px-6">
       <div class="reveal">
         <SectionHeading eyebrow="Preguntas" title="Preguntas frecuentes" />
-        <p class="mt-4 max-w-3xl text-base text-slate">
+        <p class="mt-6 max-w-3xl text-base leading-relaxed text-muted">
           Estas son las preguntas que más nos hacen los comerciantes, respondidas sin adornos. Si te queda una duda que no está aquí, escríbenos por WhatsApp: la respondemos y, si se repite, la agregamos a esta lista.
         </p>
       </div>
-      <div class="reveal-stagger mt-10 grid gap-4">
+      <div class="reveal-stagger mt-12 grid gap-4">
         {qrlibre.faq.map((item, index) => (
           <div style={`--stagger: ${index};`}>
             <FAQItem item={item} />
           </div>
         ))}
       </div>
-      <p class="mt-8 text-sm text-slate">
+      <p class="mt-10 text-sm text-muted">
         Si tu pregunta no está aquí,
-        <a class="inline-flex items-center gap-2 font-semibold text-[color:var(--product-accent)] hover:underline" href={whatsappHref} target="_blank" rel="noopener">
+        <a class="inline-flex items-center gap-2 font-semibold text-lemon hover:underline" href={whatsappHref} target="_blank" rel="noopener">
           <Icon name="whatsapp" class="h-4 w-4" />
           escríbenos por WhatsApp
         </a>.
@@ -178,9 +181,9 @@ const jsonLd = [
     </div>
   </section>
 
-  <section class="py-12">
+  <section class="pb-20 pt-4 sm:pb-24">
     <div class="mx-auto max-w-6xl px-6">
-      <a href="/" class="text-sm font-semibold text-slate hover:text-[color:var(--product-accent)]">Un proyecto de {site.name}</a>
+      <a href="/" class="text-sm font-medium text-muted transition-colors duration-200 hover:text-lemon">Un proyecto de {site.name}</a>
     </div>
   </section>
 </ProductLayout>
