@@ -3,7 +3,6 @@ import ProductLayout from "@/layouts/ProductLayout.astro";
 import { qrlibre } from "@/content/qrlibre";
 import { site } from "@/content/site";
 
-const accent = "#1d4ed8";
 const canonical = `${site.url}/qr-libre/privacidad`;
 const updatedLabel = "19 de noviembre de 2026";
 const whatsappHref = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
@@ -13,116 +12,119 @@ const whatsappLabel = "+57 318 693 3354";
   title="Privacidad de QR Libre | ASSSIE"
   description="Qué va a leer y guardar QR Libre, qué no va a hacer y cómo revocar el permiso de notificaciones en Android."
   canonical={canonical}
-  accent={accent}
 >
-  <section class="pb-10 pt-12 sm:pt-16">
+  <section class="py-14 sm:py-16">
     <div class="mx-auto max-w-3xl px-6">
-      <div class="reveal space-y-5">
-        <div role="note" class="rounded-2xl border border-[color:var(--product-accent)] bg-white px-5 py-4 shadow-card sm:px-6">
-          <p class="text-sm font-semibold text-ink">
+      <div class="reveal space-y-6">
+        <div role="note" class="max-w-[68ch] rounded-medium bg-card px-5 py-4 sm:px-6">
+          <p class="text-sm font-semibold leading-relaxed text-text">
             Esta política aplica cuando la app esté publicada; hoy QR Libre está en construcción.
           </p>
         </div>
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--product-accent)]">QR Libre</p>
-        <h1 class="font-display text-4xl font-semibold text-ink sm:text-5xl">Privacidad de QR Libre</h1>
-        <p class="text-lg text-slate">
+        <p class="text-xs font-medium uppercase tracking-[0.2em] text-muted">QR Libre</p>
+        <h1 class="font-display text-[clamp(2.5rem,6vw,4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-text">
+          Privacidad de QR Libre
+        </h1>
+        <p class="max-w-[65ch] text-lg leading-relaxed text-muted">
           Qué va a leer la app, qué va a guardar y qué no va a hacer. Todo va a quedar en tu teléfono.
         </p>
-        <p class="text-sm text-slate">
+        <p class="text-sm text-muted">
           Última actualización: <time datetime={qrlibre.updated}>{updatedLabel}</time>
         </p>
       </div>
     </div>
   </section>
 
-  <section class="border-t border-slate/10 py-12 sm:py-16">
-    <div class="mx-auto max-w-3xl space-y-10 px-6">
-      <div class="reveal space-y-3">
-        <h2 class="font-display text-2xl font-semibold text-ink">Qué va a leer</h2>
-        <p class="text-slate">
-          Solo los avisos que llegan al teléfono, y solo los de las apps que tú actives. Para eso vas a darle acceso a
-          las notificaciones cuando la instales.
-        </p>
-        <p class="text-slate">
-          No va a leer los avisos de apps que no hayas activado, ni va a abrir tus conversaciones ni tus archivos.
-        </p>
-      </div>
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-3xl px-6">
+      <div class="space-y-14 sm:space-y-16">
+        <div class="reveal space-y-4">
+          <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-text sm:text-3xl">Qué va a leer</h2>
+          <p class="max-w-[68ch] text-base leading-relaxed text-muted">
+            Solo los avisos que llegan al teléfono, y solo los de las apps que tú actives. Para eso vas a darle acceso a
+            las notificaciones cuando la instales.
+          </p>
+          <p class="max-w-[68ch] text-base leading-relaxed text-muted">
+            No va a leer los avisos de apps que no hayas activado, ni va a abrir tus conversaciones ni tus archivos.
+          </p>
+        </div>
 
-      <div class="reveal space-y-3">
-        <h2 class="font-display text-2xl font-semibold text-ink">Qué va a guardar</h2>
-        <p class="text-slate">
-          El historial de avisos que va a armar con esas notificaciones y la lista de apps que actives. Todo va a quedar en tu
-          teléfono.
-        </p>
-        <p class="text-slate">
-          Si desinstalas la app, Android borra esos datos del teléfono.
-        </p>
-      </div>
+        <div class="reveal space-y-4">
+          <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-text sm:text-3xl">Qué va a guardar</h2>
+          <p class="max-w-[68ch] text-base leading-relaxed text-muted">
+            El historial de avisos que va a armar con esas notificaciones y la lista de apps que actives. Todo va a quedar en tu
+            teléfono.
+          </p>
+          <p class="max-w-[68ch] text-base leading-relaxed text-muted">
+            Si desinstalas la app, Android borra esos datos del teléfono.
+          </p>
+        </div>
 
-      <div class="reveal space-y-3">
-        <h2 class="font-display text-2xl font-semibold text-ink">Qué no va a hacer</h2>
-        <ul class="space-y-3 text-slate">
-          <li class="flex gap-3">
-            <span class="mt-2.5 block h-px w-4 shrink-0 bg-slate/50" aria-hidden="true"></span>
-            <span>No va a pedir cuenta ni contraseña.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="mt-2.5 block h-px w-4 shrink-0 bg-slate/50" aria-hidden="true"></span>
-            <span>No va a mostrar anuncios ni vender datos.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="mt-2.5 block h-px w-4 shrink-0 bg-slate/50" aria-hidden="true"></span>
-            <span>No va a enviar el contenido de los mensajes a un servidor.</span>
-          </li>
-        </ul>
-      </div>
+        <div class="reveal space-y-4">
+          <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-text sm:text-3xl">Qué no va a hacer</h2>
+          <ul class="max-w-[68ch] space-y-4 text-base leading-relaxed text-muted">
+            <li class="flex gap-3">
+              <span class="mt-3 block h-px w-4 shrink-0 bg-muted/40" aria-hidden="true"></span>
+              <span>No va a pedir cuenta ni contraseña.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-3 block h-px w-4 shrink-0 bg-muted/40" aria-hidden="true"></span>
+              <span>No va a mostrar anuncios ni vender datos.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-3 block h-px w-4 shrink-0 bg-muted/40" aria-hidden="true"></span>
+              <span>No va a enviar el contenido de los mensajes a un servidor.</span>
+            </li>
+          </ul>
+        </div>
 
-      <div class="reveal space-y-3">
-        <h2 class="font-display text-2xl font-semibold text-ink">Cómo quitar el permiso de notificaciones</h2>
-        <p class="text-slate">
-          Cuando la app esté publicada, puedes cortarle el acceso desde los ajustes de Android:
-        </p>
-        <ol class="list-decimal space-y-2 pl-5 text-slate">
-          <li>Abre Ajustes en tu teléfono.</li>
-          <li>Entra a Apps y busca QR Libre.</li>
-          <li>Abre Permisos y quita Notificaciones.</li>
-          <li>
-            Para cortar el acceso a los avisos de otras apps, abre Ajustes → Apps → Acceso especial → Acceso a
-            notificaciones y desactiva QR Libre.
-          </li>
-        </ol>
-        <p class="text-sm text-slate">
-          Los nombres de estas opciones cambian según la versión de Android.
-        </p>
-      </div>
+        <div class="reveal space-y-4">
+          <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-text sm:text-3xl">Cómo quitar el permiso de notificaciones</h2>
+          <p class="max-w-[68ch] text-base leading-relaxed text-muted">
+            Cuando la app esté publicada, puedes cortarle el acceso desde los ajustes de Android:
+          </p>
+          <ol class="max-w-[68ch] list-decimal space-y-3 pl-5 text-base leading-relaxed text-muted">
+            <li>Abre Ajustes en tu teléfono.</li>
+            <li>Entra a Apps y busca QR Libre.</li>
+            <li>Abre Permisos y quita Notificaciones.</li>
+            <li>
+              Para cortar el acceso a los avisos de otras apps, abre Ajustes → Apps → Acceso especial → Acceso a
+              notificaciones y desactiva QR Libre.
+            </li>
+          </ol>
+          <p class="max-w-[68ch] text-sm leading-relaxed text-muted">
+            Los nombres de estas opciones cambian según la versión de Android.
+          </p>
+        </div>
 
-      <div class="reveal space-y-3">
-        <h2 class="font-display text-2xl font-semibold text-ink">Cómo borrar los datos locales</h2>
-        <p class="text-slate">
-          Cuando la app esté publicada, va a tener una opción para borrar el historial desde la misma app.
-        </p>
-        <p class="text-slate">
-          Si quieres borrar todo de una vez, desinstala QR Libre. Android borra sus datos del teléfono con ella.
-        </p>
-      </div>
+        <div class="reveal space-y-4">
+          <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-text sm:text-3xl">Cómo borrar los datos locales</h2>
+          <p class="max-w-[68ch] text-base leading-relaxed text-muted">
+            Cuando la app esté publicada, va a tener una opción para borrar el historial desde la misma app.
+          </p>
+          <p class="max-w-[68ch] text-base leading-relaxed text-muted">
+            Si quieres borrar todo de una vez, desinstala QR Libre. Android borra sus datos del teléfono con ella.
+          </p>
+        </div>
 
-      <div class="reveal space-y-3">
-        <h2 class="font-display text-2xl font-semibold text-ink">Servicios externos</h2>
-        <p class="text-slate">
-          Las tipografías de este sitio se cargan desde Google Fonts: para servirlas, Google recibe la dirección IP del visitante y datos del navegador.
-        </p>
-      </div>
+        <div class="reveal space-y-4">
+          <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-text sm:text-3xl">Servicios externos</h2>
+          <p class="max-w-[68ch] text-base leading-relaxed text-muted">
+            Las tipografías de este sitio se cargan desde Google Fonts: para servirlas, Google recibe la dirección IP del visitante y datos del navegador.
+          </p>
+        </div>
 
-      <div class="reveal space-y-3">
-        <h2 class="font-display text-2xl font-semibold text-ink">Contacto</h2>
-        <p class="text-slate">
-          Escríbenos por WhatsApp al
-          <a class="font-semibold text-[color:var(--product-accent)] hover:underline" href={whatsappHref} target="_blank" rel="noopener">{whatsappLabel}</a>.
-          Respondemos dudas sobre esta política y sobre el proyecto.
-        </p>
-        <p class="text-sm text-slate">
-          QR Libre es un proyecto de {site.name}.
-        </p>
+        <div class="reveal space-y-4">
+          <h2 class="font-display text-2xl font-semibold tracking-[-0.01em] text-text sm:text-3xl">Contacto</h2>
+          <p class="max-w-[68ch] text-base leading-relaxed text-muted">
+            Escríbenos por WhatsApp al
+            <a class="font-semibold text-lemon hover:underline" href={whatsappHref} target="_blank" rel="noopener">{whatsappLabel}</a>.
+            Respondemos dudas sobre esta política y sobre el proyecto.
+          </p>
+          <p class="text-sm text-muted">
+            QR Libre es un proyecto de {site.name}.
+          </p>
+        </div>
       </div>
     </div>
   </section>

@@ -12,26 +12,26 @@ const nav = [
 const here = Astro.url.pathname;
 const link = (href: string) => (here === "/" ? href : `/${href}`);
 ---
-<header class="fixed inset-x-0 top-0 z-50 border-b border-slate/10 bg-white/80 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href={link("#top")} class="flex items-center gap-2 font-display text-lg font-semibold text-ink" aria-label="ASSSIE inicio">
-      <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-accent text-white">A</span>
+<header class="fixed inset-x-0 top-0 z-50 border-b border-divider bg-page">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
+    <a href={link("#top")} class="flex items-center gap-2.5 font-display text-base font-semibold tracking-[-0.01em] text-text" aria-label="ASSSIE inicio">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-elevated text-xs font-semibold text-text">A</span>
       {site.name}
     </a>
-    <nav class="hidden items-center gap-6 text-sm font-semibold text-slate md:flex" aria-label="Navegación principal">
+    <nav class="hidden items-center gap-7 text-sm font-medium text-muted md:flex" aria-label="Navegación principal">
       {nav.map((item) => (
-        <a class="hover:text-accent" href={link(item.href)}>{item.label}</a>
+        <a class="transition-colors duration-200 hover:text-text" href={link(item.href)}>{item.label}</a>
       ))}
       <Button variant="primary" size="sm" href={link("#contacto")}>Quiero una propuesta</Button>
     </nav>
     <details class="relative md:hidden">
-      <summary class="list-none rounded-full border border-slate/20 bg-white p-2" aria-label="Abrir menú">
+      <summary class="list-none rounded-full border border-divider bg-card p-2 text-text transition-colors duration-200 hover:bg-elevated" aria-label="Abrir menú">
         <Icon name="menu" />
       </summary>
-      <div class="absolute right-0 mt-3 w-64 rounded-2xl border border-slate/10 bg-white p-4 shadow-card">
-        <div class="flex flex-col gap-3 text-sm font-semibold text-slate">
+      <div class="absolute right-0 mt-3 w-64 rounded-medium border border-divider bg-card p-4">
+        <div class="flex flex-col gap-3 text-sm font-medium text-muted">
           {nav.map((item) => (
-            <a class="hover:text-accent" href={link(item.href)}>{item.label}</a>
+            <a class="transition-colors duration-200 hover:text-text" href={link(item.href)}>{item.label}</a>
           ))}
           <Button variant="primary" size="sm" href={link("#contacto")}>Agenda una llamada</Button>
         </div>

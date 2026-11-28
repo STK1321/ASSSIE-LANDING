@@ -3,16 +3,15 @@ import SectionHeading from "@/components/molecules/SectionHeading.astro";
 import CapabilityCard from "@/components/molecules/CapabilityCard.astro";
 import { capabilities } from "@/content/capabilities";
 ---
-<section id="que-hacemos" class="py-20">
+<section id="que-hacemos" class="bg-card py-20 sm:py-24">
   <div class="mx-auto max-w-6xl px-6">
-    <div class="reveal">
+    <div class="reveal max-w-3xl">
       <SectionHeading
-        eyebrow="Qué hacemos"
         title="Lo que construimos"
         subtitle="Una empresa chica no necesita otro sistema: necesita que lo que ya tiene deje de estorbar. Casi siempre son tres cosas —las ventas en un Excel, los pagos en una cuenta, las decisiones en la cabeza del dueño— y ninguna habla con las otras. Eso es lo que construimos: la parte que falta para que el día cierre solo."
       />
     </div>
-    <div class="reveal-stagger mt-10 grid gap-6 md:grid-cols-3">
+    <div class="reveal-stagger mt-14 grid gap-6 md:grid-cols-3">
       {capabilities.map((capability, index) => (
         <div style={`--stagger: ${index};`}>
           <CapabilityCard capability={capability} />

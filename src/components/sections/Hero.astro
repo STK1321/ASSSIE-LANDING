@@ -4,38 +4,25 @@ import Icon from "@/components/atoms/Icon.astro";
 import { site } from "@/content/site";
 
 const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
-const facts = [
-  "Código abierto: lo puedes leer",
-  "Sin cuenta y sin anuncios",
-  "Te entregamos el código y la documentación"
-];
 ---
-<section id="top" class="bg-hero">
-  <div class="mx-auto max-w-3xl px-6 pb-16 pt-28">
-    <div class="reveal space-y-6">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Bienes Públicos de ASSSIE</p>
-      <h1 class="font-display text-4xl font-semibold text-ink sm:text-6xl">
+<section id="top" class="flex min-h-[calc(100svh-5rem)] items-center py-16 sm:py-20">
+  <div class="mx-auto w-full max-w-6xl px-6">
+    <div class="reveal max-w-5xl space-y-8">
+      <p class="text-xs font-medium uppercase tracking-[0.2em] text-muted">Bienes Públicos de ASSSIE</p>
+      <h1 class="font-display text-[clamp(2.5rem,7vw,5rem)] font-semibold leading-[0.96] tracking-[-0.03em] text-text">
         Herramientas para el trabajo real.
       </h1>
-      <p class="text-lg text-slate">
+      <p class="max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
         Construimos software para el comercio que cobra por QR y para la empresa chica que vive en tres Excels. Vamos a publicar el código abierto, para que cualquiera pueda leerlo y usarlo. Gratis en la superficie; a medida cuando
         tu operación no cabe.
       </p>
-      <div class="flex flex-wrap gap-4">
-        <Button variant="primary" href="#herramientas">Ver las herramientas</Button>
-        <Button variant="ghost" href={whatsappLink} target="_blank" rel="noopener">
+      <div class="flex flex-wrap items-center gap-3">
+        <Button variant="primary" size="lg" href="#herramientas">Ver las herramientas</Button>
+        <Button variant="ghost" size="lg" href={whatsappLink} target="_blank" rel="noopener">
           <Icon name="whatsapp" class="h-4 w-4" />
           Hablemos por WhatsApp
         </Button>
       </div>
-      <ul class="grid gap-2 text-sm text-slate">
-        {facts.map((fact) => (
-          <li class="flex items-center gap-2">
-            <Icon name="check" class="h-4 w-4 shrink-0 text-accent" />
-            <span>{fact}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   </div>
 </section>

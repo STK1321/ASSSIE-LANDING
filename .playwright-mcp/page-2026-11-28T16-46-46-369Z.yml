@@ -1,0 +1,183 @@
+- generic [active] [ref=f1e1]:
+  - link "Saltar al contenido" [ref=f1e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f1e3]:
+    - generic [ref=f1e4]:
+      - link "ASSSIE inicio" [ref=f1e5] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=f1e6]: A
+        - text: ASSSIE
+      - navigation "Navegación principal" [ref=f1e7]:
+        - link "Qué hacemos" [ref=f1e8] [cursor=pointer]:
+          - /url: "#que-hacemos"
+        - link "Herramientas" [ref=f1e9] [cursor=pointer]:
+          - /url: "#herramientas"
+        - link "La prueba" [ref=f1e10] [cursor=pointer]:
+          - /url: "#prueba"
+        - link "Cómo trabajamos" [ref=f1e11] [cursor=pointer]:
+          - /url: "#proceso"
+        - link "Quiero una propuesta" [ref=f1e12] [cursor=pointer]:
+          - /url: "#contacto"
+  - main [ref=f1e13]:
+    - generic [ref=f1e16]:
+      - paragraph [ref=f1e17]: Bienes Públicos de ASSSIE
+      - heading "Herramientas para el trabajo real." [level=1] [ref=f1e18]
+      - paragraph [ref=f1e19]: Construimos software para el comercio que cobra por QR y para la empresa chica que vive en tres Excels. Vamos a publicar el código abierto, para que cualquiera pueda leerlo y usarlo. Gratis en la superficie; a medida cuando tu operación no cabe.
+      - generic [ref=f1e20]:
+        - link "Ver las herramientas" [ref=f1e21] [cursor=pointer]:
+          - /url: "#herramientas"
+        - link "Hablemos por WhatsApp" [ref=f1e22] [cursor=pointer]:
+          - /url: https://wa.me/573186933354
+    - generic [ref=f1e26]:
+      - generic [ref=f1e28]:
+        - heading "Lo que construimos" [level=2] [ref=f1e29]
+        - paragraph [ref=f1e30]: "Una empresa chica no necesita otro sistema: necesita que lo que ya tiene deje de estorbar. Casi siempre son tres cosas —las ventas en un Excel, los pagos en una cuenta, las decisiones en la cabeza del dueño— y ninguna habla con las otras. Eso es lo que construimos: la parte que falta para que el día cierre solo."
+      - generic [ref=f1e31]:
+        - article [ref=f1e33]:
+          - heading "La operación que vive en tres Excels" [level=3] [ref=f1e34]
+          - paragraph [ref=f1e35]: Construimos el sistema que la reemplaza
+          - paragraph [ref=f1e36]: Inventario, ventas y cartera en un solo lugar, con los datos que ya tienes.
+        - article [ref=f1e38]:
+          - heading "Los sistemas que no se hablan" [level=3] [ref=f1e39]
+          - paragraph [ref=f1e40]: Conectamos lo que ya usas
+          - paragraph [ref=f1e41]: Pagos, WhatsApp, planillas y el software viejo, sin cambiar de herramienta.
+        - article [ref=f1e43]:
+          - heading "Las decisiones que se toman a ciegas" [level=3] [ref=f1e44]
+          - paragraph [ref=f1e45]: Analítica y contenido con IA
+          - paragraph [ref=f1e46]: Qué te deja plata, qué no, y qué publicar sin adivinar.
+    - generic [ref=f1e47]:
+      - generic [ref=f1e49]:
+        - generic [ref=f1e50]:
+          - paragraph [ref=f1e51]: Hacia dónde vamos
+          - heading "Las herramientas" [level=2] [ref=f1e52]
+        - paragraph [ref=f1e53]: "Un comerciante en Colombia hace tres cosas todos los días: cobra, cuenta y cierra. Cada una vive en un lugar distinto —el QR del banco, el cuaderno, el WhatsApp— y ninguna le habla a la otra."
+      - generic [ref=f1e55]:
+        - list [ref=f1e56]:
+          - listitem [ref=f1e57]:
+            - generic [aria-hidden] [ref=f1e58]: "01"
+            - heading "QR Libre" [level=3] [ref=f1e59]
+            - paragraph [ref=f1e60]: "Empezamos por lo primero: QR Libre va a avisar en voz alta cuando entre un pago, sin comprar equipos y sin mensualidad."
+          - listitem [ref=f1e61]:
+            - generic [aria-hidden] [ref=f1e62]: "02"
+            - heading "Conciliación" [level=3] [ref=f1e63]
+            - paragraph [ref=f1e64]: "Sigue la conciliación: que la plata que entró coincida con lo que se vendió, sin abrir tres aplicaciones."
+          - listitem [ref=f1e65]:
+            - generic [aria-hidden] [ref=f1e66]: "03"
+            - heading "Cierre" [level=3] [ref=f1e67]
+            - paragraph [ref=f1e68]: "Y el cierre: cuánto entró, cuánto salió, cuánto quedó, en una pantalla que se entiende sin ser contador."
+        - paragraph [ref=f1e70]: Nada de esto pide cuenta, anuncios ni depender de nosotros. El código es abierto; si un día no estamos, sigue funcionando.
+        - link "Conocer QR Libre" [ref=f1e72] [cursor=pointer]:
+          - /url: /qr-libre
+    - generic [ref=f1e74]:
+      - generic [ref=f1e76]:
+        - heading "La prueba" [level=2] [ref=f1e77]
+        - paragraph [ref=f1e78]: "Antes de contarte lo que podemos hacer, mira lo que ya hicimos. Dos operaciones reales corren con software que construimos: una importadora en Colombia y una empresa de monitoreo de seguridad que atiende propiedades en Estados Unidos. No son escenarios de portafolio ni maquetas; son negocios que abren todos los días."
+      - generic [ref=f1e79]:
+        - article [ref=f1e81]:
+          - paragraph [ref=f1e82]: Monitoreo de seguridad remoto, Florida
+          - heading "Proactive Watch" [level=3] [ref=f1e83]
+          - paragraph [ref=f1e84]: "La plataforma que sostiene la operación: casos, historial de incidentes, usuarios y reportes."
+          - paragraph [ref=f1e85]: Una operación que atiende propiedades en varios estados desde un solo panel.
+        - article [ref=f1e87]:
+          - paragraph [ref=f1e88]: Comercio e importación, Colombia
+          - heading "Importadora" [level=3] [ref=f1e89]
+          - paragraph [ref=f1e90]: "Una app para la gestión del negocio: inventario, ventas y lo que antes vivía en hojas sueltas."
+          - paragraph [ref=f1e91]: El día de trabajo en un solo lugar, sin depender de una persona que se acuerde de todo.
+    - generic [ref=f1e93]:
+      - generic [ref=f1e95]:
+        - heading "Cómo trabajamos" [level=2] [ref=f1e96]
+        - paragraph [ref=f1e97]: "Casi ningún proyecto se cae por la tecnología: se cae porque nadie entendió cómo trabaja el negocio. Por eso empezamos mirando tu operación, no escribiendo código. Construimos lo más pequeño que resuelve el problema, lo ponemos a funcionar, y te entregamos el código y la documentación para que no dependas de nosotros."
+      - generic [ref=f1e98]:
+        - generic [ref=f1e100]:
+          - heading "Hablamos y miramos tu operación" [level=3] [ref=f1e101]
+          - paragraph [ref=f1e102]: Nos cuentas cómo trabajas hoy y vemos dónde se pierde el tiempo.
+        - generic [ref=f1e104]:
+          - heading "Construimos lo más pequeño que sirve" [level=3] [ref=f1e105]
+          - paragraph [ref=f1e106]: Una primera versión que ya resuelve algo real, sin esperar al sistema completo.
+        - generic [ref=f1e108]:
+          - heading "Te entregamos el código y la documentación" [level=3] [ref=f1e109]
+          - paragraph [ref=f1e110]: "Queda tuyo: lo puedes leer, correr y cambiar sin depender de nosotros."
+    - generic [ref=f1e113]:
+      - generic [ref=f1e114]:
+        - generic [ref=f1e115]:
+          - paragraph [ref=f1e116]: Contacto
+          - heading "Hablemos de tu objetivo" [level=2] [ref=f1e117]
+          - paragraph [ref=f1e118]: Cuéntanos tu objetivo. El formulario abre WhatsApp con el mensaje ya escrito, para que lo revises y lo envíes tú.
+        - paragraph [ref=f1e119]: "Escríbenos qué te está costando hoy: una operación que vive en Excel, un proceso que depende de una persona, números que no cuadran. Leemos el mensaje, miramos si hay algo que construir y te respondemos con una idea concreta, no con un formulario de ventas."
+        - generic [ref=f1e121]:
+          - generic [ref=f1e122]:
+            - text: Nombre
+            - textbox "Nombre" [ref=f1e123]
+          - generic [ref=f1e124]:
+            - text: Tu WhatsApp (opcional)
+            - textbox "Tu WhatsApp (opcional)" [ref=f1e125]
+          - generic [ref=f1e126]:
+            - text: ¿Qué problema quieres resolver?
+            - textbox "¿Qué problema quieres resolver?" [ref=f1e127]
+          - generic [ref=f1e128]:
+            - text: Empresa (opcional)
+            - textbox "Empresa (opcional)" [ref=f1e129]
+          - generic [ref=f1e130]:
+            - text: Tamaño aproximado de la empresa (opcional)
+            - combobox "Tamaño aproximado de la empresa (opcional)" [ref=f1e131]:
+              - option "Selecciona un rango" [selected]
+              - option "1-10"
+              - option "11-50"
+              - option "51-200"
+              - option "201-1000"
+              - option "1000+"
+          - button "Enviar por WhatsApp" [ref=f1e133] [cursor=pointer]
+          - status
+          - paragraph [ref=f1e134]: Se abre WhatsApp con tu mensaje ya escrito. Lo revisas y lo envías tú.
+          - paragraph [ref=f1e135]:
+            - link "Cómo tratamos tus datos" [ref=f1e136] [cursor=pointer]:
+              - /url: /privacidad
+      - generic [ref=f1e137]:
+        - generic [ref=f1e138]:
+          - heading "Contacto directo" [level=3] [ref=f1e139]
+          - paragraph [ref=f1e140]:
+            - text: "WhatsApp:"
+            - link "+573186933354" [ref=f1e141] [cursor=pointer]:
+              - /url: https://wa.me/573186933354
+          - paragraph [ref=f1e142]: "Zona: Sibaté, Cundinamarca"
+        - generic [ref=f1e143]:
+          - heading "Lo que incluye la primera conversación" [level=3] [ref=f1e144]
+          - list [ref=f1e145]:
+            - listitem [ref=f1e146]:
+              - generic [ref=f1e149]: Revisión de objetivos y procesos actuales.
+            - listitem [ref=f1e150]:
+              - generic [ref=f1e153]: Propuesta inicial de automatización y data.
+            - listitem [ref=f1e154]:
+              - generic [ref=f1e157]: Estimación de tiempos y próximos pasos.
+  - contentinfo [ref=f1e158]:
+    - generic [ref=f1e160]:
+      - generic [ref=f1e161]:
+        - paragraph [ref=f1e162]: ASSSIE
+        - paragraph [ref=f1e163]: Herramientas para el trabajo real
+        - paragraph [ref=f1e164]: (c) 2026 ASSSIE. Todos los derechos reservados.
+      - generic [ref=f1e165]:
+        - paragraph [ref=f1e166]: Secciones
+        - generic [ref=f1e167]:
+          - link "Qué hacemos" [ref=f1e168] [cursor=pointer]:
+            - /url: "#que-hacemos"
+          - link "Herramientas" [ref=f1e169] [cursor=pointer]:
+            - /url: "#herramientas"
+          - link "La prueba" [ref=f1e170] [cursor=pointer]:
+            - /url: "#prueba"
+          - link "Cómo trabajamos" [ref=f1e171] [cursor=pointer]:
+            - /url: "#proceso"
+          - link "Contacto" [ref=f1e172] [cursor=pointer]:
+            - /url: "#contacto"
+      - generic [ref=f1e173]:
+        - paragraph [ref=f1e174]: Contacto
+        - generic [ref=f1e175]:
+          - link "+573186933354" [ref=f1e176] [cursor=pointer]:
+            - /url: https://wa.me/573186933354
+          - generic [ref=f1e177]: Sibaté, Cundinamarca
+        - generic [ref=f1e178]:
+          - link "Política de privacidad" [ref=f1e179] [cursor=pointer]:
+            - /url: /privacidad
+          - link "Privacidad de QR Libre" [ref=f1e180] [cursor=pointer]:
+            - /url: /qr-libre/privacidad
+          - link "GitHub" [ref=f1e181] [cursor=pointer]:
+            - /url: https://github.com/ASSSIE-SAS

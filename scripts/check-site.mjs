@@ -112,7 +112,7 @@ mustContain("hero tools cta", home, 'href="#herramientas"');
 mustNotContain("index.html", home, 'href="#seo"');
 mustNotContain("index.html", home, "Enfoque");
 
-for (const name of ["Proactive Watch", "Importadora"]) {
+for (const name of ["Proactive Watch", "Chico Corp"]) {
   mustContain("index.html", home, name);
 }
 mustNotContain("index.html", home, "Caso A:");
