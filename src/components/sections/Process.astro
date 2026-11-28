@@ -3,7 +3,7 @@ import SectionHeading from "@/components/molecules/SectionHeading.astro";
 import ProcessStep from "@/components/molecules/ProcessStep.astro";
 import { processSteps } from "@/content/process";
 ---
-<section id="proceso" class="py-20">
+<section id="proceso" class="py-24 sm:py-28">
   <div class="mx-auto max-w-6xl px-6">
     <div class="reveal">
       <SectionHeading
@@ -11,10 +11,10 @@ import { processSteps } from "@/content/process";
         subtitle="Casi ningún proyecto se cae por la tecnología: se cae porque nadie entendió cómo trabaja el negocio. Por eso empezamos mirando tu operación, no escribiendo código. Construimos lo más pequeño que resuelve el problema, lo ponemos a funcionar, y te entregamos el código y la documentación para que no dependas de nosotros."
       />
     </div>
-    <div class="mt-10 grid gap-6 md:grid-cols-3 reveal-stagger">
+    <div class="reveal-stagger mt-12 grid sm:grid-cols-3 sm:divide-x sm:divide-divider">
       {processSteps.map((step, index) => (
-        <div style={`--stagger: ${index};`}>
-          <ProcessStep step={step} index={index} />
+        <div class="border-t border-divider py-8 first:border-t-0 sm:border-t-0 sm:px-8 sm:py-0 sm:first:pl-0 sm:last:pr-0" style={`--stagger: ${index};`}>
+          <ProcessStep step={step} />
         </div>
       ))}
     </div>

@@ -14,37 +14,33 @@ const nav = [
 
 const whatsappHref = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
 ---
-<footer class="border-t border-slate/10 bg-white">
-  <div class="mx-auto max-w-6xl px-6 py-12">
-    <div class="grid gap-8 md:grid-cols-[1.4fr_1fr_1fr] reveal">
+<footer class="border-t border-divider bg-page">
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr] reveal">
       <div class="space-y-3">
-        <div class="flex items-center gap-3">
-          <div>
-            <p class="font-display text-lg font-semibold text-ink">{site.name}</p>
-            <p class="text-xs text-slate">{site.slogan}</p>
-          </div>
-        </div>
-        <p class="text-xs text-slate">(c) {new Date().getFullYear()} {site.name}. Todos los derechos reservados.</p>
+        <p class="font-display text-lg font-semibold text-text">{site.name}</p>
+        <p class="text-xs text-muted">{site.slogan}</p>
+        <p class="text-xs text-muted">(c) {new Date().getFullYear()} {site.name}. Todos los derechos reservados.</p>
       </div>
       <div class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Secciones</p>
-        <div class="flex flex-col gap-2 text-sm font-semibold text-slate">
+        <p class="text-xs font-medium text-muted">Secciones</p>
+        <div class="flex flex-col gap-2 text-sm text-muted">
           {nav.map((item) => (
-            <a href={link(item.href)} class="hover:text-accent">{item.label}</a>
+            <a href={link(item.href)} class="transition-colors duration-200 hover:text-text">{item.label}</a>
           ))}
         </div>
       </div>
       <div class="space-y-3">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate">Contacto</p>
-        <div class="flex flex-col gap-2 text-sm text-slate">
-          <a href={whatsappHref} target="_blank" rel="noopener" class="font-semibold hover:text-accent">{site.whatsapp}</a>
+        <p class="text-xs font-medium text-muted">Contacto</p>
+        <div class="flex flex-col gap-2 text-sm text-muted">
+          <a href={whatsappHref} target="_blank" rel="noopener" class="font-medium text-text transition-colors duration-200 hover:text-lemon">{site.whatsapp}</a>
           <span>{site.address.locality}, {site.address.region}</span>
         </div>
-        <div class="flex flex-col gap-2 text-xs text-slate">
-          <a href="/privacidad" class="hover:text-accent">Política de privacidad</a>
-          <a href="/qr-libre/privacidad" class="hover:text-accent">Privacidad de QR Libre</a>
+        <div class="flex flex-col gap-2 text-xs text-muted">
+          <a href="/privacidad" class="transition-colors duration-200 hover:text-text">Política de privacidad</a>
+          <a href="/qr-libre/privacidad" class="transition-colors duration-200 hover:text-text">Privacidad de QR Libre</a>
           {site.github && (
-            <a href={site.github} target="_blank" rel="noopener" class="hover:text-accent">GitHub</a>
+            <a href={site.github} target="_blank" rel="noopener" class="transition-colors duration-200 hover:text-text">GitHub</a>
           )}
         </div>
       </div>
