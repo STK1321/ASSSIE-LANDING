@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
-  --product-accent: #0f766e;
+  color-scheme: dark;
+  --product-accent: #cfff2e;
 }
 
 * {
@@ -17,11 +17,9 @@ html {
 
 body {
   margin: 0;
-  font-family: "Work Sans", system-ui, sans-serif;
-  color: #0b1220;
-  background: radial-gradient(circle at 10% 10%, rgba(245, 158, 11, 0.08), transparent 45%),
-    radial-gradient(circle at 85% 0%, rgba(15, 118, 110, 0.12), transparent 40%),
-    #f7f3ee;
+  font-family: "Geist", system-ui, sans-serif;
+  color: #f5f4f0;
+  background: #0e0e0e;
 }
 
 img {
@@ -35,12 +33,12 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid #0f766e;
+  outline: 2px solid #cfff2e;
   outline-offset: 2px;
 }
 
 ::selection {
-  background: rgba(15, 118, 110, 0.2);
+  background: rgba(207, 255, 46, 0.25);
 }
 
 .reveal,
@@ -70,4 +68,3 @@ a {
     transition: none;
   }
 }
-

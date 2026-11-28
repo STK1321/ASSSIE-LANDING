@@ -1,33 +1,43 @@
 ﻿/** @type {import('tailwindcss').Config} */
+// Lemon visual system tokens.
+// Source of truth: docs/superpowers/specs/2026-11-28-asssie-landing-lemon-visual-system.md
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        ink: "#0b1220",
-        slate: "#425066",
-        mist: "#eef1f6",
-        surface: "#f7f3ee",
-        accent: "#0f766e",
-        accentDark: "#0b5c56",
-        glow: "#f59e0b"
+        page: "#0E0E0E",
+        card: "#171717",
+        elevated: "#1E1E1E",
+        divider: "#262626",
+        lemon: "#CFFF2E",
+        onLemon: "#0B0B0B",
+        green: "#00DF1A",
+        deepGreen: "#003D1B",
+        text: "#F5F4F0",
+        muted: "#A2A2A1",
+        danger: "#EB3131",
+        warning: "#F6B60B",
+
+        // Legacy aliases still passed by the section components. They resolve
+        // to the dark values above so the in-progress re-skin stays legible.
+        ink: "#F5F4F0",
+        slate: "#A2A2A1",
+        mist: "#1E1E1E",
+        surface: "#171717",
+        accent: "#CFFF2E",
+        white: "#171717"
       },
       fontFamily: {
-        display: ["Space Grotesk", "ui-sans-serif", "system-ui"],
-        body: ["Work Sans", "ui-sans-serif", "system-ui"]
+        display: ["Geist", "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ["Geist", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["Geist Mono", "ui-monospace", "SFMono-Regular", "monospace"]
       },
-      boxShadow: {
-        card: "0 24px 60px -40px rgba(15, 23, 42, 0.5)",
-        soft: "0 18px 40px -30px rgba(15, 118, 110, 0.45)"
-      },
-      backgroundImage: {
-        hero:
-          "radial-gradient(circle at top, rgba(15, 118, 110, 0.18), transparent 60%), radial-gradient(circle at 20% 20%, rgba(245, 158, 11, 0.18), transparent 55%)",
-        grid:
-          "linear-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.08) 1px, transparent 1px)"
+      borderRadius: {
+        card: "24px",
+        medium: "20px"
       }
     }
   },
   plugins: []
 };
-
