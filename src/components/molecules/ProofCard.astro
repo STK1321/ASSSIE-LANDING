@@ -14,4 +14,15 @@ const headingId = `proof-${item.name
   <h3 id={headingId} class="mt-3 font-display text-2xl font-semibold leading-snug text-text">{item.name}</h3>
   <p class="mt-4 text-base leading-relaxed text-text">{item.detail}</p>
   <p class="mt-3 text-sm leading-relaxed text-muted">{item.outcome}</p>
+  {item.url ? (
+    <a
+      href={item.url}
+      target="_blank"
+      rel="noopener"
+      class="mt-auto pt-6 inline-flex w-fit items-center gap-1 text-sm font-medium text-lemon hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lemon focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+    >
+      {item.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+      <span aria-hidden="true">↗</span>
+    </a>
+  ) : null}
 </article>
