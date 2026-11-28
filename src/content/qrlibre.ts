@@ -18,15 +18,18 @@ export type QrLibreContent = {
   how: QrLibreStep[];
   faq: QrLibreFaqItem[];
   repo: string;
+  download: string;
+  downloadNote: string;
 };
 
-// The app does not exist yet. Copy stays in the design-commitment tense
-// ("va a…") and never claims behavior that a real build performs today.
+// A test build exists (GitHub pre-release). Payment detection does not, so the
+// detection copy stays in the commitment tense ("va a…") and never claims
+// behaviour that a real build performs today.
 export const qrlibre: QrLibreContent = {
   name: "QR Libre",
   tagline: "Tu pago suena. Tu negocio sigue.",
   status: "En construcción",
-  updated: "2026-11-19",
+  updated: "2026-11-28",
   what: [
     "Va a avisar en voz alta cuando entre un pago, sin que tengas que mirar la pantalla.",
     "Va a leer solo los avisos de pago de las apps que tú decidas activar.",
@@ -58,7 +61,7 @@ export const qrlibre: QrLibreContent = {
     {
       question: "¿QR Libre ya se puede descargar?",
       answer:
-        "Todavía no hay una versión instalable. El código ya está público en GitHub y esta página muestra la fecha del último cambio."
+        "Hay una versión de prueba en GitHub, fuera de Play Store. El código es abierto y esta página muestra la fecha del último cambio."
     },
     {
       question: "¿Necesito una cuenta o pagar una mensualidad?",
@@ -81,5 +84,7 @@ export const qrlibre: QrLibreContent = {
         "Van a quedar en tu teléfono. La app no va a enviar el contenido de los mensajes a ningún servidor y no va a pedir cuenta."
     }
   ],
-  repo: "https://github.com/ASSSIE-SAS/qr-libre"
+  repo: "https://github.com/ASSSIE-SAS/qr-libre",
+  download: "https://github.com/ASSSIE-SAS/qr-libre/releases",
+  downloadNote: "Versión de prueba para Android, fuera de Play Store. No detecta pagos todavía."
 };

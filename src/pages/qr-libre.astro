@@ -15,7 +15,7 @@ import {
 const canonical = `${site.url}/qr-libre`;
 const whatsappHref = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
 const intro =
-  "QR Libre es una app de Android para el comerciante que cobra por QR y no puede revisar el teléfono en medio de la atención. Está en construcción: todavía no hay una versión instalable. Esto es lo que va a hacer, lo que no hace y en qué va el proyecto.";
+  "QR Libre es una app de Android para el comerciante que cobra por QR y no puede revisar el teléfono en medio de la atención. Hay una versión de prueba para instalar a mano. Esto es lo que hace hoy, lo que no hace y en qué va el proyecto.";
 const jsonLd = [
   buildSoftwareApplicationSchema(),
   buildFaqSchema(qrlibre.faq),
@@ -117,7 +117,7 @@ const jsonLd = [
           subtitle="Qué existe hoy y cuándo se actualizó esta página."
         />
         <p class="mt-6 max-w-3xl text-base leading-relaxed text-muted">
-          QR Libre está en construcción y la fecha de abajo dice cuándo se actualizó esta página por última vez. Hoy no hay versión instalable; el código ya está público en GitHub. Cuando haya una versión, va a aparecer aquí, no en un formulario de espera.
+          QR Libre está en construcción y la fecha de abajo dice cuándo se actualizó esta página por última vez. Ya hay una versión de prueba y el código es público. Lo que todavía no existe son las reglas que reconocen un pago real.
         </p>
       </div>
       <div class="reveal-stagger mt-12">
@@ -132,9 +132,10 @@ const jsonLd = [
               <dd class="mt-2 text-base font-semibold text-text">{qrlibre.updated}</dd>
             </div>
           </dl>
-          <p class="mt-8 max-w-2xl text-sm leading-relaxed text-muted">
-            Todavía no hay una versión instalable. Cuando la haya, el botón de descarga va a estar en esta sección.
-          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button href={qrlibre.download} target="_blank" rel="noopener">Descargar la versión de prueba</Button>
+            <p class="max-w-md text-sm leading-relaxed text-muted">{qrlibre.downloadNote}</p>
+          </div>
           <div class="mt-8 border-t border-divider pt-8">
             <p class="text-xs font-medium uppercase tracking-[0.2em] text-muted">Código</p>
             {qrlibre.repo ? (
