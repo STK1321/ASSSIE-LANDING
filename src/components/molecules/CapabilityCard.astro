@@ -3,7 +3,7 @@ import type { Capability } from "@/content/capabilities";
 
 const { capability } = Astro.props as { capability: Capability };
 ---
-<article class="flex h-full flex-col rounded-card bg-card p-7 transition-colors duration-200 ease-out hover:bg-elevated">
+<article class="flex h-full flex-col rounded-card bg-page p-8 transition-colors duration-200 ease-out hover:bg-elevated">
   <h3 class="font-display text-xl font-semibold leading-snug text-text">{capability.problem}</h3>
   <p class="mt-4 text-base leading-relaxed text-text">{capability.offer}</p>
   <p class="mt-2 text-sm leading-relaxed text-muted">{capability.detail}</p>

@@ -4,13 +4,8 @@ import Icon from "@/components/atoms/Icon.astro";
 import { site } from "@/content/site";
 
 const whatsappLink = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
-const facts = [
-  "Código abierto: lo puedes leer",
-  "Sin cuenta y sin anuncios",
-  "Te entregamos el código y la documentación"
-];
 ---
-<section id="top" class="py-14 sm:py-16">
+<section id="top" class="py-20 sm:py-28">
   <div class="mx-auto max-w-6xl px-6">
     <div class="reveal max-w-5xl space-y-8">
       <p class="text-xs font-medium uppercase tracking-[0.2em] text-muted">Bienes Públicos de ASSSIE</p>
@@ -28,14 +23,6 @@ const facts = [
           Hablemos por WhatsApp
         </Button>
       </div>
-      <ul class="flex flex-col gap-2 pt-2 text-sm text-muted sm:flex-row sm:flex-wrap sm:items-center sm:gap-0">
-        {facts.map((fact, index) => (
-          <li class="flex items-center">
-            {index > 0 ? <span class="mx-4 hidden h-3.5 w-px bg-divider sm:block" aria-hidden="true"></span> : null}
-            <span>{fact}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   </div>
 </section>
